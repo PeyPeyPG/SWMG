@@ -1,7 +1,7 @@
 namespace QuantU.Models;
 
 public class DataPartition {
-    
+   /* 
     public JSON pullInfo(API){
         JSON_Data = pullAPIData(API.url);
         return JSON_Data;
@@ -20,4 +20,5 @@ public class DataPartition {
     }
 
     public  
+    */
 }

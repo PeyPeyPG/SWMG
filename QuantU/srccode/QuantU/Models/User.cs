@@ -4,6 +4,7 @@ namespace QuantU.Models;
 
 public class User
 {
+    /*
     private string username;
     private string password;
     private string question;
@@ -47,5 +48,6 @@ public class User
     public void setSalary(decimal num) {
         salary = num;
     }
+    */
 }
 

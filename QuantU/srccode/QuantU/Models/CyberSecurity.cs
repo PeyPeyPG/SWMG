@@ -2,6 +2,7 @@ namespace QuantU.Models;
 
 public class CyberSecurity 
 {
+    /*
     public string HashDataString(String input){ 
         return HashedData(input);
     }
@@ -20,4 +21,5 @@ public class CyberSecurity
     public string DecryptData(){
         return DecryptedData;
     }
+    */
 }

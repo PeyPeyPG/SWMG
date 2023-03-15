@@ -3,7 +3,7 @@ using System.Collections;
 namespace QuantU.Models;
 
 public class AppData{
-
+/*
     private string ticker;
     private decimal value;
     private string companyName;
@@ -22,4 +22,5 @@ public class AppData{
     public decimal getValue() {
         return value;
     }
+    */
 }
