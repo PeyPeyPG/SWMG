@@ -1,4 +1,8 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using MongoDB.Driver;
+
+MongoClient client = new MongoClient("mongodb+srv://SWMG:Shawdowwizardmoneygang@swmg.hzzuvlg.mongodb.net/?retryWrites=true&w=majority");
+
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -12,6 +16,12 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+//MongoDB
+var UserInfoCollection = client.GetDatabase("SWMG").GetCollection<User>("UserInfo");
+
+
+UserInfoCollection.InsertOne(new User("PeyPeyPG", "peyton@email.com", "p@55w0rd", "First Pet", "Buddy"));
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
