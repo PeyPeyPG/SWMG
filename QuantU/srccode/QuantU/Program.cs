@@ -1,6 +1,7 @@
-﻿using MongoDB.Driver;
+﻿//using MongoDB.Driver;
+//using QuantU.Models;
 
-MongoClient client = new MongoClient("mongodb+srv://SWMG:Shawdowwizardmoneygang@swmg.hzzuvlg.mongodb.net/?retryWrites=true&w=majority");
+//MongoClient client = new MongoClient("mongodb+srv://SWMG:Shawdowwizardmoneygang@swmg.hzzuvlg.mongodb.net/?retryWrites=true&w=majority");
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,10 +19,10 @@ if (!app.Environment.IsDevelopment())
 }
 
 //MongoDB
-var UserInfoCollection = client.GetDatabase("SWMG").GetCollection<User>("UserInfo");
+//var UserInfoCollection = client.GetDatabase("SWMG").GetCollection<User>("UserInfo");
+//Console.WriteLine(GetType(UserInfoCollection));
 
-
-UserInfoCollection.InsertOne(new User("PeyPeyPG", "peyton@email.com", "p@55w0rd", "First Pet", "Buddy"));
+// UserInfoCollection.InsertOne(new User("PeyPeyPG", "peyton@email.com", "p@55w0rd", "First Pet", "Buddy"));
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

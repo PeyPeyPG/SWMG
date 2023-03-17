@@ -2,7 +2,7 @@ using System.Collections;
 
 namespace QuantU.Models;
 
-public class User
+public class UserOld
 {
     /*
     private string username;

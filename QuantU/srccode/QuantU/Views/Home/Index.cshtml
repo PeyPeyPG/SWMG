@@ -1,4 +1,6 @@
-﻿@{
+﻿@model QuantU.Models.User
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -7,3 +9,41 @@
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
 
+<form asp-action="AddUser">
+    <h2>Add Person</h2>
+    <div class="mb-3">
+        <label asp-for="username" class="form-label">User Name</label>
+        <input asp-for="username" type="text" class="form-control" >
+        <span class="text-danger" asp-validation-for="username"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="email" class="form-label">Email</label>
+        <input asp-for="email" type="text" class="form-control">
+        <span class="text-danger" asp-validation-for="email"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="password" class="form-label">Password</label>
+        <input asp-for="password" type="text" class="form-control">
+        <span class="text-danger" asp-validation-for="password"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="recoveryQ" class="form-label">Recovery Question</label>
+        <input asp-for="recoveryQ" type="text" class="form-control">
+        <span class="text-danger" asp-validation-for="recoveryQ"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="recoveryA" class="form-label">Recovery Answer</label>
+        <input asp-for="recoveryA" type="text" class="form-control">
+        <span class="text-danger" asp-validation-for="recoveryA"></span>
+    </div>
+
+     @if(TempData["msg"] != null)
+    {
+        <div class="mb-3">
+            @TempData["msg"]
+        </div>
+    } 
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a href="" class="btn btn-primary">All Persons</a>
+</form>
