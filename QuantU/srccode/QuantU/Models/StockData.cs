@@ -2,7 +2,7 @@ using System.Collections;
 
 namespace QuantU.Models;
 
-public class AppData{
+public class StockData{
 /*
     private string ticker;
     private decimal value;

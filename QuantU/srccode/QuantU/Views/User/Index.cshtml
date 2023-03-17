@@ -1,14 +1,14 @@
-@model QuantU.Models.User
+@model QuantU.Models.UserInfo
 
 @{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Add User Page</h1>
+    <h1 class="display-4">Add User</h1>
 </div>
 
-<form asp-action="AddUser">
+<form asp-action="Index">
     <h2>Add User</h2>
     <div class="mb-3">
         <label asp-for="username" class="form-label">User Name</label>

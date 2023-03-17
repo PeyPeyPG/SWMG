@@ -1,7 +1,7 @@
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 namespace QuantU.Models{
-    public class User {
+    public class UserInfo {
 
         public string username {get; set;} = null!;
         public string email {get; set;} = null!;
