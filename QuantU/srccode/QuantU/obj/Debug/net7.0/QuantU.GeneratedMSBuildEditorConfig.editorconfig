@@ -16,13 +16,6 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\aidan\OneDrive\Documents\GitHub\SWMG\QuantU\srccode\QuantU
 build_property._RazorSourceGeneratorDebug = 
 
-<<<<<<< Updated upstream
-[C:/Users/aidan/OneDrive/Documents/GitHub/SWMG/QuantU/srccode/QuantU/Views/Home/AddUser.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZGRVc2VyLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-=======
->>>>>>> Stashed changes
 [C:/Users/aidan/OneDrive/Documents/GitHub/SWMG/QuantU/srccode/QuantU/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -39,13 +32,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-<<<<<<< Updated upstream
-=======
 [C:/Users/aidan/OneDrive/Documents/GitHub/SWMG/QuantU/srccode/QuantU/Views/User/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
->>>>>>> Stashed changes
+[C:/Users/aidan/OneDrive/Documents/GitHub/SWMG/QuantU/srccode/QuantU/Views/User/UserQuiz.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVc2VyUXVpei5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/aidan/OneDrive/Documents/GitHub/SWMG/QuantU/srccode/QuantU/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

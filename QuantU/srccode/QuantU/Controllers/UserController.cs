@@ -45,6 +45,31 @@ namespace QuantU.Controllers
                 return View("Index");
             }
     }
+    public IActionResult UserQuiz()
+        {
+            return View();
+        }
+    [HttpPost]
+    public IActionResult UserQuiz(UserFinances user)
+    {
+        if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            try
+            {
+                TempData["msg"] = "Added!";
+                client.GetDatabase("SWMG").GetCollection<UserFinances>("UserFinances").InsertOne(user);
+                Console.WriteLine(user);
+                return RedirectToAction();        
+            }
+            catch (Exception ex)
+            {
+
+                TempData["msg"] = "Unable to add user";
+                return View();
+            }
+    }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
