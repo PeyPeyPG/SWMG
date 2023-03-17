@@ -1,8 +1,4 @@
-﻿//using MongoDB.Driver;
-//using QuantU.Models;
-
-//MongoClient client = new MongoClient("mongodb+srv://SWMG:Shawdowwizardmoneygang@swmg.hzzuvlg.mongodb.net/?retryWrites=true&w=majority");
-
+﻿
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -18,12 +14,6 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-//MongoDB
-//var UserInfoCollection = client.GetDatabase("SWMG").GetCollection<User>("UserInfo");
-//Console.WriteLine(GetType(UserInfoCollection));
-
-// UserInfoCollection.InsertOne(new User("PeyPeyPG", "peyton@email.com", "p@55w0rd", "First Pet", "Buddy"));
-
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
@@ -33,7 +23,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=User}/{action=Index}/{id?}");
 
 app.Run();
 
