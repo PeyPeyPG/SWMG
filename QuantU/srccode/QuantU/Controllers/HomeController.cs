@@ -15,6 +15,29 @@ public class HomeController : Controller
         _logger = logger;
     }
 
+    //Method for Search Page mapped to form in Index.cshtml
+    public IActionResult Search(){
+        return View();
+    }
+    
+    //Takes the string the user inputed in forms and uses it
+    [HttpPost]
+    public IActionResult Search(String title){
+            try
+            {
+                //takes the full stock title and parses it for just the ticker
+                var ticker = title.Split(", ");
+                //ViewBag created to transer ticker to Search page
+                ViewBag.ticker = ticker[ticker.Length - 1];
+                return View("Search");        
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return View("Index");
+            }
+    }
+
     public IActionResult Index()
     {
         return View();
