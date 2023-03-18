@@ -35,6 +35,9 @@ namespace QuantU.Controllers
             {
                 user = UserInfo.HashingAlgo(user);
                 user = UserInfo.EncryptAlgo(user);
+                UserInfo.DecryptUsername(user);
+                UserInfo.DecryptEmail(user);
+                UserInfo.DecryptRecovery(user);
                 TempData["msg"] = "Added!";
                 client.GetDatabase("SWMG").GetCollection<UserInfo>("UserInfo").InsertOne(user);
                 Console.WriteLine(user);

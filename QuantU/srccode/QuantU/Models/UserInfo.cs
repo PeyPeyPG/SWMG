@@ -19,7 +19,6 @@ namespace QuantU.Models{
 
     public static UserInfo HashingAlgo(UserInfo user) {
 
-
          using (SHA256 sha256Hash = SHA256.Create())  {  
                 // ComputeHash - returns byte array  
                 byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(user.password));  
@@ -46,13 +45,14 @@ namespace QuantU.Models{
     return user;
     }
 
-    //fix this
+    static String encrpyt = "gu4vajuic3keyb0ard86";
+
     public static UserInfo EncryptAlgo(UserInfo user) {
         StringBuilder buildUser = new StringBuilder();
         StringBuilder buildRecovery = new StringBuilder();
         StringBuilder buildEmail = new StringBuilder();
 
-        String encrpyt = "gu4vajuic3keyb0ard86";
+
         while(encrpyt.Length < user.username.Length ||encrpyt.Length < user.recoveryQ.Length || encrpyt.Length < user.email.Length) {
             encrpyt = encrpyt + "" + encrpyt;
         }
@@ -80,9 +80,44 @@ namespace QuantU.Models{
 
     }
 
-    //update decrpytion to call for individual items
-    public static UserInfo DecryptAlgo(UserInfo user) {
-        return EncryptAlgo(user);
+
+    public static string DecryptUsername(UserInfo user) {
+        StringBuilder DecryptedUser = new StringBuilder();
+        while(encrpyt.Length < user.username.Length) {
+            encrpyt = encrpyt + "" + encrpyt;
+        }
+
+        for(int i = 0; i < user.username.Length; i++) {
+            DecryptedUser.Append((char)(user.username[i] ^ encrpyt[i]));
+        }
+         Console.WriteLine(DecryptedUser.ToString());
+        return DecryptedUser.ToString();
+    }
+
+    public static string DecryptEmail(UserInfo user) {
+        StringBuilder DecryptedEmail = new StringBuilder();
+        while(encrpyt.Length < user.email.Length) {
+            encrpyt = encrpyt + "" + encrpyt;
+        }
+
+        for(int i = 0; i < user.email.Length; i++) {
+            DecryptedEmail.Append((char)(user.email[i] ^ encrpyt[i]));
+        }
+         Console.WriteLine(DecryptedEmail.ToString());
+        return DecryptedEmail.ToString();
+    }
+
+    public static string DecryptRecovery(UserInfo user) {
+        StringBuilder DecryptedRecovery = new StringBuilder();
+        while(encrpyt.Length < user.recoveryQ.Length) {
+            encrpyt = encrpyt + "" + encrpyt;
+        }
+
+        for(int i = 0; i < user.recoveryQ.Length; i++) {
+            DecryptedRecovery.Append((char)(user.recoveryQ[i] ^ encrpyt[i]));
+        }
+        Console.WriteLine(DecryptedRecovery.ToString());
+        return DecryptedRecovery.ToString();
     }
 
 
