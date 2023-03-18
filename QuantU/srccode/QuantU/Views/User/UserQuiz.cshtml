@@ -32,7 +32,7 @@
 
 
     
-    <button style="--clr:#A168FF" for = "maritalstatus1" type= "button" onclick="toggleActive(this)"class= "fancybutton" value= "Single"asp-for="maritalStatus"><span>Single</span><i></i></button>
+    @* <button style="--clr:#A168FF" for = "maritalstatus1" type= "button" onclick="toggleActive(this)"class= "fancybutton" value= "Single" asp-for="maritalStatus"><span>Single</span><i></i></button>
 
     <button style="--clr:#A168FF" for = "maritalstatus2" type = "button" onclick="toggleActive(this)"class= "fancybutton"value = "Married"asp-for="maritalStatus"><span>Married</span><i></i></button>
 
@@ -46,7 +46,16 @@
     function toggleActive(btn) {
         btn.classList.toggle('active');
     }
-    </script>
+    </script> *@
+
+    <select class="form-select" aria-label="Choose your marital status"asp-for="maritalStatus">
+        <option selected>Choose your marital status</option>
+        <option  value="Single">Single</option>
+        <option value="Married">Married</option>
+        <option  value="Widowed">Widowed</option>
+        <option  value="Separated">Separated</option>
+        <option  value="Divorced">Divorced</option>
+    </select>
       
 
     <label for="customRange3" class="form-label">Age: <span id="rangeValue">50</span></label>
