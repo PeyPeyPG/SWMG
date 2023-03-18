@@ -11,7 +11,6 @@ using MongoDB.Driver;
 
 namespace QuantU.Controllers
 {
-    [Route("[controller]")]
     public class StockController : Controller
     {
         private readonly ILogger<StockController> _logger;
