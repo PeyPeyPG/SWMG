@@ -33,6 +33,7 @@ namespace QuantU.Controllers
             }
             try
             {
+                user = UserInfo.HashingAlgo(user);
                 TempData["msg"] = "Added!";
                 client.GetDatabase("SWMG").GetCollection<UserInfo>("UserInfo").InsertOne(user);
                 Console.WriteLine(user);
@@ -45,6 +46,26 @@ namespace QuantU.Controllers
                 return View("Index");
             }
     }
+
+    /*[HttpPost]
+    public IActionResult Index(String Email2, String Password2)
+    {
+        if (!ModelState.IsValid)
+            {
+                return View("Index");
+            }
+            try
+            {
+                TempData["msg"] = "Hello!";
+                return RedirectToAction("Index");        
+            }
+            catch (Exception ex)
+            {
+
+                TempData["msg"] = "Error";
+                return View("Index");
+            }
+    } */
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
