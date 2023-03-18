@@ -48,10 +48,41 @@ namespace QuantU.Models{
 
     //fix this
     public static UserInfo EncryptAlgo(UserInfo user) {
-        user.username= Convert.ToBase64String(Encoding.Unicode.GetBytes (user.username)) ;
-        user.email = Convert.ToBase64String(Encoding.Unicode.GetBytes (user.email));
-        user.recoveryQ = Convert.ToBase64String(Encoding.Unicode.GetBytes (user.recoveryQ));
+        StringBuilder buildUser = new StringBuilder();
+        StringBuilder buildRecovery = new StringBuilder();
+        StringBuilder buildEmail = new StringBuilder();
+
+        String encrpyt = "gu4vajuic3keyb0ard86";
+        while(encrpyt.Length < user.username.Length ||encrpyt.Length < user.recoveryQ.Length || encrpyt.Length < user.email.Length) {
+            encrpyt = encrpyt + "" + encrpyt;
+        }
+
+
+        for(int i = 0; i < user.username.Length; i++) {
+            buildUser.Append((char)(user.username[i] ^ encrpyt[i]));
+        }
+        Console.WriteLine(buildUser.ToString());
+        user.username = buildUser.ToString();
+
+        for(int i = 0; i < user.email.Length; i++) {
+            buildEmail.Append((char)(user.email[i] ^ encrpyt[i]));
+        }
+        Console.WriteLine(buildEmail.ToString());
+        user.email = buildEmail.ToString();
+
+        for(int i = 0; i < user.recoveryQ.Length; i++) {
+            buildRecovery.Append((char)(user.recoveryQ[i] ^ encrpyt[i]));
+        }
+        Console.WriteLine(buildRecovery.ToString());
+        user.recoveryQ = buildRecovery.ToString();
+
         return user;
+
+    }
+
+    //update decrpytion to call for individual items
+    public static UserInfo DecryptAlgo(UserInfo user) {
+        return EncryptAlgo(user);
     }
 
 
