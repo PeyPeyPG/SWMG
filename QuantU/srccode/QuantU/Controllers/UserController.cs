@@ -40,7 +40,7 @@ namespace QuantU.Controllers
                 UserInfo.DecryptRecovery(user);
                 TempData["msg"] = "Added!";
                 client.GetDatabase("SWMG").GetCollection<UserInfo>("UserInfo").InsertOne(user);
-                client.GetDatabase("SWMG").GetCollection<UserFinances>("UserFinances").InsertOne(new UserFinances("name", 700, "Married", "Everything", 17, new Portfolio()));
+                //client.GetDatabase("SWMG").GetCollection<UserFinances>("UserFinances").InsertOne(new UserFinances("name", 700, 3, "Everything", 17));
                 Console.WriteLine(user);
                 return RedirectToAction("Index");        
             }

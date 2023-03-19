@@ -89,19 +89,16 @@ namespace QuantU.Models{
         for(int i = 0; i < user.username.Length; i++) {
             buildUser.Append((char)(user.username[i] ^ encrpytCopy[i]));
         }
-        Console.WriteLine(buildUser.ToString());
         user.username = buildUser.ToString();
 
         for(int i = 0; i < user.email.Length; i++) {
             buildEmail.Append((char)(user.email[i] ^ encrpytCopy[i]));
         }
-        Console.WriteLine(buildEmail.ToString());
         user.email = buildEmail.ToString();
 
         for(int i = 0; i < user.recoveryQ.Length; i++) {
             buildRecovery.Append((char)(user.recoveryQ[i] ^ encrpytCopy[i]));
         }
-        Console.WriteLine(buildRecovery.ToString());
         user.recoveryQ = buildRecovery.ToString();
 
         return user;
@@ -126,7 +123,6 @@ namespace QuantU.Models{
         for(int i = 0; i < user.username.Length; i++) {
             DecryptedUser.Append((char)(user.username[i] ^ encrpytCopy[i]));
         }
-         Console.WriteLine(DecryptedUser.ToString());
         return DecryptedUser.ToString();
     }
 
@@ -148,7 +144,6 @@ namespace QuantU.Models{
         for(int i = 0; i < user.email.Length; i++) {
             DecryptedEmail.Append((char)(user.email[i] ^ encrpytCopy[i]));
         }
-         Console.WriteLine(DecryptedEmail.ToString());
         return DecryptedEmail.ToString();
     }
 
@@ -170,7 +165,6 @@ namespace QuantU.Models{
         for(int i = 0; i < user.recoveryQ.Length; i++) {
             DecryptedRecovery.Append((char)(user.recoveryQ[i] ^ encrpytCopy[i]));
         }
-        Console.WriteLine(DecryptedRecovery.ToString());
         return DecryptedRecovery.ToString();
     }
 
