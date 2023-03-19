@@ -20,7 +20,7 @@ namespace QuantU.Controllers
             _logger = logger;
         }
 
-        public IActionResult Search()
+        public IActionResult Index()
         {
             return View();
         }
