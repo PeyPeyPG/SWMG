@@ -78,27 +78,28 @@ namespace QuantU.Models{
         StringBuilder buildUser = new StringBuilder();
         StringBuilder buildRecovery = new StringBuilder();
         StringBuilder buildEmail = new StringBuilder();
+        String encrpytCopy = encrpyt;
 
 
-        while(encrpyt.Length < user.username.Length ||encrpyt.Length < user.recoveryQ.Length || encrpyt.Length < user.email.Length) {
-            encrpyt = encrpyt + "" + encrpyt;
+        while(encrpytCopy.Length < user.username.Length ||encrpytCopy.Length < user.recoveryQ.Length || encrpytCopy.Length < user.email.Length) {
+            encrpytCopy = encrpytCopy + "" + encrpyt;
         }
 
 
         for(int i = 0; i < user.username.Length; i++) {
-            buildUser.Append((char)(user.username[i] ^ encrpyt[i]));
+            buildUser.Append((char)(user.username[i] ^ encrpytCopy[i]));
         }
         Console.WriteLine(buildUser.ToString());
         user.username = buildUser.ToString();
 
         for(int i = 0; i < user.email.Length; i++) {
-            buildEmail.Append((char)(user.email[i] ^ encrpyt[i]));
+            buildEmail.Append((char)(user.email[i] ^ encrpytCopy[i]));
         }
         Console.WriteLine(buildEmail.ToString());
         user.email = buildEmail.ToString();
 
         for(int i = 0; i < user.recoveryQ.Length; i++) {
-            buildRecovery.Append((char)(user.recoveryQ[i] ^ encrpyt[i]));
+            buildRecovery.Append((char)(user.recoveryQ[i] ^ encrpytCopy[i]));
         }
         Console.WriteLine(buildRecovery.ToString());
         user.recoveryQ = buildRecovery.ToString();
@@ -117,12 +118,13 @@ namespace QuantU.Models{
     */
     public static string DecryptUsername(UserInfo user) {
         StringBuilder DecryptedUser = new StringBuilder();
-        while(encrpyt.Length < user.username.Length) {
-            encrpyt = encrpyt + "" + encrpyt;
+        String encrpytCopy = encrpyt;
+        while(encrpytCopy.Length < user.username.Length) {
+            encrpytCopy = encrpytCopy + "" + encrpyt;
         }
 
         for(int i = 0; i < user.username.Length; i++) {
-            DecryptedUser.Append((char)(user.username[i] ^ encrpyt[i]));
+            DecryptedUser.Append((char)(user.username[i] ^ encrpytCopy[i]));
         }
          Console.WriteLine(DecryptedUser.ToString());
         return DecryptedUser.ToString();
@@ -138,12 +140,13 @@ namespace QuantU.Models{
     */
     public static string DecryptEmail(UserInfo user) {
         StringBuilder DecryptedEmail = new StringBuilder();
-        while(encrpyt.Length < user.email.Length) {
-            encrpyt = encrpyt + "" + encrpyt;
+        String encrpytCopy = encrpyt;
+        while(encrpytCopy.Length < user.email.Length) {
+            encrpytCopy = encrpytCopy + "" + encrpyt;
         }
 
         for(int i = 0; i < user.email.Length; i++) {
-            DecryptedEmail.Append((char)(user.email[i] ^ encrpyt[i]));
+            DecryptedEmail.Append((char)(user.email[i] ^ encrpytCopy[i]));
         }
          Console.WriteLine(DecryptedEmail.ToString());
         return DecryptedEmail.ToString();
@@ -159,12 +162,13 @@ namespace QuantU.Models{
     */
     public static string DecryptRecovery(UserInfo user) {
         StringBuilder DecryptedRecovery = new StringBuilder();
-        while(encrpyt.Length < user.recoveryQ.Length) {
-            encrpyt = encrpyt + "" + encrpyt;
+        String encrpytCopy = encrpyt;
+        while(encrpytCopy.Length < user.recoveryQ.Length) {
+            encrpytCopy = encrpytCopy + "" + encrpyt;
         }
 
         for(int i = 0; i < user.recoveryQ.Length; i++) {
-            DecryptedRecovery.Append((char)(user.recoveryQ[i] ^ encrpyt[i]));
+            DecryptedRecovery.Append((char)(user.recoveryQ[i] ^ encrpytCopy[i]));
         }
         Console.WriteLine(DecryptedRecovery.ToString());
         return DecryptedRecovery.ToString();
