@@ -1,0 +1,84 @@
+@model QuantU.Models.UserFinances
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">User Quiz</h1>
+</div>
+<form asp-action="UserQuiz">
+    <h2>User Quiz</h2>
+    <div class="mb-3">
+        <label asp-for="username" class="form-label">User Name</label>
+        <input asp-for="username" type="text" class="form-control" >
+        <span class="text-danger" asp-validation-for="username"></span>
+    </div>
+<br>
+    @* <input asp-for="maritalStatus" type="radio" value= "Single" class="btn-check" name="options-outlined" id="success-outlined1" >
+    <label asp-for="maritalStatus" class="btn btn-outline-success" for="success-outlined1">Single</label>
+
+    <input asp-for="maritalStatus" type="radio" value= "Married" class="btn-check" name="options-outlined" id="success-outlined2" >
+    <label asp-for="maritalStatus" class="btn btn-outline-success" for="success-outlined2">Married</label>
+
+    <input asp-for="maritalStatus" type="radio" value= "Separated" class="btn-check" name="options-outlined" id="success-outlined3">
+    <label asp-for="maritalStatus" class="btn btn-outline-success" for="success-outlined3">Separated</label>
+
+    <input asp-for="maritalStatus" type="radio" value= "Divorced" class="btn-check" name="options-outlined" id="success-outlined4" >
+    <label asp-for="maritalStatus" class="btn btn-outline-success" for="success-outlined4">Divorced</label>
+
+    <input asp-for="maritalStatus" type="radio" value= "Widowed" class="btn-check" name="options-outlined" id="success-outlined5" >
+    <label asp-for="maritalStatus" class="btn btn-outline-success" for="success-outlined5">Widowed</label><br><br> *@
+
+
+    
+    @* <button style="--clr:#A168FF" for = "maritalstatus1" type= "button" onclick="toggleActive(this)"class= "fancybutton" value= "Single" asp-for="maritalStatus"><span>Single</span><i></i></button>
+
+    <button style="--clr:#A168FF" for = "maritalstatus2" type = "button" onclick="toggleActive(this)"class= "fancybutton"value = "Married"asp-for="maritalStatus"><span>Married</span><i></i></button>
+
+    <button style="--clr:#A168FF" for = "maritalstatus3" type = "button" onclick="toggleActive(this)"class= "fancybutton"value = "Separated" asp-for="maritalStatus"><span>Separated</span><i></i></button>
+
+    <button style="--clr:#A168FF" for = "maritalstatus4" type = "button" onclick="toggleActive(this)"class= "fancybutton" value = "Divorced" asp-for="maritalStatus"><span>Divorced</span><i></i></button>
+
+    <button style="--clr:#A168FF" for = "maritalstatus5" type = "button" onclick="toggleActive(this)"class= "fancybutton" value = "Widowed" asp-for="maritalStatus"><span>Widowed</span><i></i></button><br><br>
+    
+   <script>
+    function toggleActive(btn) {
+        btn.classList.toggle('active');
+    }
+    </script> *@
+
+    <select class="form-select" aria-label="Choose your marital status"asp-for="maritalStatus">
+        <option selected>Choose your marital status</option>
+        <option  value="Single">Single</option>
+        <option value="Married">Married</option>
+        <option  value="Widowed">Widowed</option>
+        <option  value="Separated">Separated</option>
+        <option  value="Divorced">Divorced</option>
+    </select>
+      
+
+    <label for="customRange3" class="form-label">Age: <span id="rangeValue">50</span></label>
+    <input asp-for="age" type="range" class="form-range" min="0" max="100" step="1" id="customRange3" oninput="updateRangeValue(this.value)">
+    
+    <label asp-for="netSalary" class="form-label">Net Salary</label>
+    <input asp-for="netSalary" type="text" class="form-control">
+    <span class="text-danger" asp-validation-for="netSalary"></span><br>
+
+    <script>
+    function updateRangeValue(val) {
+        document.getElementById('rangeValue').innerHTML = val;
+    }
+    </script>
+
+
+     @if(TempData["msg"] != null)
+    {
+        <div class="mb-3">
+            @TempData["msg"]
+        </div>
+    } 
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a href="" class="btn btn-primary">All Persons</a>
+</form>
