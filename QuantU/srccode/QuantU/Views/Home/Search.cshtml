@@ -1,0 +1,27 @@
+@{
+    ViewData["Title"] = "Stock";
+}
+
+
+
+
+<script>
+    let token = "cfis95hr01qjvrn525t0cfis95hr01qjvrn525tg";
+    let base_url = "https://finnhub.io/api/v1/stock/profile2?";
+    let symbol = '@ViewBag.ticker';
+
+    //Forms the API URL with API Token (Key) and the symbol for the stock the user wants
+    let url = base_url + "symbol=" + symbol + "&token=" + token;
+
+    //fetches url and gets JSON data attached to it
+    fetch(url)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        console.log(data.name);
+
+    })
+    .catch(error => console.log(error));
+</script>
+
+<p><br>Press Control+Shift+I and travel to console to look at the values of the stock</p>
