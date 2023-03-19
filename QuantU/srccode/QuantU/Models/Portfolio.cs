@@ -6,6 +6,9 @@ using MongoDB.Bson.Serialization.Attributes;
 namespace QuantU.Models{
 
     public class Portfolio {
+
+        public string? username {get; set;}
+        public string? name {get; set;}
         public List<string>? stocks {get; set;}
 
         public List<int>? investments {get; set;}

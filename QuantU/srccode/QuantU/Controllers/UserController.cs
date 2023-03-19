@@ -35,12 +35,8 @@ namespace QuantU.Controllers
             {
                 user = UserInfo.HashingAlgo(user);
                 user = UserInfo.EncryptAlgo(user);
-                UserInfo.DecryptUsername(user);
-                UserInfo.DecryptEmail(user);
-                UserInfo.DecryptRecovery(user);
                 TempData["msg"] = "Added!";
                 client.GetDatabase("SWMG").GetCollection<UserInfo>("UserInfo").InsertOne(user);
-                //client.GetDatabase("SWMG").GetCollection<UserFinances>("UserFinances").InsertOne(new UserFinances("name", 700, 3, "Everything", 17));
                 Console.WriteLine(user);
                 return RedirectToAction("Index");        
             }
@@ -52,9 +48,36 @@ namespace QuantU.Controllers
             }
     }
 
-    public IActionResult Paper()
+     public IActionResult Paper()
     {
         return View();
+    }
+
+    [HttpPost]
+    public IActionResult Paper(Portfolio port)
+    {
+        if (!ModelState.IsValid)
+            {
+                return View("Paper");
+            }
+            try
+            {
+                if(client.GetDatabase("SWMG").GetCollection<Portfolio>("UserFinances").Find(x => x.username == port.username && x.name == port.name).ToList().Count == 0) {
+                    client.GetDatabase("SWMG").GetCollection<Portfolio>("UserFinances").InsertOne(port);
+                }
+                else {
+                    //client.GetDatabase("SWMG").GetCollection<Portfolio>("UserFinances").updateOne();
+                }
+                Console.WriteLine(port);
+                TempData["msg"] = "Added!";
+                return RedirectToAction("Paper");        
+            }
+            catch (Exception ex)
+            {
+
+                TempData["msg"] = "Unable to add stock";
+                return View("Paper");
+            }
     }
 
 
@@ -63,5 +86,5 @@ namespace QuantU.Controllers
         {
             return View();
         }
-    }
-}
+    } 
+ }
