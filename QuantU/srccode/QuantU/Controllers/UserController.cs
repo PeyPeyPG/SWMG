@@ -35,15 +35,19 @@ namespace QuantU.Controllers
             {
                 user = UserInfo.HashingAlgo(user);
                 user = UserInfo.EncryptAlgo(user);
+                 if(client.GetDatabase("SWMG").GetCollection<UserInfo>("UserInfo").Find(x => x.username == user.username).ToList().Count == 0) {
+                    client.GetDatabase("SWMG").GetCollection<UserInfo>("UserInfo").InsertOne(user);
+                }
+                else {
+                    throw new Exception();
+                }
                 TempData["msg"] = "Added!";
-                client.GetDatabase("SWMG").GetCollection<UserInfo>("UserInfo").InsertOne(user);
-                Console.WriteLine(user);
                 return RedirectToAction("Index");        
             }
             catch (Exception ex)
             {
 
-                TempData["msg"] = "Unable to add user";
+                TempData["msg"] = "Unable to add user; Choose a new username";
                 return View("Index");
             }
     }
@@ -67,6 +71,7 @@ namespace QuantU.Controllers
                 }
                 else {
                     //client.GetDatabase("SWMG").GetCollection<Portfolio>("UserFinances").updateOne();
+
                 }
                 Console.WriteLine(port);
                 TempData["msg"] = "Added!";
