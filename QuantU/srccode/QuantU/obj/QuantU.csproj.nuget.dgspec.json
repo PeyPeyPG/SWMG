@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\aidan\\OneDrive\\Documents\\GitHub\\SWMG\\QuantU\\srccode\\QuantU\\QuantU.csproj": {}
+    "C:\\Users\\toppe\\Documents\\GitHub\\SWMG\\QuantU\\srccode\\QuantU\\QuantU.csproj": {}
   },
   "projects": {
-    "C:\\Users\\aidan\\OneDrive\\Documents\\GitHub\\SWMG\\QuantU\\srccode\\QuantU\\QuantU.csproj": {
+    "C:\\Users\\toppe\\Documents\\GitHub\\SWMG\\QuantU\\srccode\\QuantU\\QuantU.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\aidan\\OneDrive\\Documents\\GitHub\\SWMG\\QuantU\\srccode\\QuantU\\QuantU.csproj",
+        "projectUniqueName": "C:\\Users\\toppe\\Documents\\GitHub\\SWMG\\QuantU\\srccode\\QuantU\\QuantU.csproj",
         "projectName": "QuantU",
-        "projectPath": "C:\\Users\\aidan\\OneDrive\\Documents\\GitHub\\SWMG\\QuantU\\srccode\\QuantU\\QuantU.csproj",
-        "packagesPath": "C:\\Users\\aidan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\aidan\\OneDrive\\Documents\\GitHub\\SWMG\\QuantU\\srccode\\QuantU\\obj\\",
+        "projectPath": "C:\\Users\\toppe\\Documents\\GitHub\\SWMG\\QuantU\\srccode\\QuantU\\QuantU.csproj",
+        "packagesPath": "C:\\Users\\toppe\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\toppe\\Documents\\GitHub\\SWMG\\QuantU\\srccode\\QuantU\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\aidan\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\toppe\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -64,7 +62,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

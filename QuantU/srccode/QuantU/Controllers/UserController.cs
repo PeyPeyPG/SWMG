@@ -33,6 +33,11 @@ namespace QuantU.Controllers
             }
             try
             {
+                user = UserInfo.HashingAlgo(user);
+                user = UserInfo.EncryptAlgo(user);
+                UserInfo.DecryptUsername(user);
+                UserInfo.DecryptEmail(user);
+                UserInfo.DecryptRecovery(user);
                 TempData["msg"] = "Added!";
                 client.GetDatabase("SWMG").GetCollection<UserInfo>("UserInfo").InsertOne(user);
                 Console.WriteLine(user);
@@ -45,6 +50,7 @@ namespace QuantU.Controllers
                 return View("Index");
             }
     }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

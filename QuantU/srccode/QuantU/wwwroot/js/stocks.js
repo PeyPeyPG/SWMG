@@ -1,19 +1,4 @@
-@{
-    ViewData["Title"] = "Home Page";
-}
-
-<div class="text-center">
-    <h1 class="display-4">WelcomE</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
-
-    
-    <label for="exampleDataList" class="form-label">Datalist example</label>
-      <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
-      <datalist class="searchbar" id="datalistOptions">
-      </datalist>
-      <script>
-        var options = '';
+var options = '';
 stocks = ["Prudential Financial, Inc., PRU",
 "HCM Acquisition Corp, HCMAW",
 "Cartesian Growth Corporation II, RENE",
@@ -5677,7 +5662,4 @@ stocks = ["Prudential Financial, Inc., PRU",
         options += '<option value="' + stocks[i] + '"></option>';
       }
       
-      document.getElementById('datalistOptions').innerHTML = options;
-      </script>
-      
-
+      document.getElementById('searchbar').innerHTML = options;
