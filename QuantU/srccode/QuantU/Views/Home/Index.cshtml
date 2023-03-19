@@ -38,6 +38,7 @@
     fetch("https://api.marketaux.com/v1/news/all?" + query, requestOptions)
       .then(response => response.json())
       .then(result => {
+                      console.log(result);
                       document.getElementById('first').innerHTML = result.data[0].title;
                       document.getElementById('second').innerHTML = result.data[1].title;
                       document.getElementById('third').innerHTML = result.data[2].title;})
@@ -4465,6 +4466,7 @@
               "Sangoma Technologies Corporation, SANG",
               "Sanmina Corporation, SANM",
               "Sanofi, SNY",
+              "Samsung Electronics Co Ltd, SSNLF",
               "Sapiens International Corporation N.V., SPNS",
               "Sarcos Technology and Robotics Corporation, STRCW",
               "Sarcos Technology and Robotics Corporation, STRC",
@@ -4666,6 +4668,7 @@
               "Sono-Tek Corporation, SOTK",
               "Sonoma Pharmaceuticals, Inc., SNOA",
               "Sonos, Inc., SONO",
+              "Sony Group Corp, SONY",
               "Sotera Health Company, SHC",
               "Sotherly Hotels Inc., SOHOB",
               "Sotherly Hotels Inc., SOHON",
@@ -4693,6 +4696,7 @@
               "Sphere 3D Corp., ANY",
               "Splunk Inc., SPLK",
               "Spok Holdings, Inc., SPOK",
+              "Spotify Technology SA, SPOT",
               "Sportradar Group AG, SRAD",
               "SportsMap Tech Acquisition Corp., SMAPU",
               "SportsMap Tech Acquisition Corp., SMAP",
