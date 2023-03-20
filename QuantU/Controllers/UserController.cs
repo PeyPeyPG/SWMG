@@ -18,8 +18,6 @@ namespace QuantU.Controllers
         public UserController(ILogger<UserController> logger)
         {
             _logger = logger;
-            ViewBag.loggedin = false;
-            ViewBag.username = null;
         }
 
         public IActionResult Index()
@@ -88,14 +86,18 @@ namespace QuantU.Controllers
     public IActionResult LogIn(UserInfo user)
     {
         Console.WriteLine(user.username);
-        user = UserInfo.HashingAlgo(user);
-        user = UserInfo.EncryptAlgo(user);
-        FilterDefinition<UserInfo> filter = Builders<UserInfo>.Filter.Eq("username", user.username) & Builders<UserInfo>.Filter.Eq("password", user.password);
+        string username = UserInfo.DecryptSingle(user.username);
+        string password = UserInfo.HashedSingle(user.password);
+        Console.WriteLine(username);
+        Console.WriteLine(password);
+        FilterDefinition<UserInfo> filter = Builders<UserInfo>.Filter.Eq("username", username) & Builders<UserInfo>.Filter.Eq("password", password);
+        Console.WriteLine("test");
         List<UserInfo> results = client.GetDatabase("SWMG").GetCollection<UserInfo>("UserInfo").Find(filter).ToList();
                 if(results.Count != 0) {
-                    ViewBag.loggedin = false;
-                    ViewBag.username = null;
+                    TempData["loggedin"] = true;
+                    TempData["username"] = username;
                     Console.WriteLine("works");
+                    return RedirectToAction("Index", "Home"); 
                 }
         
         return View();

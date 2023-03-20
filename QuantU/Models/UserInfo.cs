@@ -12,13 +12,15 @@ namespace QuantU.Models{
             The BSON elemnts allow the field below it to be referred to as something else later in the code, used in the Index of the User View
             UserInfo items are encrypted and stored in an external Mongo database
         */  
+        public ObjectId _id {get; set;}
         public string username {get; set;} = null!;
         public string email {get; set;} = null!;
         public string password {get; set;} = null!;
         [BsonElement("recovery question")]
         public string recoveryQ {get; set;} = null!;
         [BsonElement("recovery answer")]
-        public string recoveryA{get;set;} = null!;
+        public string recoveryA {get;set;} = null!;
+        public int UserId {get;set;}
 
 
 

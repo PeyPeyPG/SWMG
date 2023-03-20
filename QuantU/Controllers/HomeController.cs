@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using QuantU.Models;
 using MongoDB.Driver;
+using QuantU.Controllers;
 
 namespace QuantU.Controllers;
 
@@ -17,6 +18,9 @@ public class HomeController : Controller
 
     //Method for Search Page mapped to form in Index.cshtml
     public IActionResult Search(){
+        if (TempData["loggedin"].Equals(true)){
+                    TempData["loggedin"] = true;
+                }
         return View();
     }
     
@@ -29,11 +33,18 @@ public class HomeController : Controller
                 var ticker = title.Split(", ");
                 //ViewBag created to transer ticker to Search page
                 ViewBag.ticker = ticker[ticker.Length - 1];
+                if (TempData["loggedin"].Equals(true)){
+                    TempData["loggedin"] = true;
+                }
+                Console.WriteLine(TempData["loggedin"]);
                 return View("Search");        
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
+                if (TempData["loggedin"].Equals(true)){
+                    TempData["loggedin"] = true;
+                }
                 return View("Index");
             }
     }
