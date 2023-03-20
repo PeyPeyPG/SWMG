@@ -95,7 +95,7 @@ namespace QuantU.Controllers
         List<UserInfo> results = client.GetDatabase("SWMG").GetCollection<UserInfo>("UserInfo").Find(filter).ToList();
                 if(results.Count != 0) {
                     TempData["loggedin"] = true;
-                    TempData["username"] = username;
+                    TempData["username"] = UserInfo.DecryptSingle(username);
                     Console.WriteLine("works");
                     return RedirectToAction("Index", "Home"); 
                 }

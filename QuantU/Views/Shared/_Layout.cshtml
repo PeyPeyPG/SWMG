@@ -39,6 +39,12 @@
         </nav>
     </header>
     
+    <script>
+        if (localStorage.getItem("loggedin") === 'true') {
+            console.log("in")
+        }
+    </script>
+
     <main role="main" class="pb-3">
         @RenderBody()
     </main>
