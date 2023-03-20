@@ -66,8 +66,9 @@ namespace QuantU.Controllers
             }
             try
             {
-                if(client.GetDatabase("SWMG").GetCollection<Portfolio>("UserFinances").Find(x => x.username == port.username && x.name == port.name).ToList().Count == 0) {
-                    client.GetDatabase("SWMG").GetCollection<Portfolio>("UserFinances").InsertOne(port);
+               /* if(client.GetDatabase("SWMG").GetCollection<Portfolio>("Portfolio").Find(x => x.username == port.username && x.name == port.name).ToList().Count == 0) {
+                    client.GetDatabase("SWMG").GetCollection<Portfolio>("Portfolio").InsertOne(port);
+                 Console.WriteLine("hey");
                 }
                 else {
                     //client.GetDatabase("SWMG").GetCollection<Portfolio>("UserFinances").updateOne();
@@ -75,14 +76,40 @@ namespace QuantU.Controllers
                 }
                 Console.WriteLine(port);
                 TempData["msg"] = "Added!";
-                return RedirectToAction("Paper");        
+                return RedirectToAction("Paper");   */     
+                
+                FilterDefinition<Portfolio> filterUser = Builders<Portfolio>.Filter.Eq("username", port.username);
+                List<Portfolio> resultsUser = client.GetDatabase("SWMG").GetCollection<Portfolio>("Portfolio").Find(filterUser).ToList();
+                if(resultsUser.Count == 0) {
+                    client.GetDatabase("SWMG").GetCollection<Portfolio>("Portfolio").InsertOne(port);
+                }
+                else {
+                    FilterDefinition<Portfolio> filterName = Builders<Portfolio>.Filter.Eq("name", port.name);
+                    List<Portfolio> resultsName = client.GetDatabase("SWMG").GetCollection<Portfolio>("Portfolio").Find(filterName).ToList();
+                    if(resultsName.Count == 0) {
+                        client.GetDatabase("SWMG").GetCollection<Portfolio>("Portfolio").InsertOne(port);
+                    }
+                    else {
+                        UpdateDefinition<Portfolio> updateStock = Builders<Portfolio>.Update.AddToSet<string>("stocks", port.stocks[0]);
+                        client.GetDatabase("SWMG").GetCollection<Portfolio>("Portfolio").UpdateOne(filterName, updateStock);
+                        UpdateDefinition<Portfolio> updateInvest = Builders<Portfolio>.Update.AddToSet<int>("investments", port.investments[0]);
+                        client.GetDatabase("SWMG").GetCollection<Portfolio>("Portfolio").UpdateOne(filterName, updateInvest);
+
+                    }
+                }
+
+                TempData["msg"] = "Added!";
+                return RedirectToAction("Paper"); 
+
+
+
             }
             catch (Exception ex)
             {
 
                 TempData["msg"] = "Unable to add stock";
                 return View("Paper");
-            }
+            } 
     }
 
 
