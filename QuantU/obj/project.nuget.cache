@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "OXBtdhg8FAjFGbHA90VMVDe6sOyitDiktXoGjkaU4J+MqV8Ld73iWyIneW3j4h9q7R+vVeGjLa1CMKfZ4BfFcg==",
+  "dgSpecHash": "6JYFhV3LhtH+WMyDM1HsAXz2TumlRLn0BVygJbhPKIouBVBWXQ1HhRKevHS8FZLiOS2hYm0S4CWG3LXPrCMtZw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\aidan\\OneDrive\\Documents\\GitHub\\SWMG\\QuantU\\srccode\\QuantU\\QuantU.csproj",
+  "projectFilePath": "C:\\Users\\aidan\\OneDrive\\Documents\\GitHub\\SWMG\\QuantU\\QuantU.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\aidan\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\aidan\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",

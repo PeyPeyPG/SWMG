@@ -756,11 +756,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\aidan\\OneDrive\\Documents\\GitHub\\SWMG\\QuantU\\srccode\\QuantU\\QuantU.csproj",
+      "projectUniqueName": "C:\\Users\\aidan\\OneDrive\\Documents\\GitHub\\SWMG\\QuantU\\QuantU.csproj",
       "projectName": "QuantU",
-      "projectPath": "C:\\Users\\aidan\\OneDrive\\Documents\\GitHub\\SWMG\\QuantU\\srccode\\QuantU\\QuantU.csproj",
+      "projectPath": "C:\\Users\\aidan\\OneDrive\\Documents\\GitHub\\SWMG\\QuantU\\QuantU.csproj",
       "packagesPath": "C:\\Users\\aidan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\aidan\\OneDrive\\Documents\\GitHub\\SWMG\\QuantU\\srccode\\QuantU\\obj\\",
+      "outputPath": "C:\\Users\\aidan\\OneDrive\\Documents\\GitHub\\SWMG\\QuantU\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\aidan\\AppData\\Roaming\\NuGet\\NuGet.Config",
