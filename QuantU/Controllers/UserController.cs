@@ -18,6 +18,8 @@ namespace QuantU.Controllers
         public UserController(ILogger<UserController> logger)
         {
             _logger = logger;
+            ViewBag.loggedin = false;
+            ViewBag.username = null;
         }
 
         public IActionResult Index()
@@ -37,6 +39,8 @@ namespace QuantU.Controllers
                 user = UserInfo.EncryptAlgo(user);
                  if(client.GetDatabase("SWMG").GetCollection<UserInfo>("UserInfo").Find(x => x.username == user.username).ToList().Count == 0) {
                     client.GetDatabase("SWMG").GetCollection<UserInfo>("UserInfo").InsertOne(user);
+                    UserFinances uf = new UserFinances(user.username);
+                    client.GetDatabase("SWMG").GetCollection<UserFinances>("UserFinances").InsertOne(uf);
                 }
                 else {
                     throw new Exception();
@@ -76,9 +80,26 @@ namespace QuantU.Controllers
                 return View();
             }
     }
-
-
-
+    public IActionResult LogIn()
+    {
+        return View();
+    }
+    [HttpPost]
+    public IActionResult LogIn(UserInfo user)
+    {
+        Console.WriteLine(user.username);
+        user = UserInfo.HashingAlgo(user);
+        user = UserInfo.EncryptAlgo(user);
+        FilterDefinition<UserInfo> filter = Builders<UserInfo>.Filter.Eq("username", user.username) & Builders<UserInfo>.Filter.Eq("password", user.password);
+        List<UserInfo> results = client.GetDatabase("SWMG").GetCollection<UserInfo>("UserInfo").Find(filter).ToList();
+                if(results.Count != 0) {
+                    ViewBag.loggedin = false;
+                    ViewBag.username = null;
+                    Console.WriteLine("works");
+                }
+        
+        return View();
+    }
 
     public IActionResult Paper()
     {

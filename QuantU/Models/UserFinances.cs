@@ -12,5 +12,12 @@ namespace QuantU.Models
         public string? maritalStatus { get; set; }
         public string? interests { get; set; }
         public int? age { get; set; }
+        public List<List<StockData>>? portfolioList { get; set; }
+    
+
+        public UserFinances(string username){
+            this.username = username;
+            this.portfolioList = new List<List<StockData>>();
+        }
     }
 }
