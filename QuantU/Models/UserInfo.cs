@@ -12,13 +12,15 @@ namespace QuantU.Models{
             The BSON elemnts allow the field below it to be referred to as something else later in the code, used in the Index of the User View
             UserInfo items are encrypted and stored in an external Mongo database
         */  
+        public ObjectId _id {get; set;}
         public string username {get; set;} = null!;
         public string email {get; set;} = null!;
         public string password {get; set;} = null!;
         [BsonElement("recovery question")]
         public string recoveryQ {get; set;} = null!;
         [BsonElement("recovery answer")]
-        public string recoveryA{get;set;} = null!;
+        public string recoveryA {get;set;} = null!;
+        public int UserId {get;set;}
 
 
 
@@ -59,6 +61,31 @@ namespace QuantU.Models{
 
 
 
+        /*  This function takes in an inputted password/recover answer and hashes it to be compared to the database
+            Called on login to hash the password and compare, or when recovery answer is input
+            Inputs: a string
+            Outputs: a string
+            This code can likely be optimized later but I didn't find it to be a priority yet
+        */
+    public static string HashedSingle(string pass) {
+        String hashed;
+        using (SHA256 sha256Hash = SHA256.Create())  {  
+                // ComputeHash - returns byte array  
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(pass));  
+  
+                // Convert byte array to a string   
+                StringBuilder builder = new StringBuilder();  
+                for (int i = 0; i < bytes.Length; i++)   {  
+                    builder.Append(bytes[i].ToString("x2"));  
+                }  
+                 hashed = builder.ToString(); 
+         }
+
+         return hashed;
+    }
+
+
+
     /*  This is the encryption key. It probably should not be stored in plaintext but here we are
         If this key is changed, be aware that none of the encrpyted data can be accessed until the string is changed back
         DO NOT CHANGE THE STRING WITHOUT CONSULTING SOMEBODY
@@ -89,19 +116,16 @@ namespace QuantU.Models{
         for(int i = 0; i < user.username.Length; i++) {
             buildUser.Append((char)(user.username[i] ^ encrpytCopy[i]));
         }
-        Console.WriteLine(buildUser.ToString());
         user.username = buildUser.ToString();
 
         for(int i = 0; i < user.email.Length; i++) {
             buildEmail.Append((char)(user.email[i] ^ encrpytCopy[i]));
         }
-        Console.WriteLine(buildEmail.ToString());
         user.email = buildEmail.ToString();
 
         for(int i = 0; i < user.recoveryQ.Length; i++) {
             buildRecovery.Append((char)(user.recoveryQ[i] ^ encrpytCopy[i]));
         }
-        Console.WriteLine(buildRecovery.ToString());
         user.recoveryQ = buildRecovery.ToString();
 
         return user;
@@ -110,68 +134,25 @@ namespace QuantU.Models{
 
 
 
-    /*  This function takes in an encrypted UserInfo object and decrypts its username to be used/displayed
+    /*  This function takes in an encrypted UserInfo object and decrypts the item to be used/displayed
         As of creation, the code is not implemented anywhere but it has been tested
-        The function only decrypts the username
+        The function only decrypts one item
+        Can be used to decrypt a username, email, or recovery question
+        Use on an item once typed in and compare to whats stored in the system
         Inputs: a UserInfo object (also uses the encrypt string)
         Outputs: a string
     */
-    public static string DecryptUsername(UserInfo user) {
+    public static string DecryptSingle(string user) {
         StringBuilder DecryptedUser = new StringBuilder();
         String encrpytCopy = encrpyt;
-        while(encrpytCopy.Length < user.username.Length) {
+        while(encrpytCopy.Length < user.Length) {
             encrpytCopy = encrpytCopy + "" + encrpyt;
         }
 
-        for(int i = 0; i < user.username.Length; i++) {
-            DecryptedUser.Append((char)(user.username[i] ^ encrpytCopy[i]));
+        for(int i = 0; i < user.Length; i++) {
+            DecryptedUser.Append((char)(user[i] ^ encrpytCopy[i]));
         }
-         Console.WriteLine(DecryptedUser.ToString());
         return DecryptedUser.ToString();
-    }
-
-
-
-    /*  This function takes in an encrypted UserInfo object and decrypts its email to be used/displayed
-        As of creation, the code is not implemented anywhere but it has been tested
-        The function only decrypts the email
-        Inputs: a UserInfo object (also uses the encrypt string)
-        Outputs: a string
-    */
-    public static string DecryptEmail(UserInfo user) {
-        StringBuilder DecryptedEmail = new StringBuilder();
-        String encrpytCopy = encrpyt;
-        while(encrpytCopy.Length < user.email.Length) {
-            encrpytCopy = encrpytCopy + "" + encrpyt;
-        }
-
-        for(int i = 0; i < user.email.Length; i++) {
-            DecryptedEmail.Append((char)(user.email[i] ^ encrpytCopy[i]));
-        }
-         Console.WriteLine(DecryptedEmail.ToString());
-        return DecryptedEmail.ToString();
-    }
-
-
-
-    /*  This function takes in an encrypted UserInfo object and decrypts its recovery question to be used/displayed
-        As of creation, the code is not implemented anywhere but it has been tested
-        The function only decrypts the recovery question
-        Inputs: a UserInfo object (also uses the encrypt string)
-        Outputs: a string
-    */
-    public static string DecryptRecovery(UserInfo user) {
-        StringBuilder DecryptedRecovery = new StringBuilder();
-        String encrpytCopy = encrpyt;
-        while(encrpytCopy.Length < user.recoveryQ.Length) {
-            encrpytCopy = encrpytCopy + "" + encrpyt;
-        }
-
-        for(int i = 0; i < user.recoveryQ.Length; i++) {
-            DecryptedRecovery.Append((char)(user.recoveryQ[i] ^ encrpytCopy[i]));
-        }
-        Console.WriteLine(DecryptedRecovery.ToString());
-        return DecryptedRecovery.ToString();
     }
 
 
