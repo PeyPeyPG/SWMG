@@ -8,7 +8,7 @@ namespace QuantU.Controllers;
 
 public class HomeController : Controller
 {
-    MongoClient client = new MongoClient("mongodb+srv://SWMG:Shawdowwizardmoneygang@swmg.hzzuvlg.mongodb.net/?retryWrites=true&w=majority?connect=replicaSet");    
+    MongoClient client = new MongoClient("mongodb+srv://SWMG:Shawdowwizardmoneygang@swmg.hzzuvlg.mongodb.net/?retryWrites=true&w=majority");    
     private readonly ILogger<HomeController> _logger;
 
     public HomeController(ILogger<HomeController> logger)
@@ -60,9 +60,15 @@ public class HomeController : Controller
     public IActionResult PaperTrading(Portfolio portfolio){
         Console.WriteLine(portfolio.name);
         Console.WriteLine(portfolio.username);
+        portfolio.username = UserInfo.DecryptSingle(portfolio.username);
+        FilterDefinition<UserFinances> filter = Builders<UserFinances>.Filter.Eq("username", portfolio.username);
+        UpdateDefinition<UserFinances> update = Builders<UserFinances>.Update.AddToSet<Portfolio>("portfolioList", portfolio);
+        client.GetDatabase("SWMG").GetCollection<UserFinances>("UserFinances").UpdateOne(filter, update);
         
         return View();
     }
+
+
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()

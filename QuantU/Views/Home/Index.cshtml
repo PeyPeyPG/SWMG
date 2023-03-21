@@ -28,6 +28,17 @@
   </label>
 </marquee>
 
+<button id="logOut" type = "button">
+  Log Out
+</button>
+
+<script>
+  const btn = document.getElementById('logOut');
+  btn.addEventListener('click', function(e) {
+    localStorage.clear();
+  });
+</script>
+
 <script>
       var requestOptions = {
         method: 'GET'

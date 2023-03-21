@@ -35,33 +35,26 @@
                     <h5 class="modal-title" id="exampleModalLabel">Create New Portfolio</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+                <form asp-action="PaperTrading">
                 <div class="modal-body">
-                    <form asp-action="PaperTrading">
-                        <div class="mb-3">
-                            @* <label for="portfolio" class="col-form-label">Portfolio Name</label>
-                            <input type="text" class="form-control" id="recipient-name"> *@
-                            <input asp-for="username" class="form-control" type="hidden" value="">
-                            <script>
-                                document.getElementsByClassName('username').value = localStorage.getItem("username");
-                                console.log(localStorage.getItem("username"));
-                            </script>
-                            <label for="name" class="form-label">Portfolio Name</label>
-                            <input asp-for="name" class="form-control" type="text">
-
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" value="submit" class="btn btn-primary">Create Portfolio</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
+                    <div class="mb-3">
+                        <label asp-for="name" class="form-label">Portfolio Name</label>
+                        <input asp-for="name" type="text" class="form-control" >
+                        <span class="text-danger" asp-validation-for="name"></span>
+                    </div>
+                        <input asp-for="username" type="hidden" class="form-control">
+                        <span class="text-danger" asp-validation-for="username" id="username"></span>
+                        <script>
+                            document.getElementById("username").value = localStorage.getItem("username");
+                        </script>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Create Portfolio</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 
     
 </div>
-
-@{
-
-}

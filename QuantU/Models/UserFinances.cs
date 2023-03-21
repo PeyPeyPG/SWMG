@@ -7,29 +7,17 @@ namespace QuantU.Models
 {
     public class UserFinances
     {
-
         public string? username { get; set; }
         public double? netSalary { get; set; }
         public string? maritalStatus { get; set; }
         public string? interests { get; set; }
         public int? age { get; set; }
+        public List<Portfolio>? portfolioList { get; set; }
+    
 
-        //User Interests checkboxes
-        public bool TechnologyChecked { get; set; }
-        public bool BankingChecked { get; set; }
-        public bool AutomotiveChecked { get; set; }
-
-        public List<List<StockData>>? portfolioList { get; set; }
-
-        //constructor for null values
-        public UserFinances()
-        {}
-
-        //peytons shit
-        public UserFinances(string username)
-        {
+        public UserFinances(string username){
             this.username = username;
-            this.portfolioList = new List<List<StockData>>();
+            this.portfolioList = new List<Portfolio>();
         }
     }
 }
