@@ -1,0 +1,43 @@
+@* @model QuantU.Models.Portfolio
+
+@{
+    ViewData["Title"] = "Paper Trading";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Paper Trading</h1>
+</div>
+
+
+<form asp-action="Paper">
+    <h2>Add Stock to Portfolio</h2>
+    <div class="mb-3">
+        <label asp-for="username" class="form-label">User Name</label>
+        <input asp-for="username" type="text" class="form-control" >
+        <span class="text-danger" asp-validation-for="username"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="name" class="form-label">Portfolio Name</label>
+        <input asp-for="name" type="text" class="form-control">
+        <span class="text-danger" asp-validation-for="name"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="stocks" class="form-label">Stock</label>
+        <input asp-for="stocks" type="text" class="form-control">
+        <span class="text-danger" asp-validation-for="stocks"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="investments" class="form-label">Investment</label>
+        <input asp-for="investments" type="text" class="form-control">
+        <span class="text-danger" asp-validation-for="investments"></span>
+    </div>
+
+    @if(TempData["msg"] != null)
+    {
+        <div class="mb-3">
+            @TempData["msg"]
+        </div>
+    } 
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form> *@
