@@ -1,4 +1,4 @@
-@model QuantU.Models.UserInfo
+@model QuantU.Models.Portfolio
 
 @{
     ViewData["Title"] = "Paper Trading";
@@ -40,23 +40,26 @@
                         <div class="mb-3">
                             @* <label for="portfolio" class="col-form-label">Portfolio Name</label>
                             <input type="text" class="form-control" id="recipient-name"> *@
+                            <input asp-for="username" class="form-control" type="hidden" value="">
+                            <script>
+                                document.getElementsByClassName('username').value = localStorage.getItem("username");
+                                console.log(localStorage.getItem("username"));
+                            </script>
                             <label for="name" class="form-label">Portfolio Name</label>
-                            <input name="name" class="form-control" type="text">
+                            <input asp-for="name" class="form-control" type="text">
 
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
+                    <button type="submit" value="submit" class="btn btn-primary">Create Portfolio</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" for="username" class="btn btn-primary create">Create Portfolio</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <script>
-        document.getElementsByClassName('create').value = localStorage.getItem("username");
-    </script>
+    
 </div>
 
 @{

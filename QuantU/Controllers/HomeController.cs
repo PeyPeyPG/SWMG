@@ -59,6 +59,7 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult PaperTrading(Portfolio portfolio){
         Console.WriteLine(portfolio.name);
+        Console.WriteLine(portfolio.username);
         
         return View();
     }
