@@ -7,7 +7,7 @@
 <div class="text-center">
     <h1 class="display-4">Add User</h1>
 </div>
-
+@*Add user page each div is a text bar for user info fields*@
 <form asp-action="Index">
     <h2>Add User</h2>
     <div class="mb-3">
@@ -35,7 +35,7 @@
         <input asp-for="recoveryA" type="text" class="form-control">
         <span class="text-danger" asp-validation-for="recoveryA"></span>
     </div>
-
+@*submit message either yay or nay*@
      @if(TempData["msg"] != null)
     {
         <div class="mb-3">

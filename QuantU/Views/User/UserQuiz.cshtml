@@ -9,13 +9,14 @@
     </div>
     <form asp-action="UserQuiz">
         <h2>User Quiz</h2>
+        @*Username field to keep track of same user information*@
         <div class="mb-3">
             <label asp-for="username" class="form-label">User Name</label>
             <input asp-for="username" type="text" class="form-control">
             <span class="text-danger" asp-validation-for="username"></span>
         </div>
         <br>
-
+@*dropdown list for martital status*@
         <select class="form-select" aria-label="Choose your marital status" asp-for="maritalStatus">
             <option selected>Choose your marital status</option>
             <option value="Single">Single</option>
@@ -25,17 +26,17 @@
             <option value="Divorced">Divorced</option>
         </select>
         <br>
-
+@*Age slider for age field*@
         <label for="customRange3" class="form-label">Age: <span id="rangeValue">50</span></label>
         <input asp-for="age" type="range" class="form-range" min="0" max="100" step="1" id="customRange3"
             oninput="updateRangeValue(this.value)">
-
+@*salary field int input*@
         <label asp-for="netSalary" class="form-label">Net Salary</label>
         <input asp-for="netSalary" type="text" class="form-control">
         <span class="text-danger" asp-validation-for="netSalary"></span><br>
 
         <label>Check all interest that apply:</label>
-
+@*checkboxes for interests very easy to add more of these just copy the same syntax*@
         <div class="form-check">
             <input type="checkbox" asp-for="TechnologyChecked" class="form-check-input" id="technologyCheckbox"
                 onchange="updateInterests('Technology', this.checked)">
@@ -53,7 +54,7 @@
         </div>
         <br>
         <input type="hidden" asp-for="interests" id="interests" />
-
+@*script to store the checkbox values into an array for user finance section in data base*@
         <script>
             function updateInterests(interest, checked) {
                 var interests = JSON.parse(document.getElementById('interests').value || '[]');
@@ -69,14 +70,14 @@
             }
         </script>
 
-
+@*script that shows the age as you move the slider for age*@
         <script>
             function updateRangeValue(val) {
                 document.getElementById('rangeValue').innerHTML = val;
             }
         </script>
 
-
+@*submit message either yay or nay*@
         @if (TempData["msg"] != null)
         {
             <div class="mb-3">
