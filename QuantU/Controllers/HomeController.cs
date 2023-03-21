@@ -53,6 +53,16 @@ public class HomeController : Controller
         return View();
     }
 
+    public IActionResult PaperTrading(){
+        return View();
+    }
+    [HttpPost]
+    public IActionResult PaperTrading(string portfolio){
+        Console.WriteLine(portfolio);
+        
+        return View();
+    }
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

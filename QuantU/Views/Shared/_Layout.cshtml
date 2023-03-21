@@ -28,7 +28,10 @@
                             <a class="nav-link text-light fs-5" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light fs-5" asp-area="" asp-controller="User" asp-action="LogIn">Log In</a>
+                            <a class="nav-link text-light fs-5" asp-area="" asp-controller="Home" asp-action="PaperTrading">Paper Trading</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light fs-5" id="login" asp-area="" asp-controller="User" asp-action="LogIn">Log In</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-light fs-5" asp-area="" asp-controller="User" asp-action="Index">Sign Up</a>
@@ -41,7 +44,9 @@
     
     <script>
         if (localStorage.getItem("loggedin") === 'true') {
-            console.log("in")
+            document.getElementById('login').text = "Logged In";
+            document.getElementById('login').classList.add('disabled');
+            document.getElementById('login').classList.add('text-white-50');
         }
     </script>
 

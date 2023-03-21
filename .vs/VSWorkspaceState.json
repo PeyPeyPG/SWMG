@@ -3,10 +3,7 @@
     "",
     "\\QuantU",
     "\\QuantU\\srccode",
-    "\\QuantU\\srccode\\QuantU",
-    "\\QuantU\\srccode\\QuantU\\Controllers",
-    "\\QuantU\\srccode\\QuantU\\Models"
+    "\\QuantU\\srccode\\QuantU"
   ],
-  "SelectedNode": "\\QuantU\\srccode\\QuantU\\Controllers\\HomeController.cs",
   "PreviewInSolutionExplorer": false
 }
