@@ -57,8 +57,8 @@ public class HomeController : Controller
         return View();
     }
     [HttpPost]
-    public IActionResult PaperTrading(string portfolio){
-        Console.WriteLine(portfolio);
+    public IActionResult PaperTrading(Portfolio portfolio){
+        Console.WriteLine(portfolio.name);
         
         return View();
     }

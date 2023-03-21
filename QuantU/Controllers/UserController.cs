@@ -102,46 +102,45 @@ namespace QuantU.Controllers
         
         return View();
     }
-
     public IActionResult Paper()
     {
         return View();
     }
 
-    [HttpPost]
-    public IActionResult Paper(Portfolio port)
-    {
-        if (!ModelState.IsValid)
-            {
-                return View("Paper");
-            }
-            try
-            {
-                FilterDefinition<Portfolio> filter = Builders<Portfolio>.Filter.Eq("name", port.name) & Builders<Portfolio>.Filter.Eq("username", port.username);
-                List<Portfolio> results = client.GetDatabase("SWMG").GetCollection<Portfolio>("Portfolio").Find(filter).ToList();
-                if(results.Count == 0) {
-                    client.GetDatabase("SWMG").GetCollection<Portfolio>("Portfolio").InsertOne(port);
-                }
-                else {
-                    UpdateDefinition<Portfolio> updateStock = Builders<Portfolio>.Update.AddToSet<string>("stocks", port.stocks[0]);
-                    client.GetDatabase("SWMG").GetCollection<Portfolio>("Portfolio").UpdateOne(filter, updateStock);
-                    UpdateDefinition<Portfolio> updateInvest = Builders<Portfolio>.Update.AddToSet<int>("investments", port.investments[0]);
-                    client.GetDatabase("SWMG").GetCollection<Portfolio>("Portfolio").UpdateOne(filter, updateInvest);     
-                }
+    // [HttpPost]
+    // public IActionResult Paper(Portfolio port)
+    // {
+    //     if (!ModelState.IsValid)
+    //         {
+    //             return View("Paper");
+    //         }
+    //         try
+    //         {
+    //             FilterDefinition<Portfolio> filter = Builders<Portfolio>.Filter.Eq("name", port.name) & Builders<Portfolio>.Filter.Eq("username", port.username);
+    //             List<Portfolio> results = client.GetDatabase("SWMG").GetCollection<Portfolio>("Portfolio").Find(filter).ToList();
+    //             if(results.Count == 0) {
+    //                 client.GetDatabase("SWMG").GetCollection<Portfolio>("Portfolio").InsertOne(port);
+    //             }
+    //             else {
+    //                 UpdateDefinition<Portfolio> updateStock = Builders<Portfolio>.Update.AddToSet<string>("stocks", port.stocks[0]);
+    //                 client.GetDatabase("SWMG").GetCollection<Portfolio>("Portfolio").UpdateOne(filter, updateStock);
+    //                 UpdateDefinition<Portfolio> updateInvest = Builders<Portfolio>.Update.AddToSet<int>("investments", port.investments[0]);
+    //                 client.GetDatabase("SWMG").GetCollection<Portfolio>("Portfolio").UpdateOne(filter, updateInvest);     
+    //             }
 
-                TempData["msg"] = "Added!";
-                return RedirectToAction("Paper"); 
+    //             TempData["msg"] = "Added!";
+    //             return RedirectToAction("Paper"); 
 
 
 
-            }
-            catch (Exception ex)
-            {
+    //         }
+    //         catch (Exception ex)
+    //         {
 
-                TempData["msg"] = "Unable to add stock";
-                return View("Paper");
-            } 
-    }
+    //             TempData["msg"] = "Unable to add stock";
+    //             return View("Paper");
+    //         } 
+    // }
 
     
 

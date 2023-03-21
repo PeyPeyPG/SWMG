@@ -40,18 +40,23 @@
                         <div class="mb-3">
                             @* <label for="portfolio" class="col-form-label">Portfolio Name</label>
                             <input type="text" class="form-control" id="recipient-name"> *@
-                            <label for="portfolio" class="form-label">Portfolio Name</label>
-                            <input name="portfolio" class="form-control" type="text">
+                            <label for="name" class="form-label">Portfolio Name</label>
+                            <input name="name" class="form-control" type="text">
+
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Create Portfolio</button>
+                    <button type="submit" for="username" class="btn btn-primary create">Create Portfolio</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        document.getElementsByClassName('create').value = localStorage.getItem("username");
+    </script>
 </div>
 
 @{

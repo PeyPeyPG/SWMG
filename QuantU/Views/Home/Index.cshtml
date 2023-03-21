@@ -2,6 +2,13 @@
     ViewData["Title"] = "Home Page";
 }
 
+<script>
+
+  if ('@TempData["loggedin"]' === "True"){
+    localStorage.setItem("loggedin", true);
+    localStorage.setItem("username", '@TempData["username"]');
+  }
+</script>
 
 <marquee style="background: black; position: relative;">
   <label>

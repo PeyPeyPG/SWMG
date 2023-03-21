@@ -7,12 +7,12 @@ namespace QuantU.Models{
 
     public class Portfolio {
 
-        public ObjectId _id {get; set;}
+        // public ObjectId _id {get; set;}
         public string? username {get; set;}
         public string? name {get; set;}
-        public List<string>? stocks {get; set;}
+        // public List<string>? stocks {get; set;}
 
-        public List<int>? investments {get; set;}
+        // public List<int>? investments {get; set;}
 
 
         public Portfolio() {
