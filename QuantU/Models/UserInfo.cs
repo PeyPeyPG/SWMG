@@ -38,11 +38,11 @@ namespace QuantU.Models{
                 byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(user.password));  
   
                 // Convert byte array to a string   
-                StringBuilder builder = new StringBuilder();  
+                StringBuilder builder1 = new StringBuilder();  
                 for (int i = 0; i < bytes.Length; i++)   {  
-                    builder.Append(bytes[i].ToString("x2"));  
+                    builder1.Append(bytes[i].ToString("x2"));  
                 }  
-                user.password = builder.ToString(); 
+                user.password = builder1.ToString(); 
          }
 
          using (SHA256 sha256Hash = SHA256.Create())  {  
@@ -50,11 +50,11 @@ namespace QuantU.Models{
                 byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(user.recoveryA));  
   
                 // Convert byte array to a string   
-                StringBuilder builder = new StringBuilder();  
+                StringBuilder builder2 = new StringBuilder();  
                 for (int i = 0; i < bytes.Length; i++)   {  
-                    builder.Append(bytes[i].ToString("x2"));  
+                    builder2.Append(bytes[i].ToString("x2"));  
                 }  
-                user.recoveryA = builder.ToString(); 
+                user.recoveryA = builder2.ToString(); 
          }
     return user;
     }
