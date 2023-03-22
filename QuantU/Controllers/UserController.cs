@@ -142,10 +142,10 @@ namespace QuantU.Controllers
         
         return View();
     }
-    public IActionResult Paper()
-    {
-        return View();
-    }
+    //public IActionResult Paper()
+    //{
+    //    return View();
+    //}
 
     // [HttpPost]
     // public IActionResult Paper(Portfolio port)

@@ -1,11 +1,31 @@
 @model QuantU.Models.Portfolio
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 
 @{
     ViewData["Title"] = "Portfolio";
 }
-<h1>@ViewData["Title"]</h1>
+<h1>@HttpContextAccessor.HttpContext.Request.Query["data"]</h1>
 
 
-@*data = ViewBag.portfolioName; *@
+<form asp-action="Paper">
+    <h2>Add Stock to Portfolio</h2>
+    <div class="mb-3">
+        <label asp-for="stocks" class="form-label">Stock</label>
+        <input asp-for="stocks" type="text" class="form-control">
+        <span class="text-danger" asp-validation-for="stocks"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="investments" class="form-label">Investment</label>
+        <input asp-for="investments" type="text" class="form-control">
+        <span class="text-danger" asp-validation-for="investments"></span>
+    </div>
 
-<h2>data</h2>
+    @if(TempData["msg"] != null)
+    {
+        <div class="mb-3">
+            @TempData["msg"]
+        </div>
+    } 
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form> 

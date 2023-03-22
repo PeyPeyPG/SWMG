@@ -110,7 +110,13 @@ public class HomeController : Controller
     }
     [HttpPost]
     public IActionResult Portfolio(Portfolio portfolio) {
-        ViewBag.portfolioName = portfolio.name;
+        //Gets username from cookies and saves it as userId
+        var userId = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
+        //userId is encrypted
+        userId = UserInfo.DecryptSingle(userId);
+
+       // FilterDefinition<Portfolio> filter = Builders<Portfolio>.Filter.Eq("username", userId) & Builders<Portfolio>.Filter.Eq("username", port.username);
+        
         return View();
     }
 
