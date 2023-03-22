@@ -93,6 +93,14 @@ public class HomeController : Controller
         //finds the UserFinances document with the filter and adds the portfolio to its portfolio list using the update
         client.GetDatabase("SWMG").GetCollection<UserFinances>("UserFinances").UpdateOne(filter, update);
         
+        //Finds the UserFinance document of the user via username filter and saves it to list
+        List<UserFinances> results = client.GetDatabase("SWMG").GetCollection<UserFinances>("UserFinances").Find(filter).ToList();
+        
+        //saves the portfolioList of the user to ViewBag.portfoliolist to be used in the View
+        foreach(UserFinances result in results){
+            ViewBag.portfolioList = result.portfolioList;
+        }
+
         return View();
     }
 
