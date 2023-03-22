@@ -9,32 +9,39 @@
 </div>
 @*Add user page each div is a text bar for user info fields*@
 <form asp-action="Index">
+    <div class="container">
     <h2>Add User</h2>
-    <div class="mb-3">
-        <label asp-for="username" class="form-label">User Name</label>
-        <input asp-for="username" type="text" class="form-control" >
-        <span class="text-danger" asp-validation-for="username"></span>
+    <div class="form__group field">
+        <input asp-for="username" type="input" class="form__field" placeholder="User Name" name="username" id="username" required>
+        <label asp-for="username" for="username" class="form__label">User Name</label>
+        <span class="text-danger field-validation-valid" asp-validation-for="username"></span>
     </div>
-    <div class="mb-3">
-        <label asp-for="email" class="form-label">Email</label>
-        <input asp-for="email" type="text" class="form-control">
-        <span class="text-danger" asp-validation-for="email"></span>
+    <div class="form__group field">
+        <input asp-for="password" type="password" class="form__field" placeholder="Password" name="password" id="password" required>
+        <label for="password" class="form__label">Password</label>
+        <span class="text-danger field-validation-valid" asp-validation-for="password"></span>
     </div>
-    <div class="mb-3">
-        <label asp-for="password" class="form-label">Password</label>
-        <input asp-for="password" type="text" class="form-control">
-        <span class="text-danger" asp-validation-for="password"></span>
+    <div class="form__group field">
+        <input type="password" class="form__field" placeholder="Confirm Password" name="confirm password" id="confirm password" required>
+        <label for="name" class="form__label">Confirm Password</label>
+        <span class="text-danger field-validation-valid"></span>
     </div>
-    <div class="mb-3">
-        <label asp-for="recoveryQ" class="form-label">Recovery Question</label>
-        <input asp-for="recoveryQ" type="text" class="form-control">
-        <span class="text-danger" asp-validation-for="recoveryQ"></span>
+    <div class="form__group field">
+        <input asp-for="email" type="input" class="form__field" placeholder="Email" name="email" id="email" required>
+        <label asp-for="email" for="email" class="form__label">Email</label>
+        <span class="text-danger field-validation-valid" asp-validation-for="email"></span>
     </div>
-    <div class="mb-3">
-        <label asp-for="recoveryA" class="form-label">Recovery Answer</label>
-        <input asp-for="recoveryA" type="text" class="form-control">
-        <span class="text-danger" asp-validation-for="recoveryA"></span>
+    <div class="form__group field">
+        <input asp-for="recoveryQ" type="input" class="form__field" placeholder="Recovery Question" name="recoveryQ" id="recoveryQ" required>
+        <label asp-for="recoveryQ" for="recoveryQ" class="form__label">Recovery Question</label>
+        <span class="text-danger field-validation-valid" asp-validation-for="recoveryQ" ></span>
     </div>
+    <div class="form__group field">
+        <input asp-for="recoveryA" type="input" class="form__field" placeholder="Recovery Answer" name="recoveryA" id="recoveryA" required>
+        <label asp-for="recoveryA" for="recoveryA" class="form__label">Recovery Answer</label>
+        <span class="text-danger field-validation-valid" asp-validation-for="recoveryA" ></span>
+
+    </div><br>
 @*submit message either yay or nay*@
      @if(TempData["msg"] != null)
     {
@@ -43,7 +50,12 @@
         </div>
     } 
 
-    <button type="submit" class="btn btn-primary">Submit</button>
-    <a href="" class="btn btn-primary">All Persons</a>
+    <button type="submit" class="submit">Submit</button>
+    </div>
 </form>
-
+<script>
+    document.querySelector(".submit").onclick = functon() {
+        var password = document.querySelector('#password').value, 
+            confirmPassword = document.querySelector("#confirmPassword").value;
+    }
+</script>
