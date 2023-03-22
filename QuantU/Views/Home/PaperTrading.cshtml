@@ -18,62 +18,31 @@
                     }
         
     </style>
-
+@* 
     @for (var i = 0; i < ViewBag.portfolioList.Count; i++){
         @if ((i % 4) == 0){
-            <div class="row" id=@i/4>
+            <div class="row" id="'@i/4'">
                 <script>
                     console.log(document.getElementById('@i/4').classList);
                 </script>
                 <p>hi</p>
             </div>
         }
-    }
-    @for (var i = 1; i < ViewBag.portfolioList.Count + 1; i++)
-    {   
-        @if ((i % 4) == 0){
-            <script>
-                var row = document.getElementById('@i/4');
-                var col = document.createElement("div");
-                col.classList.add("col");
-                col.classList.add("text-center");
-
+    } *@
+    <div class="row text-center">
+        @for (var i = 0; i < ViewBag.portfolioList.Count; i++)
+        {   
                 
-
-                var p = document.createElement("p");
-                p.textContent = @ViewBag.portfolioList[i-1].name;
-
-               
-                col.appendChild(p);
-
-                row.appendChild(col);
-            </script>
+                <div class="col-4 text-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-folder" viewBox="0 0 16 16">
+                        <path d="M.54 3.87.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.826a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31zM2.19 4a1 1 0 0 0-.996 1.09l.637 7a1 1 0 0 0 .995.91h10.348a1 1 0 0 0 .995-.91l.637-7A1 1 0 0 0 13.81 4H2.19zm4.69-1.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707z"/>
+                    </svg>
+                    <p class="col">@ViewBag.portfolioList[i].name</p>
+                </div>
         }
-        else {
-            <script>
-                var row = document.getElementById('@i/4 + 1');
-                var col = document.createElement("div");
-                col.classList.add("col");
-                col.classList.add("text-center");
 
-                
-
-                
-                
-
-                var p = document.createElement("p");
-                p.textContent = '@ViewBag.portfolioList[i-1].name';
-
-                
-                col.appendChild(p);
-
-                //row.appendChild(col);
-            </script>
-        }
-    }
-
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary newstock" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary newstock col" data-bs-toggle="modal" data-bs-target="#exampleModal">
         <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-folder-plus" viewBox="0 0 16 16">
         <path d="m.5 3 .04.87a1.99 1.99 0 0 0-.342 1.311l.637 7A2 2 0 0 0 2.826 14H9v-1H2.826a1 1 0 0 1-.995-.91l-.637-7A1 1 0 0 1 2.19 4h11.62a1 1 0 0 1 .996 1.09L14.54 8h1.005l.256-2.819A2 2 0 0 0 13.81 3H9.828a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 6.172 1H2.5a2 2 0 0 0-2 2zm5.672-1a1 1 0 0 1 .707.293L7.586 3H2.19c-.24 0-.47.042-.683.12L1.5 2.98a1 1 0 0 1 1-.98h3.672z"/>
             <path
@@ -104,6 +73,10 @@
             </div>
         </div>
     </div>
+
+    </div>
+
+
 
     
 </div>
