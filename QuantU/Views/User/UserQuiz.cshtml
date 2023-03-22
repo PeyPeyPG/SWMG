@@ -16,7 +16,8 @@
             <span class="text-danger" asp-validation-for="username"></span>
         </div>
         <br>
-@*dropdown list for martital status*@
+
+        @*dropdown list for martital status*@
         <select class="form-select" aria-label="Choose your marital status" asp-for="maritalStatus">
             <option selected>Choose your marital status</option>
             <option value="Single">Single</option>
@@ -26,17 +27,47 @@
             <option value="Divorced">Divorced</option>
         </select>
         <br>
-@*Age slider for age field*@
+        @*Age slider for age field*@
         <label for="customRange3" class="form-label">Age: <span id="rangeValue">50</span></label>
         <input asp-for="age" type="range" class="form-range" min="0" max="100" step="1" id="customRange3"
             oninput="updateRangeValue(this.value)">
-@*salary field int input*@
+        @* children? *@
+        @*asks for number of children*@
+        <div class="mb-3">
+            <label asp-for="numberOfChildren" class="form-label" id="numberOfChildren">How many children do you
+                have?</label>
+            <input asp-for="numberOfChildren" type="text" class="form-control" id="numberOfChildrenInput">
+            <span class="text-danger" asp-validation-for="numberOfChildren"></span>
+        </div>
+        <br>
+        @*asks for eldest childs name*@
+        <div class="mb-3" style="display: none;">
+            <label asp-for="eldestChildAge" class="form-label" id="eldestAge">How old is your eldest child?</label>
+            <input asp-for="eldestChildAge" type="text" class="form-control" id="eldestChildAgeInput">
+            <span class="text-danger" asp-validation-for="eldestChildAge"></span>
+        </div>
+        @*makes the eldest child box not appear until the number of children is 1 and dissapears if less than 1 or no entry*@
+        <script>
+            const numberOfChildrenInput = document.getElementById("numberOfChildrenInput");
+            const eldestChildAgeDiv = document.getElementById("eldestAge").parentNode;
+            const eldestChildAgeInput = document.getElementById("eldestChildAgeInput");
+
+            numberOfChildrenInput.addEventListener("blur", function () {
+                if (parseInt(this.value) > 1) {
+                    eldestChildAgeDiv.style.display = "block";
+                } else {
+                    eldestChildAgeDiv.style.display = "none";
+                }
+            });
+        </script>
+
+        @*salary field int input*@
         <label asp-for="netSalary" class="form-label">Net Salary</label>
         <input asp-for="netSalary" type="text" class="form-control">
         <span class="text-danger" asp-validation-for="netSalary"></span><br>
 
+        @*checkboxes for interests very easy to add more of these just copy the same syntax*@
         <label>Check all interest that apply:</label>
-@*checkboxes for interests very easy to add more of these just copy the same syntax*@
         <div class="form-check">
             <input type="checkbox" asp-for="TechnologyChecked" class="form-check-input" id="technologyCheckbox"
                 onchange="updateInterests('Technology', this.checked)">
@@ -54,7 +85,8 @@
         </div>
         <br>
         <input type="hidden" asp-for="interests" id="interests" />
-@*script to store the checkbox values into an array for user finance section in data base*@
+
+        @*script to store the checkbox values into an array for user finance section in data base*@
         <script>
             function updateInterests(interest, checked) {
                 var interests = JSON.parse(document.getElementById('interests').value || '[]');
@@ -70,14 +102,14 @@
             }
         </script>
 
-@*script that shows the age as you move the slider for age*@
+        @*script that shows the age as you move the slider for age*@
         <script>
             function updateRangeValue(val) {
                 document.getElementById('rangeValue').innerHTML = val;
             }
         </script>
 
-@*submit message either yay or nay*@
+        @*submit message either yay or nay*@
         @if (TempData["msg"] != null)
         {
             <div class="mb-3">
