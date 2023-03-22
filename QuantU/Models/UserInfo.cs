@@ -16,6 +16,7 @@ namespace QuantU.Models{
         public string username {get; set;} = null!;
         public string email {get; set;} = null!;
         public string password {get; set;} = null!;
+        /*public string verifyPassword {get; set;} = null!;*/
         [BsonElement("recovery question")]
         public string recoveryQ {get; set;} = null!;
         [BsonElement("recovery answer")]

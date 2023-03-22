@@ -3,39 +3,51 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+<body class = "sign">
 
-<div class="text-center">
-    <h1 class="display-4">Add User</h1>
+
+<div class="sideText">
+    <h4 class="sHeader">QuantU</h4>
+        <span class = "text"> Investing in real-estate is near unaffordable due to inflation, but other forms of investing seem daunting to manage and learn. 
+            Do not worry though, <strong class = "strong">Shadow Wizard Money Gang</strong> is here to help!</span>
 </div>
+
 @*Add user page each div is a text bar for user info fields*@
 <form asp-action="Index">
-    <div class="container">
-    <h2>Add User</h2>
+    <div class="signUp">
+    <h1 class="display-4">Add User</h1>
+<center>
+    @*Username*@
     <div class="form__group field">
         <input asp-for="username" type="input" class="form__field" placeholder="User Name" name="username" id="username" required>
         <label asp-for="username" for="username" class="form__label">User Name</label>
         <span class="text-danger field-validation-valid" asp-validation-for="username"></span>
     </div>
+    @*Password*@
     <div class="form__group field">
         <input asp-for="password" type="password" class="form__field" placeholder="Password" name="password" id="password" required>
-        <label for="password" class="form__label">Password</label>
+        <label for="passsword" class="form__label">Password</label>
         <span class="text-danger field-validation-valid" asp-validation-for="password"></span>
     </div>
+    @*Confirm Password
     <div class="form__group field">
-        <input type="password" class="form__field" placeholder="Confirm Password" name="confirm password" id="confirm password" required>
-        <label for="name" class="form__label">Confirm Password</label>
-        <span class="text-danger field-validation-valid"></span>
-    </div>
+        <input asp-for="verifyPassword" type="password" class="form__field" placeholder="Confirm Password" name="confirm password" id="confirm password" required>
+        <label asp-for="verifyPassword" for="name" class="form__label">Confirm Password</label>
+        <span class="text-danger field-validation-valid" asp-validation-for="verifyPassword"></span>
+    </div>*@
+    @*Email*@
     <div class="form__group field">
         <input asp-for="email" type="input" class="form__field" placeholder="Email" name="email" id="email" required>
         <label asp-for="email" for="email" class="form__label">Email</label>
         <span class="text-danger field-validation-valid" asp-validation-for="email"></span>
     </div>
+    @*Recovery Question*@
     <div class="form__group field">
         <input asp-for="recoveryQ" type="input" class="form__field" placeholder="Recovery Question" name="recoveryQ" id="recoveryQ" required>
         <label asp-for="recoveryQ" for="recoveryQ" class="form__label">Recovery Question</label>
         <span class="text-danger field-validation-valid" asp-validation-for="recoveryQ" ></span>
     </div>
+    @*Recovery Answer*@
     <div class="form__group field">
         <input asp-for="recoveryA" type="input" class="form__field" placeholder="Recovery Answer" name="recoveryA" id="recoveryA" required>
         <label asp-for="recoveryA" for="recoveryA" class="form__label">Recovery Answer</label>
@@ -49,13 +61,26 @@
             @TempData["msg"]
         </div>
     } 
-
-    <button type="submit" class="submit">Submit</button>
+@*Submit Button*@
+   <button type="submit" class="submit">Submit</button>
     </div>
+    </center>
 </form>
+</body>
+@*Javascript to make confirm button work
 <script>
     document.querySelector(".submit").onclick = functon() {
         var password = document.querySelector('#password').value, 
-            confirmPassword = document.querySelector("#confirmPassword").value;
+            confirmPassword = document.querySelector("#confirm password").value;
+            
+        if (password == "") {
+            alert("Field cannot be empty.");
+        }
+        else if(password != confirmPassword) {
+            alert("Password didn't match try again");
+            return false;
+        }
+        return true;
     }
 </script>
+*@
