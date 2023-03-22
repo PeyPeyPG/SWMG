@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using QuantU.Models;
 using MongoDB.Driver;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace QuantU.Controllers
 {
@@ -80,23 +83,48 @@ namespace QuantU.Controllers
     }
     public IActionResult LogIn()
     {
+        ClaimsPrincipal claimUser = HttpContext.User;
+        var userId = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
+        Console.WriteLine(userId);
+
+        if (claimUser.Identity.IsAuthenticated){
+            return RedirectToAction("Index", "Home");
+        }
+
         return View();
     }
     [HttpPost]
-    public IActionResult LogIn(UserInfo user)
+    public async Task<IActionResult> LogIn(UserInfo user)
     {
-        Console.WriteLine(user.username);
+        // username = UserInfo.EncryptAlgo(user);
+        // user = UserInfo.HashingAlgo(user);
         string username = UserInfo.DecryptSingle(user.username);
         string password = UserInfo.HashedSingle(user.password);
-        Console.WriteLine(username);
-        Console.WriteLine(password);
         FilterDefinition<UserInfo> filter = Builders<UserInfo>.Filter.Eq("username", username) & Builders<UserInfo>.Filter.Eq("password", password);
         Console.WriteLine("test");
         List<UserInfo> results = client.GetDatabase("SWMG").GetCollection<UserInfo>("UserInfo").Find(filter).ToList();
                 if(results.Count != 0) {
-                    TempData["loggedin"] = true;
-                    TempData["username"] = UserInfo.DecryptSingle(username);
-                    Console.WriteLine("works");
+                    // TempData["loggedin"] = true;
+                    username = UserInfo.DecryptSingle(username);
+                    List<Claim> claims = new List<Claim>() {
+                        new Claim(ClaimTypes.NameIdentifier, username),
+                    };
+
+                    ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, 
+                    CookieAuthenticationDefaults.AuthenticationScheme);
+
+                    AuthenticationProperties properties = new AuthenticationProperties() {
+
+                        AllowRefresh = true,
+                        // remember me button
+                        IsPersistent = true
+                    };
+
+                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
+                        new ClaimsPrincipal(claimsIdentity), properties);
+
+                    Console.WriteLine("cookies");
+
                     return RedirectToAction("Index", "Home"); 
                 }
         

@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using QuantU.Models;
 using MongoDB.Driver;
 using QuantU.Controllers;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+
 
 namespace QuantU.Controllers;
 
@@ -13,7 +16,7 @@ public class HomeController : Controller
 
     public HomeController(ILogger<HomeController> logger)
     {
-        _logger = logger;
+        _logger = logger; 
     }
 
     //Method for Search Page mapped to form in Index.cshtml
