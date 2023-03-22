@@ -104,6 +104,16 @@ public class HomeController : Controller
         return View();
     }
 
+    public IActionResult Portfolio()
+    {
+        return View();
+    }
+    [HttpPost]
+    public IActionResult Portfolio(Portfolio portfolio) {
+        ViewBag.portfolioName = portfolio.name;
+        return View();
+    }
+
 
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
