@@ -61,7 +61,7 @@ public class HomeController : Controller
         //gets username from cookies and saves it to userId
         var userId = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
         //encrypts the username
-        userId = UserInfo.DecryptSingle(userId);
+        userId = UserInfo.DecryptSingle((string)userId);
         //creates a filter to look for the matching username in the database
         FilterDefinition<UserFinances> filter = Builders<UserFinances>.Filter.Eq("username", userId);
         //Finds the UserFinance document of the user via username filter and saves it to list

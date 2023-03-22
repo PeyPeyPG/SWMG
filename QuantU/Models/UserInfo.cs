@@ -36,7 +36,7 @@ namespace QuantU.Models{
         static  BsonDocument result = client.GetDatabase("SWMG").GetCollection<BsonDocument>("cipher").Find(filter).Project(projection).FirstOrDefault();
 
          static readonly String resultingString = result["key"].AsString;
-        static readonly String encrpyt = resultingString;
+        static readonly String encrypt = resultingString;
 
 
 
@@ -115,11 +115,11 @@ namespace QuantU.Models{
         StringBuilder buildUser = new StringBuilder();
         StringBuilder buildRecovery = new StringBuilder();
         StringBuilder buildEmail = new StringBuilder();
-        String encrpytCopy = encrpyt;
+        String encrpytCopy = encrypt;
 
 
         while(encrpytCopy.Length < user.username.Length ||encrpytCopy.Length < user.recoveryQ.Length || encrpytCopy.Length < user.email.Length) {
-            encrpytCopy = encrpytCopy + "" + encrpyt;
+            encrpytCopy = encrpytCopy + "" + encrypt;
         }
 
 
@@ -154,9 +154,9 @@ namespace QuantU.Models{
     */
     public static string DecryptSingle(string user) {
         StringBuilder DecryptedUser = new StringBuilder();
-        String encrpytCopy = encrpyt;
+        String encrpytCopy = encrypt;
         while(encrpytCopy.Length < user.Length) {
-            encrpytCopy = encrpytCopy + "" + encrpyt;
+            encrpytCopy = encrpytCopy + "" + encrypt;
         }
 
         for(int i = 0; i < user.Length; i++) {
