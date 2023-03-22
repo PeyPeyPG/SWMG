@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\peyto_1v1b50c\\Desktop\\SWMG\\QuantU\\QuantU.csproj": {}
+    "/Users/antoinesfeir/Documents/GitHub/SWMG/QuantU/QuantU.csproj": {}
   },
   "projects": {
-    "C:\\Users\\peyto_1v1b50c\\Desktop\\SWMG\\QuantU\\QuantU.csproj": {
+    "/Users/antoinesfeir/Documents/GitHub/SWMG/QuantU/QuantU.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\peyto_1v1b50c\\Desktop\\SWMG\\QuantU\\QuantU.csproj",
+        "projectUniqueName": "/Users/antoinesfeir/Documents/GitHub/SWMG/QuantU/QuantU.csproj",
         "projectName": "QuantU",
-        "projectPath": "C:\\Users\\peyto_1v1b50c\\Desktop\\SWMG\\QuantU\\QuantU.csproj",
-        "packagesPath": "C:\\Users\\peyto_1v1b50c\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\peyto_1v1b50c\\Desktop\\SWMG\\QuantU\\obj\\",
+        "projectPath": "/Users/antoinesfeir/Documents/GitHub/SWMG/QuantU/QuantU.csproj",
+        "packagesPath": "/Users/antoinesfeir/.nuget/packages/",
+        "outputPath": "/Users/antoinesfeir/Documents/GitHub/SWMG/QuantU/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\peyto_1v1b50c\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/antoinesfeir/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -64,7 +62,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/opt/homebrew/Cellar/dotnet/7.0.100/libexec/sdk/7.0.100/RuntimeIdentifierGraph.json"
         }
       }
     }

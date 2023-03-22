@@ -1,0 +1,23 @@
+@model QuantU.Models.UserInfo
+
+@{
+    ViewData["Title"] = "Log in";
+}
+<div class="container mt-3">
+    <div class="text-center">
+        <h1>Log In</h1>
+    </div>
+    <form asp-action="LogIn">
+        <div class="mb-3">
+            <label asp-for="username" class="form-label">User Name</label>
+            <input asp-for="username" type="text" class="form-control">
+            <span class="text-danger" asp-validation-for="username"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="password" class="form-label">Password</label>
+            <input asp-for="password" type="text" class="form-control">
+            <span class="text-danger" asp-validation-for="password"></span>
+        </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

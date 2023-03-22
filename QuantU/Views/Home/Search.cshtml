@@ -1,9 +1,80 @@
 @{
     ViewData["Title"] = "Stock";
 }
+@* <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+<script defer src="https://pyscript.net/alpha/pyscript.js"></script> *@
+<py-config>
+packages = [
+"matplotlib", "numpy", "pandas", "asyncio", "pandas_datareader"
+]
+plugins = [
+"https://pyscript.net/latest/plugins/python/py_tutor.py"
+]
+</py-config>
+
+<div id="plot"></div>
+<py-script output="plot">
+
+from pyodide.http import pyfetch
+import json
+import asyncio
+import re
+async def main():
+    
+    token = "605c88e8f8bb46a7b992a85dba7fd641"
+    base_url = "https://api.stockdata.org/v1/data/eod?"
+    symbol = '@ViewBag.ticker'
+
+    api_url = base_url + "symbols=" + symbol + "&api_token=" + token
+    response = await pyfetch(url="https://api.twelvedata.com/time_series?&start_date=2010-01-06&end_date=2023-03-21&symbol=aapl&interval=1day&apikey=605c88e8f8bb46a7b992a85dba7fd641")
+    data = await response.json()
+    print(data)
+asyncio.ensure_future(main())
 
 
+@* import matplotlib.pyplot as plt
+import numpy as np
 
+x = np.random.rand(100)
+y = np.random.rand(100)
+
+fig, ax = plt.subplots()
+ax.scatter(x, y)
+ax.set_title("Random Scatter Plot")
+pyscript.write("plot", fig) *@
+
+@* import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import yfinance as yf
+from pandas_datareader import data as pdr
+
+yf.pdr_override()
+
+begin = '2010-01-01'
+symbol = '@ViewBag.ticker'
+
+df = pdr.DataReader(symbol, 'yahoo', begin)
+
+df = df.reset_index()
+
+df = df.drop(['Date', 'Adj Close'], axis = 1)
+print(df.head(5)) *@
+@*
+ma100 = df.Close.rolling(100).mean()
+ma200 = df.Close.rolling(200).mean()
+
+
+plt.figure(figsize=(12,6))
+plt.plot(df.Close)
+plt.plot(df.Close,label='Closing Price')
+plt.plot(ma100, 'r', label='100 Day Rolling Avg')
+
+plt.plot(ma200, 'g', label='200 Day Rolling Avg')
+
+plt.legend() *@
+
+</py-script>
 
 <script>
     let token = "cfis95hr01qjvrn525t0cfis95hr01qjvrn525tg";
@@ -19,9 +90,14 @@
     .then(data => {
         console.log(data);
         console.log(data.name);
-
+        console.log(data.ipo);
+        begin = data.ipo;
     })
     .catch(error => console.log(error));
+
 </script>
 
-<p><br>Press Control+Shift+I and travel to console to look at the values of the stock</p>
+<><p><br>Press Control+Shift+I and travel to console to look at the values of
+    the stock</p>
+
+
