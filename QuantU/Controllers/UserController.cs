@@ -83,51 +83,62 @@ namespace QuantU.Controllers
     }
     public IActionResult LogIn()
     {
+        //Checks if there is a user saved in the cookies
         ClaimsPrincipal claimUser = HttpContext.User;
-        //returns username
+        
+        //Returns username
         var userId = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
-        Console.WriteLine(userId);
 
+        //If the user is saved the login in redirects you automatically
         if (claimUser.Identity.IsAuthenticated){
             return RedirectToAction("Index", "Home");
         }
 
         return View();
     }
+
+    /*
+        Uses the variables given by the LogIn.cshtml page to parse the database
+        If a match is found the user is logged in via cookies and their information is stored for later use
+    */
     [HttpPost]
     public async Task<IActionResult> LogIn(UserInfo user)
     {
-        // username = UserInfo.EncryptAlgo(user);
-        // user = UserInfo.HashingAlgo(user);
+        //Creates username and password variables of the encrypted and hashed values given by the user in LogIn.cshtml
         string username = UserInfo.DecryptSingle(user.username);
         string password = UserInfo.HashedSingle(user.password);
+
+        //Creates filter to parse data base for username and password
         FilterDefinition<UserInfo> filter = Builders<UserInfo>.Filter.Eq("username", username) & Builders<UserInfo>.Filter.Eq("password", password);
-        Console.WriteLine("test");
+        //Parsing the database using the filter and saving the results to a list
         List<UserInfo> results = client.GetDatabase("SWMG").GetCollection<UserInfo>("UserInfo").Find(filter).ToList();
-                if(results.Count != 0) {
-                    // TempData["loggedin"] = true;
-                    username = UserInfo.DecryptSingle(username);
-                    List<Claim> claims = new List<Claim>() {
-                        new Claim(ClaimTypes.NameIdentifier, username),
-                    };
+            //If the list's length is not zero authenication begins   
+            if(results.Count != 0) {
+                //Username is decrypted for later storage
+                username = UserInfo.DecryptSingle(username);
+                //New list of claims is made with identifier username to be access later
+                List<Claim> claims = new List<Claim>() {
+                    new Claim(ClaimTypes.NameIdentifier, username),
+                };
 
-                    ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, 
-                    CookieAuthenticationDefaults.AuthenticationScheme);
+                ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, 
+                CookieAuthenticationDefaults.AuthenticationScheme);
 
-                    AuthenticationProperties properties = new AuthenticationProperties() {
+                //Authentication properties (like letting the user stay signed in) are made 
+                AuthenticationProperties properties = new AuthenticationProperties() {
 
-                        AllowRefresh = true,
-                        // remember me button
-                        IsPersistent = true
-                    };
+                    AllowRefresh = true,
+                    // remember me button
+                    IsPersistent = true
+                };
 
-                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
-                        new ClaimsPrincipal(claimsIdentity), properties);
+                //Assigning the authentication to cookies
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
+                    new ClaimsPrincipal(claimsIdentity), properties);
 
-                    Console.WriteLine("cookies");
-
-                    return RedirectToAction("Index", "Home"); 
-                }
+                //redirect to the home page
+                return RedirectToAction("Index", "Home"); 
+            }
         
         return View();
     }

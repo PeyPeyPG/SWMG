@@ -5,7 +5,7 @@ using MongoDB.Driver;
 using QuantU.Controllers;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
-
+using System.Security.Claims;
 
 namespace QuantU.Controllers;
 
@@ -38,10 +38,6 @@ public class HomeController : Controller
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
-                if (TempData["loggedin"].Equals(true)){
-                    TempData["loggedin"] = true;
-                }
                 return View("Index");
             }
     }
@@ -56,16 +52,45 @@ public class HomeController : Controller
         return View();
     }
 
+    /*
+        Method for PaperTrading.cshtml
+        Before the page is load the method checks if a logged in user has any porfolios in the database
+        If they do the portfolio list is passed to be displayed on the page
+    */
     public IActionResult PaperTrading(){
+        //gets username from cookies and saves it to userId
+        var userId = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
+        //encrypts the username
+        userId = UserInfo.DecryptSingle(userId);
+        //creates a filter to look for the matching username in the database
+        FilterDefinition<UserFinances> filter = Builders<UserFinances>.Filter.Eq("username", userId);
+        //Finds the UserFinance document of the user via username filter and saves it to list
+        List<UserFinances> results = client.GetDatabase("SWMG").GetCollection<UserFinances>("UserFinances").Find(filter).ToList();
+        
+        //saves the portfolioList of the user to ViewBag.portfoliolist to be used in the View
+        foreach(UserFinances result in results){
+            ViewBag.portfolioList = result.portfolioList;
+        }
+        
         return View();
     }
+
+    /*
+        Method to create a new portfolio from the modal on PaperTrading.cshtml
+        Once a portfolio name is submitted a new portfolio object is made
+        That object is entered into the databased based off of if the username in the cookies
+    */
     [HttpPost]
     public IActionResult PaperTrading(Portfolio portfolio){
-        Console.WriteLine(portfolio.name);
-        Console.WriteLine(portfolio.username);
-        portfolio.username = UserInfo.DecryptSingle(portfolio.username);
-        FilterDefinition<UserFinances> filter = Builders<UserFinances>.Filter.Eq("username", portfolio.username);
+        //Gets username from cookies and saves it as userId
+        var userId = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
+        //userId is encrypted
+        userId = UserInfo.DecryptSingle(userId);
+        //creates a filter to look for the matching username in the database
+        FilterDefinition<UserFinances> filter = Builders<UserFinances>.Filter.Eq("username", userId);
+        //create an update variable that will add the portfolio to the portfolio list of a document
         UpdateDefinition<UserFinances> update = Builders<UserFinances>.Update.AddToSet<Portfolio>("portfolioList", portfolio);
+        //finds the UserFinances document with the filter and adds the portfolio to its portfolio list using the update
         client.GetDatabase("SWMG").GetCollection<UserFinances>("UserFinances").UpdateOne(filter, update);
         
         return View();

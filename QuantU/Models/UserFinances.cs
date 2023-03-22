@@ -2,11 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace QuantU.Models
 {
     public class UserFinances
     {
+        public ObjectId _id {get; set;}
         public string? username { get; set; }
         public double? netSalary { get; set; }
         public string? maritalStatus { get; set; }
