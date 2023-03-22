@@ -10,7 +10,7 @@
   }
 </script>
 
-<marquee style="background: black; position: relative;">
+<marquee style="background: black; position: relative;" direction="left" behavior="scroll">
   <label>
       <p class="mt-2"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="lime" class="bi bi-caret-up-fill" viewBox="0 0 16 16">
         <path d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/>
@@ -28,9 +28,9 @@
   </label>
 </marquee>
 
-<button id="logOut" type = "button">
+@* <button id="logOut" type = "button">
   Log Out
-</button>
+</button> *@
 
 <script>
   const btn = document.getElementById('logOut');
@@ -67,8 +67,8 @@
 
 <div class="container">
 
-  <div class="text-center">
-      <h1 class="display-4">WelcomE</h1>
+  <div style="text-align: center;">
+    <h1>Welcome to QuantU!</h1>
   </div>
 
       @* Form for Search() function in HomeComtroller.cs *@
@@ -5757,54 +5757,78 @@
         document.getElementById('datalistOptions').innerHTML = options;
         </script>
 
-      <style>
-  .carousel {
-    width: 50%; /* make the carousel 40% smaller */
-    float: right; /* align it to the right half of the screen */
-    height: 120%;
-  }
-
-  .carousel-item svg text {
-    text-align: center;
-  }
-  </style>
-
-  <br>
   <br>
   <br>
 
-  <div id="carouselExampleFade" class="carousel slide carousel-fade">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="400" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: First slide" preserveAspectRatio="xMidYMid slice" focusable="false">
-          <title>Placeholder</title>
-          <rect width="100%" height="100%" fill="#D8D3D2"></rect>
-          <text x="50%" y="50%" fill="#9B00FF" dy=".3em" text-anchor="middle">First slide</text>
-        </svg>
-      </div>
-      <div class="carousel-item">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="400" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Second slide" preserveAspectRatio="xMidYMid slice" focusable="false">
-          <title>Placeholder</title>
-          <rect width="100%" height="100%" fill="#D8D3D2"></rect>
-          <text x="50%" y="50%" fill="#9B00FF" dy=".3em" text-anchor="middle">Second slide</text>
-        </svg>
-      </div>
-      <div class="carousel-item">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="400" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Third slide" preserveAspectRatio="xMidYMid slice" focusable="false">
-          <title>Placeholder</title>
-          <rect width="100%" height="100%" fill="#D8D3D2"></rect>
-          <text x="50%" y="50%" fill="#9B00FF" dy=".3em" text-anchor="middle">Third slide</text>
-        </svg>
+  <div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header text-center" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Investment Information Collapsable
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="">
+      <div class="accordion-body">
+        <ul>
+          <li>info</li>
+          <li>info</li>
+          <li>info</li>
+          <li>info</li>
+          <li>info</li>
+        </ul>
       </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
+  </div>
+</div>
+
+  <br>
+  <br>
+
+  <div style="text-align: center;">
+    <h2>Top Movers Past 24 Hours</h2>
   </div>
 
+  <style>
+    .card-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.card {
+  width: calc(33.33% - 10px);
+  /* subtract 10px for margin between cards */
+  box-sizing: border-box;
+  margin-right: 10px;
+  /* apply margin between cards */
+}
+.card:last-child {
+  margin-right: 0;
+  /* remove margin on last card */
+}
+  </style>
+
+  <div class="card-container">
+  <div class="card">
+    <!-- card content -->
+    <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Stock graph</text></svg>
+      <div class="card-body">
+        <p class="card-text">Stock name/information</p>
+      </div>
+  </div>
+  <div class="card">
+    <!-- card content -->
+    <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Stock graph</text></svg>
+      <div class="card-body">
+        <p class="card-text">Stock name/information</p>
+      </div>
+  </div>
+  <div class="card">
+    <!-- card content -->
+    <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Stock graph</text></svg>
+      <div class="card-body">
+        <p class="card-text">Stock name/information</p>
+      </div>
+  </div>
 </div>
+</div> 
