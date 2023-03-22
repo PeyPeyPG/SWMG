@@ -3,6 +3,7 @@ using MongoDB.Bson.Serialization.Attributes;
 using System;  
 using System.Text;
 using System.Security.Cryptography; 
+using MongoDB.Driver;
 
 namespace QuantU.Models{
     public class UserInfo {
@@ -21,6 +22,21 @@ namespace QuantU.Models{
         [BsonElement("recovery answer")]
         public string recoveryA {get;set;} = null!;
         public int UserId {get;set;}
+
+
+
+
+        /*  This is the encryption key stuff.
+            The encrpytion key is stored on the database as it is probably safer there. 
+            This section of code gathers the key from the database and stores it in the string encrypt
+        */
+        static  MongoClient client = new MongoClient("mongodb+srv://SWMG:Shawdowwizardmoneygang@swmg.hzzuvlg.mongodb.net/?retryWrites=true&w=majority");
+        static  FilterDefinition<BsonDocument> filter = Builders<BsonDocument>.Filter.Empty;
+        static ProjectionDefinition<BsonDocument> projection = Builders<BsonDocument>.Projection.Include("key");
+        static  BsonDocument result = client.GetDatabase("SWMG").GetCollection<BsonDocument>("cipher").Find(filter).Project(projection).FirstOrDefault();
+
+         static readonly String resultingString = result["key"].AsString;
+        static readonly String encrpyt = resultingString;
 
 
 
@@ -85,12 +101,6 @@ namespace QuantU.Models{
     }
 
 
-
-    /*  This is the encryption key. It probably should not be stored in plaintext but here we are
-        If this key is changed, be aware that none of the encrpyted data can be accessed until the string is changed back
-        DO NOT CHANGE THE STRING WITHOUT CONSULTING SOMEBODY
-    */
-    static readonly String encrpyt = "gu4vajuic3keyb0ard86";
 
 
 
