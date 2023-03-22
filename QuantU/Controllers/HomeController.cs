@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using QuantU.Models;
 using MongoDB.Driver;
 using QuantU.Controllers;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+
 
 namespace QuantU.Controllers;
 
