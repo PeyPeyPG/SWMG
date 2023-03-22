@@ -84,6 +84,7 @@ namespace QuantU.Controllers
     public IActionResult LogIn()
     {
         ClaimsPrincipal claimUser = HttpContext.User;
+        //returns username
         var userId = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
         Console.WriteLine(userId);
 
