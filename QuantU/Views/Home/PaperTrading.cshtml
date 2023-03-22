@@ -4,7 +4,7 @@
     ViewData["Title"] = "Paper Trading";
 }
 
-<div class="container mt-4">
+<div class="container mt-4 ms-3">
     <h1 class="mb-5">Your Portfolios</h1>
 
     <style>
@@ -18,6 +18,60 @@
                     }
         
     </style>
+
+    @for (var i = 0; i < ViewBag.portfolioList.Count; i++){
+        @if ((i % 4) == 0){
+            <div class="row" id=@i/4>
+                <script>
+                    console.log(document.getElementById('@i/4').classList);
+                </script>
+                <p>hi</p>
+            </div>
+        }
+    }
+    @for (var i = 1; i < ViewBag.portfolioList.Count + 1; i++)
+    {   
+        @if ((i % 4) == 0){
+            <script>
+                var row = document.getElementById('@i/4');
+                var col = document.createElement("div");
+                col.classList.add("col");
+                col.classList.add("text-center");
+
+                
+
+                var p = document.createElement("p");
+                p.textContent = @ViewBag.portfolioList[i-1].name;
+
+               
+                col.appendChild(p);
+
+                row.appendChild(col);
+            </script>
+        }
+        else {
+            <script>
+                var row = document.getElementById('@i/4 + 1');
+                var col = document.createElement("div");
+                col.classList.add("col");
+                col.classList.add("text-center");
+
+                
+
+                
+                
+
+                var p = document.createElement("p");
+                p.textContent = '@ViewBag.portfolioList[i-1].name';
+
+                
+                col.appendChild(p);
+
+                //row.appendChild(col);
+            </script>
+        }
+    }
+
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary newstock" data-bs-toggle="modal" data-bs-target="#exampleModal">
         <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-folder-plus" viewBox="0 0 16 16">
@@ -42,12 +96,7 @@
                         <input asp-for="name" type="text" class="form-control" >
                         <span class="text-danger" asp-validation-for="name"></span>
                     </div>
-                        <input asp-for="username" type="hidden" class="form-control">
-                        <span class="text-danger" asp-validation-for="username" id="username"></span>
-                        <script>
-                            document.getElementById("username").value = localStorage.getItem("username");
-                        </script>
-                    </div>
+                </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Create Portfolio</button>
                     </div>

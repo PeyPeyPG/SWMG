@@ -5,7 +5,7 @@ using MongoDB.Driver;
 using QuantU.Controllers;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
-
+using System.Security.Claims;
 
 namespace QuantU.Controllers;
 
@@ -57,14 +57,23 @@ public class HomeController : Controller
     }
 
     public IActionResult PaperTrading(){
+        var userId = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
+        userId = UserInfo.DecryptSingle(userId);
+        FilterDefinition<UserFinances> filter = Builders<UserFinances>.Filter.Eq("username", userId);
+        List<UserFinances> results = client.GetDatabase("SWMG").GetCollection<UserFinances>("UserFinances").Find(filter).ToList();
+        
+        foreach(UserFinances result in results){
+            ViewBag.portfolioList = result.portfolioList;
+        }
+        
+
         return View();
     }
     [HttpPost]
     public IActionResult PaperTrading(Portfolio portfolio){
-        Console.WriteLine(portfolio.name);
-        Console.WriteLine(portfolio.username);
-        portfolio.username = UserInfo.DecryptSingle(portfolio.username);
-        FilterDefinition<UserFinances> filter = Builders<UserFinances>.Filter.Eq("username", portfolio.username);
+        var userId = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
+        userId = UserInfo.DecryptSingle(userId);
+        FilterDefinition<UserFinances> filter = Builders<UserFinances>.Filter.Eq("username", userId);
         UpdateDefinition<UserFinances> update = Builders<UserFinances>.Update.AddToSet<Portfolio>("portfolioList", portfolio);
         client.GetDatabase("SWMG").GetCollection<UserFinances>("UserFinances").UpdateOne(filter, update);
         
