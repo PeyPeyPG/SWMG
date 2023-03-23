@@ -120,9 +120,10 @@ public class HomeController : Controller
         Portfolio port = userFinance.portfolioList.FirstOrDefault(p => p.name == portfolioName);
 
 
+
         //rain check
         //this is the next step for displaying what stocks you are following
-        Console.WriteLine(port.stocks);
+        //Console.WriteLine(port.stocks);
         
         
         return View();
