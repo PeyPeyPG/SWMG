@@ -9,12 +9,44 @@
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
-      "Id": "C:\\Users\\Alex\\Documents\\GitHub\\SWMG\\QuantU\\wwwroot\\favicon.ico",
-      "PackagePath": "staticwebassets\\favicon.ico"
-    },
-    {
       "Id": "C:\\Users\\Alex\\Documents\\GitHub\\SWMG\\QuantU\\wwwroot\\images\\QuantULogo.png",
       "PackagePath": "staticwebassets\\images\\QuantULogo.png"
+    },
+    {
+      "Id": "C:\\Users\\Alex\\Documents\\GitHub\\SWMG\\QuantU\\wwwroot\\images\\android-chrome-192x192.png",
+      "PackagePath": "staticwebassets\\images\\android-chrome-192x192.png"
+    },
+    {
+      "Id": "C:\\Users\\Alex\\Documents\\GitHub\\SWMG\\QuantU\\wwwroot\\images\\apple-touch-icon.png",
+      "PackagePath": "staticwebassets\\images\\apple-touch-icon.png"
+    },
+    {
+      "Id": "C:\\Users\\Alex\\Documents\\GitHub\\SWMG\\QuantU\\wwwroot\\images\\browserconfig.xml",
+      "PackagePath": "staticwebassets\\images\\browserconfig.xml"
+    },
+    {
+      "Id": "C:\\Users\\Alex\\Documents\\GitHub\\SWMG\\QuantU\\wwwroot\\images\\favicon-16x16.png",
+      "PackagePath": "staticwebassets\\images\\favicon-16x16.png"
+    },
+    {
+      "Id": "C:\\Users\\Alex\\Documents\\GitHub\\SWMG\\QuantU\\wwwroot\\images\\favicon-32x32.png",
+      "PackagePath": "staticwebassets\\images\\favicon-32x32.png"
+    },
+    {
+      "Id": "C:\\Users\\Alex\\Documents\\GitHub\\SWMG\\QuantU\\wwwroot\\images\\favicon.ico",
+      "PackagePath": "staticwebassets\\images\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\Alex\\Documents\\GitHub\\SWMG\\QuantU\\wwwroot\\images\\mstile-150x150.png",
+      "PackagePath": "staticwebassets\\images\\mstile-150x150.png"
+    },
+    {
+      "Id": "C:\\Users\\Alex\\Documents\\GitHub\\SWMG\\QuantU\\wwwroot\\images\\safari-pinned-tab.svg",
+      "PackagePath": "staticwebassets\\images\\safari-pinned-tab.svg"
+    },
+    {
+      "Id": "C:\\Users\\Alex\\Documents\\GitHub\\SWMG\\QuantU\\wwwroot\\images\\site.webmanifest",
+      "PackagePath": "staticwebassets\\images\\site.webmanifest"
     },
     {
       "Id": "C:\\Users\\Alex\\Documents\\GitHub\\SWMG\\QuantU\\wwwroot\\js\\site.js",
