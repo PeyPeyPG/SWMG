@@ -109,13 +109,21 @@ public class HomeController : Controller
         return View();
     }
     [HttpPost]
-    public IActionResult Portfolio(Portfolio portfolio) {
+    public IActionResult Portfolio(string portfolioName) {
         //Gets username from cookies and saves it as userId
         var userId = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
         //userId is encrypted
         userId = UserInfo.DecryptSingle(userId);
+        
+        FilterDefinition<UserFinances> filter = Builders<UserFinances>.Filter.Eq("username", userId);
+        UserFinances userFinance =  client.GetDatabase("SWMG").GetCollection<UserFinances>("UserFinances").Find(filter).FirstOrDefault();
+        Portfolio port = userFinance.portfolioList.FirstOrDefault(p => p.name == portfolioName);
 
-       // FilterDefinition<Portfolio> filter = Builders<Portfolio>.Filter.Eq("username", userId) & Builders<Portfolio>.Filter.Eq("username", port.username);
+
+        //rain check
+        //this is the next step for displaying what stocks you are following
+        Console.WriteLine(port.stocks);
+        
         
         return View();
     }
