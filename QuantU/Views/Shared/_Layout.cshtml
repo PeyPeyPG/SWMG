@@ -51,14 +51,6 @@
             </div>
         </nav>
     </header>
-    
-    <script>
-        if (localStorage.getItem("loggedin") === 'true') {
-            document.getElementById('login').text = "Logged In";
-            document.getElementById('login').classList.add('disabled');
-            document.getElementById('login').classList.add('text-white-50');
-        }
-    </script>
 
     <main role="main" class="pb-3">
         @RenderBody()

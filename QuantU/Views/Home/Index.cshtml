@@ -1,7 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
+@model QuantU.Models.UserFinances;
 <script>
 
   if ('@TempData["loggedin"]' === "True"){
@@ -10,7 +10,7 @@
   }
 </script>
 
-<marquee style="background: black; position: relative;" direction="left" behavior="scroll">
+<marquee style="background: black; position: relative;">
   <label>
       <p class="mt-2"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="lime" class="bi bi-caret-up-fill" viewBox="0 0 16 16">
         <path d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/>
@@ -27,6 +27,10 @@
       </svg></span>  <text id="third" style="color:white">Example Text 3</text>&emsp;</p>
   </label>
 </marquee>
+
+<button id="logOut" type = "button">
+  Log Out
+</button>
 
 <script>
   const btn = document.getElementById('logOut');
@@ -63,8 +67,8 @@
 
 <div class="container">
 
-  <div style="text-align: center;">
-    <h1>Welcome to QuantU!</h1>
+  <div class="text-center">
+      <h1 class="display-4">WelcomE</h1>
   </div>
 
       @* Form for Search() function in HomeComtroller.cs *@
@@ -5744,87 +5748,107 @@
               "vTv Therapeutics Inc., VTVT",
               "voxeljet AG, VJET",
               ];
-
       //Takes the list of stocks and displays them as options in the search bar
       for (var i = 0; i < stocks.length; i++) {
           options += '<option value="' + stocks[i] + '"></option>';
         }
-        
         document.getElementById('datalistOptions').innerHTML = options;
         </script>
 
-  <br>
-  <br>
 
-  <div class="accordion" id="accordionExample">
-  <div class="accordion-item">
-    <h2 class="accordion-header text-center" id="headingOne">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        Investment Information Collapsable
-      </button>
-    </h2>
-    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="">
-      <div class="accordion-body">
-        <ul>
-          <li>info</li>
-          <li>info</li>
-          <li>info</li>
-          <li>info</li>
-          <li>info</li>
-        </ul>
-      </div>
-    </div>
-  </div>
+
+<br><br>
+        <div class="accordion">
+            <dl>
+              <dt><a class="accordionTitle" href="#">View Your Recommedations!</a></dt>
+              <dd class="accordionItem accordionItemCollapsed">
+                
+              </dd>
+            </dl>
+          </div>
+
+          <script>
+( function( window ) {
+'use strict';
+function classReg( className ) {
+  return new RegExp("(^|\\s+)" + className + "(\\s+|$)");
+}
+var hasClass, addClass, removeClass;
+
+if ( 'classList' in document.documentElement ) {
+  hasClass = function( elem, c ) {
+    return elem.classList.contains( c );
+  };
+  addClass = function( elem, c ) {
+    elem.classList.add( c );
+  };
+  removeClass = function( elem, c ) {
+    elem.classList.remove( c );
+  };
+}
+else {
+  hasClass = function( elem, c ) {
+    return classReg( c ).test( elem.className );
+  };
+  addClass = function( elem, c ) {
+    if ( !hasClass( elem, c ) ) {
+      elem.className = elem.className + ' ' + c;
+    }
+  };
+  removeClass = function( elem, c ) {
+    elem.className = elem.className.replace( classReg( c ), ' ' );
+  };
+}
+
+function toggleClass( elem, c ) {
+  var fn = hasClass( elem, c ) ? removeClass : addClass;
+  fn( elem, c );
+}
+var classie = {
+  hasClass: hasClass,
+  addClass: addClass,
+  removeClass: removeClass,
+  toggleClass: toggleClass,
+  has: hasClass,
+  add: addClass,
+  remove: removeClass,
+  toggle: toggleClass
+};
+if ( typeof define === 'function' && define.amd ) {
+  define( classie );
+} else {
+  window.classie = classie;
+}
+})( window );
+var $ = function(selector){
+  return document.querySelector(selector);
+}
+var accordion = $('.accordion');
+accordion.addEventListener("click",function(e) {
+  e.stopPropagation();
+  e.preventDefault();
+  if(e.target && e.target.nodeName == "A") {
+    var classes = e.target.className.split(" ");
+    if(classes) {
+      for(var x = 0; x < classes.length; x++) {
+        if(classes[x] == "accordionTitle") {
+          var title = e.target;
+          var content = e.target.parentNode.nextElementSibling;
+          classie.toggle(title, 'accordionTitleActive');
+          if(classie.has(content, 'accordionItemCollapsed')) {
+            if(classie.has(content, 'animateOut')){
+              classie.remove(content, 'animateOut');
+            }
+            classie.add(content, 'animateIn');
+          }else{
+             classie.remove(content, 'animateIn');
+             classie.add(content, 'animateOut');
+          }
+          classie.toggle(content, 'accordionItemCollapsed');      
+        }
+      }
+    }  
+  }
+});
+          </script>
 </div>
-
-  <br>
-  <br>
-
-  <div style="text-align: center;">
-    <h2>Top Movers Past 24 Hours</h2>
-  </div>
-
-  <style>
-    .card-container {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px;
-}
-
-.card {
-  width: calc(33.33% - 10px);
-  /* subtract 10px for margin between cards */
-  box-sizing: border-box;
-  margin-right: 10px;
-  /* apply margin between cards */
-}
-.card:last-child {
-  margin-right: 0;
-  /* remove margin on last card */
-}
-  </style>
-
-  <div class="card-container">
-  <div class="card">
-    <!-- card content -->
-    <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Stock graph</text></svg>
-      <div class="card-body">
-        <p class="card-text">Stock name/information</p>
-      </div>
-  </div>
-  <div class="card">
-    <!-- card content -->
-    <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Stock graph</text></svg>
-      <div class="card-body">
-        <p class="card-text">Stock name/information</p>
-      </div>
-  </div>
-  <div class="card">
-    <!-- card content -->
-    <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Stock graph</text></svg>
-      <div class="card-body">
-        <p class="card-text">Stock name/information</p>
-      </div>
-  </div>
-</div>
-</div> 

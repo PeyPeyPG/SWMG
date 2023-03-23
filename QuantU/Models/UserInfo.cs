@@ -3,6 +3,7 @@ using MongoDB.Bson.Serialization.Attributes;
 using System;  
 using System.Text;
 using System.Security.Cryptography; 
+using MongoDB.Driver;
 
 namespace QuantU.Models{
     public class UserInfo {
@@ -16,11 +17,27 @@ namespace QuantU.Models{
         public string username {get; set;} = null!;
         public string email {get; set;} = null!;
         public string password {get; set;} = null!;
+        /*public string verifyPassword {get; set;} = null!;*/
         [BsonElement("recovery question")]
         public string recoveryQ {get; set;} = null!;
         [BsonElement("recovery answer")]
         public string recoveryA {get;set;} = null!;
         public int UserId {get;set;}
+
+
+
+
+        /*  This is the encryption key stuff.
+            The encrpytion key is stored on the database as it is probably safer there. 
+            This section of code gathers the key from the database and stores it in the string encrypt
+        */
+        static  MongoClient client = new MongoClient("mongodb+srv://SWMG:Shawdowwizardmoneygang@swmg.hzzuvlg.mongodb.net/?retryWrites=true&w=majority");
+        static  FilterDefinition<BsonDocument> filter = Builders<BsonDocument>.Filter.Empty;
+        static ProjectionDefinition<BsonDocument> projection = Builders<BsonDocument>.Projection.Include("key");
+        static  BsonDocument result = client.GetDatabase("SWMG").GetCollection<BsonDocument>("cipher").Find(filter).Project(projection).FirstOrDefault();
+
+         static readonly String resultingString = result["key"].AsString;
+        static readonly String encrpyt = resultingString;
 
 
 
@@ -38,11 +55,11 @@ namespace QuantU.Models{
                 byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(user.password));  
   
                 // Convert byte array to a string   
-                StringBuilder builder = new StringBuilder();  
+                StringBuilder builder1 = new StringBuilder();  
                 for (int i = 0; i < bytes.Length; i++)   {  
-                    builder.Append(bytes[i].ToString("x2"));  
+                    builder1.Append(bytes[i].ToString("x2"));  
                 }  
-                user.password = builder.ToString(); 
+                user.password = builder1.ToString(); 
          }
 
          using (SHA256 sha256Hash = SHA256.Create())  {  
@@ -50,11 +67,11 @@ namespace QuantU.Models{
                 byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(user.recoveryA));  
   
                 // Convert byte array to a string   
-                StringBuilder builder = new StringBuilder();  
+                StringBuilder builder2 = new StringBuilder();  
                 for (int i = 0; i < bytes.Length; i++)   {  
-                    builder.Append(bytes[i].ToString("x2"));  
+                    builder2.Append(bytes[i].ToString("x2"));  
                 }  
-                user.recoveryA = builder.ToString(); 
+                user.recoveryA = builder2.ToString(); 
          }
     return user;
     }
@@ -85,12 +102,6 @@ namespace QuantU.Models{
     }
 
 
-
-    /*  This is the encryption key. It probably should not be stored in plaintext but here we are
-        If this key is changed, be aware that none of the encrpyted data can be accessed until the string is changed back
-        DO NOT CHANGE THE STRING WITHOUT CONSULTING SOMEBODY
-    */
-    static readonly String encrpyt = "gu4vajuic3keyb0ard86";
 
 
 
