@@ -44,7 +44,26 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        ClaimsPrincipal claimUser = HttpContext.User;
+        //Returns username
+        var userId = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
+        //If the user is saved the login in redirects you automatically
+        if (claimUser.Identity.IsAuthenticated){
+        //userId is encrypted
+        userId = UserInfo.DecryptSingle(userId);
+        //creates a filter to look for the matching username in the database
+        FilterDefinition<UserFinances> filter = Builders<UserFinances>.Filter.Eq("username", userId);
+        //Finds the UserFinance document of the user via username filter and saves it to list
+        List<UserFinances> results = client.GetDatabase("SWMG").GetCollection<UserFinances>("UserFinances").Find(filter).ToList();
+        //saves the portfolioList of the user to ViewBag.portfoliolist to be used in the View
+        foreach(UserFinances result in results){
+            ViewBag.numberOfChildren = result.numberOfChildren;
+        }
         return View();
+        }
+        else{
+            return RedirectToAction("LogIn", "User");
+        } 
     }
 
     public IActionResult Privacy()

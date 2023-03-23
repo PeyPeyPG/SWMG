@@ -1,7 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-@model QuantU.Models.UserFinances;
 
 
 <script>
@@ -110,11 +109,13 @@
     <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="">
       <div class="accordion-body">
         <ul>
-          <li>info</li>
-          <li>info</li>
-          <li>info</li>
-          <li>info</li>
-          <li>info</li>
+        <li>
+          @ViewBag.numberOfChildren
+            @foreach(UserFinances numberOfChildren in ViewBag.numberOfChildren)
+            {   
+              <p>@numberOfChildren</p>
+            }
+        </li>
         </ul>
       </div>
     </div>

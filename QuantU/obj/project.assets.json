@@ -751,19 +751,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\peyto_1v1b50c\\.nuget\\packages\\": {}
+    "C:\\Users\\aidan\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\peyto_1v1b50c\\Desktop\\SWMG\\QuantU\\QuantU.csproj",
+      "projectUniqueName": "C:\\Users\\aidan\\OneDrive\\Documents\\GitHub\\SWMG\\QuantU\\QuantU.csproj",
       "projectName": "QuantU",
-      "projectPath": "C:\\Users\\peyto_1v1b50c\\Desktop\\SWMG\\QuantU\\QuantU.csproj",
-      "packagesPath": "C:\\Users\\peyto_1v1b50c\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\peyto_1v1b50c\\Desktop\\SWMG\\QuantU\\obj\\",
+      "projectPath": "C:\\Users\\aidan\\OneDrive\\Documents\\GitHub\\SWMG\\QuantU\\QuantU.csproj",
+      "packagesPath": "C:\\Users\\aidan\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\aidan\\OneDrive\\Documents\\GitHub\\SWMG\\QuantU\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\peyto_1v1b50c\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\aidan\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -813,7 +813,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
       }
     }
   }
