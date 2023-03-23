@@ -3,21 +3,27 @@
 @{
     ViewData["Title"] = "Log in";
 }
-<div class="container mt-3">
+
+<div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+  <img src="login.jpg" style="width: 70%; height: 70%; object-fit: cover;">
+</div>
+<div class= "home">
+<div class="contain">
+    <center>
     <div class="text-center">
         <h1>Log In</h1> 
     </div>
     <form asp-action="LogIn">
-        <div class="mb-3">
-            <label asp-for="username" class="form-label">User Name</label>
-            <input asp-for="username" type="text" class="form-control">
-            <span class="text-danger" asp-validation-for="username"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="password" class="form-label">Password</label>
-            <input asp-for="password" type="text" class="form-control">
-            <span class="text-danger" asp-validation-for="password"></span>
-        </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="col-3">
+            <input asp-for="username" type="text" class="effect-5" placeholder="User Name" required>
+            <span class="focus-border" asp-validation-for="username"></span>
+        </div><br><br><br>
+        <div class="col-4">
+            <input type = "text" asp-for="password" class="effect-6" placeholder="Password" required>
+            <span class="focus-border" asp-validation-for="password"></span>
+        </div><br><br><br><br><br>
+    <button type="submit" class="submit">Submit</button>
     </form>
+    </center>
+</div>
 </div>
