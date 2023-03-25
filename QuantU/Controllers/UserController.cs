@@ -69,10 +69,31 @@ namespace QuantU.Controllers
             }
             try
             {
+                
+                //Aidan code
                 TempData["msg"] = "Added!";
-                client.GetDatabase("SWMG").GetCollection<UserFinances>("UserFinances").InsertOne(user);
-                Console.WriteLine(user);
-                return RedirectToAction();        
+                //client.GetDatabase("SWMG").GetCollection<UserFinances>("UserFinances").InsertOne(user);
+                Console.WriteLine(user.username);
+                // return RedirectToAction();  
+
+                //Peyton code
+                var userId = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
+                Console.WriteLine(userId);
+                userId = UserInfo.DecryptSingle(userId);
+                user.username = userId;
+                Console.WriteLine(user.netSalary);
+                Console.WriteLine(user.username);
+                var filter = Builders<UserFinances>.Filter.Eq("username", user.username);
+                var result = client.GetDatabase("SWMG").GetCollection<UserFinances>("UserFinances").Find(filter).ToList();
+                if (result.Count > 0){
+                    foreach(UserFinances uf in result){
+                        user._id = uf._id;
+                        user.portfolioList = uf.portfolioList;
+                    }
+                }
+                filter = Builders<UserFinances>.Filter.Eq(u => u._id, user._id);
+                client.GetDatabase("SWMG").GetCollection<UserFinances>("UserFinances").ReplaceOne(filter, user);
+                return RedirectToAction();  
             }
             catch (Exception ex)
             {
