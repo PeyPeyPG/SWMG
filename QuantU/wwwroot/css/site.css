@@ -274,7 +274,12 @@ input[type="text"]{
   width: 40%; 
   margin: 40px 3%; 
   position: relative;
+
 }  
+
+.col-4::placeholder {
+  text-align: right;
+}
 
 input[type="text"]{
   font: 15px/24px "Lato", Arial, sans-serif; 
@@ -304,7 +309,13 @@ input[type="text"]{
       padding: 5px 14px 7px; 
       transition: 0.4s;
       float: right;
+      text-align: right;
     }
+
+    .effect-6::placeholder{
+    text-align: right;
+    }
+
 
 .effect-5:focus{
   padding: 5px 14px 7px; 
@@ -328,18 +339,31 @@ input[type="text"]{
 .effect-6:focus ~ .focus-border{width: 100%; transition: 0.4s; border: 2px solid #c9aaff;}
 
 .contain{
+  position: relative; /* add position relative to the parent element */
   width: 500px;
   height: 400px;
-  position: absolute;
   box-shadow: 5px 10px 20px rgba(0,0,0,0.4);
   backdrop-filter: blur(3px);
   border-radius: 20px;
   padding: 40px 25px;
   margin-top: 100px;
-  margin-left: 100px;
+  left: 100px; /* set the left position to 20px */
 }
 
-.home {
-  background: url(login.jpg);
-  background-size: 70%;
+.space {
+  z-index: -1;
+  transform: rotate(90deg);
+  left: 70%;
+  box-sizing: border-box;
+  background-image: url('~/images/space.gif');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+
+}
+
+#my-image {
+  position: absolute;
+  top: 0;
+  left: 0;
 }

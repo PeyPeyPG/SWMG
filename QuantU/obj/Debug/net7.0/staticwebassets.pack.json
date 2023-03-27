@@ -57,6 +57,10 @@
       "PackagePath": "staticwebassets\\images\\site.webmanifest"
     },
     {
+      "Id": "C:\\Users\\maste\\OneDrive\\Documents\\GitHub\\SWMG\\QuantU\\wwwroot\\images\\space.gif",
+      "PackagePath": "staticwebassets\\images\\space.gif"
+    },
+    {
       "Id": "C:\\Users\\maste\\OneDrive\\Documents\\GitHub\\SWMG\\QuantU\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
