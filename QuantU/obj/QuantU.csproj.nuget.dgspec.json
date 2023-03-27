@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\aidan\\OneDrive\\Documents\\GitHub\\SWMG\\QuantU\\QuantU.csproj": {}
+    "/Users/aidanodonnell/Documents/GitHub/SWMG/QuantU/QuantU.csproj": {}
   },
   "projects": {
-    "C:\\Users\\aidan\\OneDrive\\Documents\\GitHub\\SWMG\\QuantU\\QuantU.csproj": {
+    "/Users/aidanodonnell/Documents/GitHub/SWMG/QuantU/QuantU.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\aidan\\OneDrive\\Documents\\GitHub\\SWMG\\QuantU\\QuantU.csproj",
+        "projectUniqueName": "/Users/aidanodonnell/Documents/GitHub/SWMG/QuantU/QuantU.csproj",
         "projectName": "QuantU",
-        "projectPath": "C:\\Users\\aidan\\OneDrive\\Documents\\GitHub\\SWMG\\QuantU\\QuantU.csproj",
-        "packagesPath": "C:\\Users\\aidan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\aidan\\OneDrive\\Documents\\GitHub\\SWMG\\QuantU\\obj\\",
+        "projectPath": "/Users/aidanodonnell/Documents/GitHub/SWMG/QuantU/QuantU.csproj",
+        "packagesPath": "/Users/aidanodonnell/.nuget/packages/",
+        "outputPath": "/Users/aidanodonnell/Documents/GitHub/SWMG/QuantU/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\aidan\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/aidanodonnell/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -64,7 +62,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.201/RuntimeIdentifierGraph.json"
         }
       }
     }
