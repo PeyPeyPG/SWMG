@@ -1,11 +1,11 @@
 @{
     ViewData["Title"] = "Stock";
 }
-@* <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
-<script defer src="https://pyscript.net/alpha/pyscript.js"></script> *@
+
 <py-config>
 packages = [
-"matplotlib", "numpy", "pandas", "asyncio", "pandas_datareader"
+"matplotlib", "numpy", "pandas",
+"asyncio", "pandas_datareader"
 ]
 plugins = [
 "https://pyscript.net/latest/plugins/python/py_tutor.py"
@@ -13,67 +13,89 @@ plugins = [
 </py-config>
 
 <div id="plot"></div>
-<py-script output="plot">
 
+<py-script output="plot">
 from pyodide.http import pyfetch
 import json
 import asyncio
 import re
+import warnings
+from datetime import date
+from datetime import timedelta
+import pandas as pd
+import matplotlib.pyplot as plt
+
 async def main():
-    
+    # Pull stock market price data from 12Data API
     token = "605c88e8f8bb46a7b992a85dba7fd641"
-    base_url = "https://api.stockdata.org/v1/data/eod?"
+    base_url = "https://api.twelvedata.com/time_series?"
     symbol = '@ViewBag.ticker'
 
-    api_url = base_url + "symbols=" + symbol + "&api_token=" + token
-    response = await pyfetch(url="https://api.twelvedata.com/time_series?&start_date=2010-01-06&end_date=2023-03-21&symbol=aapl&interval=1day&apikey=605c88e8f8bb46a7b992a85dba7fd641")
+    # Pull stock market data from finnhub
+    finn_token = "cfis95hr01qjvrn525t0cfis95hr01qjvrn525tg"
+    finn_base_url = "https://finnhub.io/api/v1/stock/profile2?"
+
+    # Forms the API URL with API Token (Key) and the symbol for the stock the user wants
+    finn_url = finn_base_url + "symbol=" + symbol + "&token=" + finn_token
+
+    finn_response = await pyfetch(url=finn_url)
+    finn_data = await finn_response.json()
+    ipo_date = finn_data["ipo"]
+  
+    # Set the start date to the IPO date
+    startDate = ipo_date
+
+    # Get today's date
+    today = date.today()
+    today_str = today.strftime('%Y-%m-%d')
+
+    # Construct API URL
+    api_url = f"{base_url}start_date={startDate}&end_date={today_str}&symbol={symbol.lower()}&interval=1day&apikey={token}"
+
+    # Fetch the from 12Data API
+    response = await pyfetch(url=api_url)
     data = await response.json()
-    print(data)
-asyncio.ensure_future(main())
 
+    # Create an empty DataFrame
+    df = pd.DataFrame(columns=['date', 'open', 'high', 'low', 'close', 'volume'])
 
-@* import matplotlib.pyplot as plt
-import numpy as np
+    # Suppress the FutureWarning
+    warnings.simplefilter(action='ignore', category=FutureWarning)
 
-x = np.random.rand(100)
-y = np.random.rand(100)
+    # Loop through the data and append each data point to the DataFrame
+    for values in data['values']:
+        df = df.append({'date': values['datetime'], 'open': values['open'], 'high': values['high'], 'low': values['low'], 'close': values['close'], 'volume': values['volume']}, ignore_index=True)
 
-fig, ax = plt.subplots()
-ax.scatter(x, y)
-ax.set_title("Random Scatter Plot")
-pyscript.write("plot", fig) *@
+    df = df.reset_index()
 
-@* import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
-import yfinance as yf
-from pandas_datareader import data as pdr
+    # Reverse the order of the DataFrame
+    df1 = df.iloc[::-1]
 
-yf.pdr_override()
+    # Convert the date column to datetime
+    df1['date'] = pd.to_datetime(df1['date'])
+    # Convert the close, open, high, and low columns to numeric
+    df1['close'] = pd.to_numeric(df1['close'])
+    df1['open'] = pd.to_numeric(df1['open'])
+    df1['high'] = pd.to_numeric(df1['high'])
+    df1['low'] = pd.to_numeric(df1['low'])
 
-begin = '2010-01-01'
-symbol = '@ViewBag.ticker'
+    # Calculate the 100 and 200 day rolling averages
+    # of the open prices
+    ma100 = df1['open'].rolling(window=100).mean()
+    ma200 = df1['open'].rolling(window=200).mean()
 
-df = pdr.DataReader(symbol, 'yahoo', begin)
-
-df = df.reset_index()
-
-df = df.drop(['Date', 'Adj Close'], axis = 1)
-print(df.head(5)) *@
-@*
-ma100 = df.Close.rolling(100).mean()
-ma200 = df.Close.rolling(200).mean()
-
-
-plt.figure(figsize=(12,6))
-plt.plot(df.Close)
-plt.plot(df.Close,label='Closing Price')
-plt.plot(ma100, 'r', label='100 Day Rolling Avg')
-
-plt.plot(ma200, 'g', label='200 Day Rolling Avg')
-
-plt.legend() *@
-
+    # Plots opening price and rolling averages
+    fig, ax = plt.subplots(figsize=(12, 6))
+    ax.plot(df1['date'], df1['open'], color='tab:blue')
+    ax.plot(df1['date'], ma100, color='tab:orange', label='100 Day Rolling Average')
+    ax.plot(df1['date'], ma200, color='tab:green', label='200 Day Rolling Average')
+   
+    ax.set(xlabel='Time', ylabel='Price($)',
+           title='Opening Price Rolling Averages of @ViewBag.ticker')
+    ax.legend()
+    ax.grid()
+    pyscript.write("plot", fig)
+asyncio.ensure_future(main()) 
 </py-script>
 
 <script>
@@ -94,10 +116,9 @@ plt.legend() *@
         begin = data.ipo;
     })
     .catch(error => console.log(error));
-
 </script>
 
-<><p><br>Press Control+Shift+I and travel to console to look at the values of
+<p><br>Press Control+Shift+I and travel to console to look at the values of
     the stock</p>
 
 
