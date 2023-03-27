@@ -3,15 +3,6 @@
 }
 @model QuantU.Models.UserFinances;
 
-
-<script>
-
-  if ('@TempData["loggedin"]' === "True"){
-    localStorage.setItem("loggedin", true);
-    localStorage.setItem("username", '@TempData["username"]');
-  }
-</script>
-
 <marquee style="background: black; position: relative;">
   <label>
       <p class="mt-2"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="lime" class="bi bi-caret-up-fill" viewBox="0 0 16 16">

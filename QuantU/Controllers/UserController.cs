@@ -189,6 +189,43 @@ namespace QuantU.Controllers
 
         return View();
     }
+
+    public IActionResult changeEmail(string newEmail, string password){
+
+        try{
+            
+        }
+        catch (Exception ex){
+
+        }
+        //Gets username from cookies and saves it as userId
+        var userId = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
+        //userId is encrypted
+        userId = UserInfo.DecryptSingle(userId);
+        //creates a filter to look for the matching username in the database
+        FilterDefinition<UserInfo> filter = Builders<UserInfo>.Filter.Eq("username", userId);
+        List<UserInfo> results = client.GetDatabase("SWMG").GetCollection<UserInfo>("UserInfo").Find(filter).ToList();
+        UserInfo user = new UserInfo();
+        foreach(UserInfo result in results){
+            user = result;
+        }
+        user = UserInfo.EncryptAlgo(user);
+        ViewBag.user = user;
+
+        FilterDefinition<UserFinances> filter2 = Builders<UserFinances>.Filter.Eq("username", userId);
+        List<UserFinances> results2 = client.GetDatabase("SWMG").GetCollection<UserFinances>("UserFinances").Find(filter2).ToList();
+        UserFinances uf = new UserFinances();
+        foreach(UserFinances result in results2){
+            uf = result;
+        }
+        ViewBag.uf = uf;
+
+        Console.WriteLine(newEmail);
+        Console.WriteLine(password);
+
+        return View("Account");
+    }
+
     public IActionResult Paper()
     {
         return View();
