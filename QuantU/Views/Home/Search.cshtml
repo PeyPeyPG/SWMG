@@ -38,6 +38,7 @@ async def main():
     # Forms the API URL with API Token (Key) and the symbol for the stock the user wants
     finn_url = finn_base_url + "symbol=" + symbol + "&token=" + finn_token
 
+    # Aquires the IPO date of the stock
     finn_response = await pyfetch(url=finn_url)
     finn_data = await finn_response.json()
     ipo_date = finn_data["ipo"]
@@ -89,7 +90,6 @@ async def main():
     ax.plot(df1['date'], df1['open'], color='tab:blue')
     ax.plot(df1['date'], ma100, color='tab:orange', label='100 Day Rolling Average')
     ax.plot(df1['date'], ma200, color='tab:green', label='200 Day Rolling Average')
-   
     ax.set(xlabel='Time', ylabel='Price($)',
            title='Opening Price Rolling Averages of @ViewBag.ticker')
     ax.legend()
