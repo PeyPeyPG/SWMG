@@ -104,7 +104,11 @@ public class HomeController : Controller
         return View();
     }
 
-
+public IActionResult PortfolioPage(string name){
+    Console.WriteLine(name);
+    ViewBag.PortfolioName = name;
+    return View();
+}
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
