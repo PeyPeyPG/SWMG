@@ -1,3 +1,5 @@
+@model QuantU.Models.Portfolio
+
 @{
     ViewData["Title"] = "Portfolio Page";
 }
@@ -38,4 +40,11 @@
 
     </div>
   </div>
+
+  <form asp-action="AddStock">
+      <input asp-for="name" type="hidden" value="@ViewBag.PortfolioName" class="form-control" >
+      <button type="submit">
+          Add Stocks
+      </button>
+  </form>
 </div>
