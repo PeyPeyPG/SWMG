@@ -14,3 +14,4 @@ QuantU/obj/Debug/net7.0/staticwebassets.development.json
 *.props
 QuantU/wwwroot/images/site.webmanifest
 *.cache
+QuantU/wwwroot/lib

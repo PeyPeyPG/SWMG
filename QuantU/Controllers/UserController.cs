@@ -69,10 +69,31 @@ namespace QuantU.Controllers
             }
             try
             {
+                
+                //Aidan code
                 TempData["msg"] = "Added!";
-                client.GetDatabase("SWMG").GetCollection<UserFinances>("UserFinances").InsertOne(user);
-                Console.WriteLine(user);
-                return RedirectToAction();        
+                //client.GetDatabase("SWMG").GetCollection<UserFinances>("UserFinances").InsertOne(user);
+                Console.WriteLine(user.username);
+                // return RedirectToAction();  
+
+                //Peyton code
+                var userId = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
+                Console.WriteLine(userId);
+                userId = UserInfo.DecryptSingle(userId);
+                user.username = userId;
+                Console.WriteLine(user.netSalary);
+                Console.WriteLine(user.username);
+                var filter = Builders<UserFinances>.Filter.Eq("username", user.username);
+                var result = client.GetDatabase("SWMG").GetCollection<UserFinances>("UserFinances").Find(filter).ToList();
+                if (result.Count > 0){
+                    foreach(UserFinances uf in result){
+                        user._id = uf._id;
+                        user.portfolioList = uf.portfolioList;
+                    }
+                }
+                filter = Builders<UserFinances>.Filter.Eq(u => u._id, user._id);
+                client.GetDatabase("SWMG").GetCollection<UserFinances>("UserFinances").ReplaceOne(filter, user);
+                return RedirectToAction();  
             }
             catch (Exception ex)
             {
@@ -142,6 +163,69 @@ namespace QuantU.Controllers
         
         return View();
     }
+
+    public IActionResult Account(){
+        //Gets username from cookies and saves it as userId
+        var userId = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
+        //userId is encrypted
+        userId = UserInfo.DecryptSingle(userId);
+        //creates a filter to look for the matching username in the database
+        FilterDefinition<UserInfo> filter = Builders<UserInfo>.Filter.Eq("username", userId);
+        List<UserInfo> results = client.GetDatabase("SWMG").GetCollection<UserInfo>("UserInfo").Find(filter).ToList();
+        UserInfo user = new UserInfo();
+        foreach(UserInfo result in results){
+            user = result;
+        }
+        user = UserInfo.EncryptAlgo(user);
+        ViewBag.user = user;
+
+        FilterDefinition<UserFinances> filter2 = Builders<UserFinances>.Filter.Eq("username", userId);
+        List<UserFinances> results2 = client.GetDatabase("SWMG").GetCollection<UserFinances>("UserFinances").Find(filter2).ToList();
+        UserFinances uf = new UserFinances();
+        foreach(UserFinances result in results2){
+            uf = result;
+        }
+        ViewBag.uf = uf;
+
+        return View();
+    }
+
+    public IActionResult changeEmail(string newEmail, string password){
+
+        try{
+            
+        }
+        catch (Exception ex){
+
+        }
+        //Gets username from cookies and saves it as userId
+        var userId = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
+        //userId is encrypted
+        userId = UserInfo.DecryptSingle(userId);
+        //creates a filter to look for the matching username in the database
+        FilterDefinition<UserInfo> filter = Builders<UserInfo>.Filter.Eq("username", userId);
+        List<UserInfo> results = client.GetDatabase("SWMG").GetCollection<UserInfo>("UserInfo").Find(filter).ToList();
+        UserInfo user = new UserInfo();
+        foreach(UserInfo result in results){
+            user = result;
+        }
+        user = UserInfo.EncryptAlgo(user);
+        ViewBag.user = user;
+
+        FilterDefinition<UserFinances> filter2 = Builders<UserFinances>.Filter.Eq("username", userId);
+        List<UserFinances> results2 = client.GetDatabase("SWMG").GetCollection<UserFinances>("UserFinances").Find(filter2).ToList();
+        UserFinances uf = new UserFinances();
+        foreach(UserFinances result in results2){
+            uf = result;
+        }
+        ViewBag.uf = uf;
+
+        Console.WriteLine(newEmail);
+        Console.WriteLine(password);
+
+        return View("Account");
+    }
+
     public IActionResult Paper()
     {
         return View();
