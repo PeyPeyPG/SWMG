@@ -389,3 +389,5 @@ C:\Users\peyto\Desktop\SWMG\QuantU\obj\Debug\net7.0\refint\QuantU.dll
 C:\Users\peyto\Desktop\SWMG\QuantU\obj\Debug\net7.0\QuantU.pdb
 C:\Users\peyto\Desktop\SWMG\QuantU\obj\Debug\net7.0\QuantU.genruntimeconfig.cache
 C:\Users\peyto\Desktop\SWMG\QuantU\obj\Debug\net7.0\ref\QuantU.dll
+C:\Users\aidan\OneDrive\Documents\GitHub\SWMG\QuantU\bin\Debug\net7.0\package-lock.json
+C:\Users\aidan\OneDrive\Documents\GitHub\SWMG\QuantU\bin\Debug\net7.0\package.json

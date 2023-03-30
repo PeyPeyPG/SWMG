@@ -53,7 +53,7 @@
             const eldestChildAgeInput = document.getElementById("eldestChildAgeInput");
 
             numberOfChildrenInput.addEventListener("blur", function () {
-                if (parseInt(this.value) > 1) {
+                if (parseInt(this.value) > 0) {
                     eldestChildAgeDiv.style.display = "block";
                 } else {
                     eldestChildAgeDiv.style.display = "none";

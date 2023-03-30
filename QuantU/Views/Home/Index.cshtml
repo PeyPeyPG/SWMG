@@ -103,11 +103,20 @@
       <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="">
         <div class="accordion-body">
           <ul>
-            <li>info</li>
-            <li>info</li>
-            <li>info</li>
-            <li>info</li>
-            <li>info</li>
+            Username: @ViewBag.user.username
+            @{
+              if(ViewBag.user.numberOfChildren > 0){
+                if(ViewBag.user.eldestChildAge < 18 && ViewBag.user.netSalary > 80000){
+                  <li>Since you have children below the age of 18, please consider setting up a college fund for you children.</li>
+                }
+              }
+              if(ViewBag.user.age > 60 && ViewBag.user.eldestChildAge > 25 && ViewBag.user.netSalary > 80000){
+                <li>We recommend that you invest in a consistent index fund like the S&P 500 or the NASDAQ</li>
+              }
+              if(ViewBag.user.age <35 && ViewBag.user.age > 17 && ViewBag.user.eldestChildAge == 0){
+                  <li>Based on your age, we recommend that you invest in a ROTH IRA account</li>
+                }
+            }
           </ul>
         </div>
       </div>
