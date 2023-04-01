@@ -348,6 +348,8 @@ input[type="text"]{
   padding: 40px 25px;
   margin-top: 6%;
   left: 100px; 
+  margin-top: 6%;
+  left: 100px; 
 }
 
 #my-image {
@@ -381,3 +383,5 @@ input[type="text"]{
     transform: translateY(0px);
   }
 }
+
+
