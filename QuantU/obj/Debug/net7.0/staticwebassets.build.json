@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "OyktshaEe7lOTGxR5LWgKox1Bp4Z7qtDFfjS8edJAHE=",
+  "Hash": "vDxVHhPGueyV69PfZjYKUIfnKeDhwmIyIYeMpZFl35I=",
   "Source": "QuantU",
   "BasePath": "_content/QuantU",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "/Users/antoinesfeir/Documents/GitHub/SWMG/QuantU/obj/Debug/net7.0/scopedcss/projectbundle/QuantU.bundle.scp.css"
+    },
+    {
+      "Identity": "/Users/antoinesfeir/Documents/GitHub/SWMG/QuantU/wwwroot/.DS_Store",
+      "SourceId": "QuantU",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/antoinesfeir/Documents/GitHub/SWMG/QuantU/wwwroot/",
+      "BasePath": "_content/QuantU",
+      "RelativePath": ".DS_Store",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/.DS_Store"
     },
     {
       "Identity": "/Users/antoinesfeir/Documents/GitHub/SWMG/QuantU/wwwroot/css/site.css",
@@ -1103,6 +1120,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/lib/jquery/LICENSE.txt"
+    },
+    {
+      "Identity": "/Users/antoinesfeir/Documents/GitHub/SWMG/QuantU/wwwroot/ml/.DS_Store",
+      "SourceId": "QuantU",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/antoinesfeir/Documents/GitHub/SWMG/QuantU/wwwroot/",
+      "BasePath": "_content/QuantU",
+      "RelativePath": "ml/.DS_Store",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/ml/.DS_Store"
+    },
+    {
+      "Identity": "/Users/antoinesfeir/Documents/GitHub/SWMG/QuantU/wwwroot/ml/StockMarket_Forcast copy.ipynb",
+      "SourceId": "QuantU",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/antoinesfeir/Documents/GitHub/SWMG/QuantU/wwwroot/",
+      "BasePath": "_content/QuantU",
+      "RelativePath": "ml/StockMarket_Forcast copy.ipynb",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/ml/StockMarket_Forcast copy.ipynb"
     }
   ]
 }

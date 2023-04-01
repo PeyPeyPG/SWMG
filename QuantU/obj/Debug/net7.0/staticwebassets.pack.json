@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets/QuantU.bundle.scp.css"
     },
     {
+      "Id": "/Users/antoinesfeir/Documents/GitHub/SWMG/QuantU/wwwroot/.DS_Store",
+      "PackagePath": "staticwebassets/.DS_Store"
+    },
+    {
       "Id": "/Users/antoinesfeir/Documents/GitHub/SWMG/QuantU/wwwroot/css/site.css",
       "PackagePath": "staticwebassets/css/site.css"
     },
@@ -251,6 +255,14 @@
     {
       "Id": "/Users/antoinesfeir/Documents/GitHub/SWMG/QuantU/wwwroot/lib/jquery/dist/jquery.min.map",
       "PackagePath": "staticwebassets/lib/jquery/dist/jquery.min.map"
+    },
+    {
+      "Id": "/Users/antoinesfeir/Documents/GitHub/SWMG/QuantU/wwwroot/ml/.DS_Store",
+      "PackagePath": "staticwebassets/ml/.DS_Store"
+    },
+    {
+      "Id": "/Users/antoinesfeir/Documents/GitHub/SWMG/QuantU/wwwroot/ml/StockMarket_Forcast copy.ipynb",
+      "PackagePath": "staticwebassets/ml/StockMarket_Forcast copy.ipynb"
     },
     {
       "Id": "obj/Debug/net7.0/staticwebassets/msbuild.QuantU.Microsoft.AspNetCore.StaticWebAssets.props",
