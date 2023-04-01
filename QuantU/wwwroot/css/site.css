@@ -346,24 +346,41 @@ input[type="text"]{
   backdrop-filter: blur(3px);
   border-radius: 20px;
   padding: 40px 25px;
-  margin-top: 100px;
-  left: 100px; /* set the left position to 20px */
-}
-
-.space {
-  z-index: -1;
-  transform: rotate(90deg);
-  left: 70%;
-  box-sizing: border-box;
-  background-image: url('~/images/space.gif');
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-
+  margin-top: 6%;
+  left: 100px; 
 }
 
 #my-image {
-  position: absolute;
-  top: 0;
-  left: 0;
+  animation: 1s my-image infinite;
+
 }
+.login {
+  width: 74%; 
+  height: 74%;
+  background-image: url("~/images/space.gif");
+  background-color: blue;
+}i
+.spaces {
+  width: 91%; 
+  height: 30rem; 
+  transform: rotate(-90deg);
+}
+@keyframes my-image {
+  0% {
+    transform: translateY(0px);
+  }
+  25% {
+    transform: translateY(-5px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  75% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+

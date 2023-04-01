@@ -751,19 +751,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\maste\\.nuget\\packages\\": {}
+    "C:\\Users\\baogo\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\maste\\OneDrive\\Documents\\GitHub\\SWMG\\QuantU\\QuantU.csproj",
+      "projectUniqueName": "C:\\Users\\baogo\\OneDrive\\Desktop\\GitHub\\SWMG\\QuantU\\QuantU.csproj",
       "projectName": "QuantU",
-      "projectPath": "C:\\Users\\maste\\OneDrive\\Documents\\GitHub\\SWMG\\QuantU\\QuantU.csproj",
-      "packagesPath": "C:\\Users\\maste\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\maste\\OneDrive\\Documents\\GitHub\\SWMG\\QuantU\\obj\\",
+      "projectPath": "C:\\Users\\baogo\\OneDrive\\Desktop\\GitHub\\SWMG\\QuantU\\QuantU.csproj",
+      "packagesPath": "C:\\Users\\baogo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\baogo\\OneDrive\\Desktop\\GitHub\\SWMG\\QuantU\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\maste\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\baogo\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
