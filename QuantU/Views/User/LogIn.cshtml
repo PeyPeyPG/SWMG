@@ -5,12 +5,11 @@
 }
 <body>
     
-<div id ="my-image"  style="position: absolute; width: 100%; height: 100%; padding-top: 20px; left: 65%; " >
-  <img src="~/images/login.jpg">
+<div id ="my-image"  style=" padding-top: 20px; left: 65%; position: absolute;" >
+  <img class = "login" src="~/images/login.jpg">
 </div>
-<div class = "space" style="position: absolute; margin-top: 100px; padding-top: 20px;">
-  
-  
+<div class = "space" style=" z-index: -1; left: 55%; position: absolute;">
+    <img class = "spaces" src="~/images/space.gif">
 </div>
 <div class= "home">
 <div class="contain">
@@ -19,41 +18,23 @@
         <h1>Log In</h1> 
     </div>
     <form asp-action="LogIn">
-        <div class="col-3">
-            <input asp-for="username" type="text" class="effect-5" placeholder="User Name" required>
-            <span class="focus-border" asp-validation-for="username"></span>
-        </div><br><br><br>
-        <div class="col-4">
-            <input type = "text" asp-for="password" class="effect-6" placeholder="Password" required>
-            <span class="focus-border" asp-validation-for="password"></span>
-        </div><br><br><br><br><br>
+        <div class="container text-center">
+        <div class="row">
+            <div class="col-3">
+                <input asp-for="username" type="text" class="effect-5" placeholder="User Name" required>
+                <span class="focus-border" asp-validation-for="username"></span>
+            </div><br><br><br>
+            <div class="col-4">
+                <input type = "password" asp-for="password" class="effect-6" placeholder="Password" required>
+                <span class="focus-border" asp-validation-for="password"></span>
+            </div>
+        </div><br>
     <button type="submit" class="submit">Submit</button>
     </form>
     </center>
     </div>
+    </div>
 </div>
-<script>
-const image = document.getElementById("my-image");
-let isMovingUp = true;
-let topPosition = parseInt(window.getComputedStyle(image).getPropertyValue("top"));
-
-setInterval(() => {
-  if (isMovingUp) {
-    topPosition -= 20;
-    if (topPosition <= 0) {
-      isMovingUp = false;
-    }
-  } else {
-    topPosition += 20;
-    if (topPosition >= window.innerHeight - image.height) {
-      isMovingUp = true;
-    }
-  }
-
-  image.style.top = topPosition + "px";
-}, 500);
 
 
-
-</script>
 </body>
