@@ -103,20 +103,29 @@
       <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="">
         <div class="accordion-body">
           <ul>
-            Username: @ViewBag.user.username
+            Hello @ViewBag.user.username
             @{
               if(ViewBag.user.numberOfChildren > 0){
-                if(ViewBag.user.eldestChildAge < 18 && ViewBag.user.netSalary > 80000){
+                if(ViewBag.user.eldestChildAge < 18 && ViewBag.numberOfChildren < 3 && ViewBag.user.netSalary > 90000){
+                  <li>Since you have children below the age of 18, please consider setting up a college fund for you children.</li>
+                }
+                else if(ViewBag.user.eldestChildAge < 18 && ViewBag.numberOfChildren < 5 && ViewBag.user.netSalary > 110000){
                   <li>Since you have children below the age of 18, please consider setting up a college fund for you children.</li>
                 }
               }
               if(ViewBag.user.age > 60 && ViewBag.user.eldestChildAge > 25 && ViewBag.user.netSalary > 80000){
                 <li>We recommend that you invest in a consistent index fund like the S&P 500 or the NASDAQ</li>
               }
-              if(ViewBag.user.age <35 && ViewBag.user.age > 17 && ViewBag.user.eldestChildAge == 0){
+              if(ViewBag.user.age <35 && ViewBag.user.age > 17 && ViewBag.user.numberOfChildren == 0){
                   <li>Based on your age, we recommend that you invest in a ROTH IRA account</li>
                 }
-            }
+              if(ViewBag.user.age <26 && ViewBag.user.age > 20 && ViewBag.user.numberOfChildren == 0){
+                  <li>Based on your age, we recommend that you invest in a 401k account</li>
+                }            
+              if(ViewBag.user.age<30 && ViewBag.user.numberOfChildren == 0 && ViewBag.user.netSalary<60000){
+                <li>Based on your age and income, we recommend that you focus on your well being and personal health. You may not be ready to invest just yet.</li>
+              }
+              }
           </ul>
         </div>
       </div>
