@@ -219,7 +219,7 @@ body {
 
 .sideText {
   border: none;
-  top: 21%;
+  top: 50%;
   left: 6%;
   font-style: normal;
   font-weight: 400;
@@ -383,5 +383,8 @@ input[type="text"]{
     transform: translateY(0px);
   }
 }
-
-
+.im {
+  z-index: -1;
+  left: -21%;
+  padding: 20px;
+}
