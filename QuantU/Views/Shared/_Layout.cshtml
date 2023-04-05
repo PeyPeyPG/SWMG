@@ -25,10 +25,6 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-light fs-5" asp-area="" asp-controller="Home"
-                                asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light fs-5" asp-area="" asp-controller="Home"
                                 asp-action="PaperTrading">Paper Trading</a>
                         </li>
                         <li>
@@ -39,12 +35,13 @@
                     <div class="btn-group ms-auto">
                         <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown"
                             aria-expanded="false" style="background-color: #C9AAFF;">
-                            Sign in
+                            Account
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Sign in</a></li>
-                            <li><a class="dropdown-item" href="#">Sign out</a></li>
-                            <li><a class="dropdown-item" href="#">Sign up</a></li>
+                            <li><a class="dropdown-item" asp-controller="User"
+                                asp-action="Account">Account info</a></li>
+                            <li><a class="dropdown-item" asp-controller="User"
+                                asp-action="LogIn">Sign out</a></li>
                         </ul>
                     </div>
                 </div>
@@ -59,7 +56,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2023 - QuantU - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2023 - <a href="https://www.youtube.com/shorts/gBqZ4XSG9Tw">SWMG</a> - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a> - We love casting spells
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
