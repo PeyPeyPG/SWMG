@@ -56,8 +56,8 @@
 
 <div class="container">
 
-  <div class="text-center">
-      <h1 class="display-4">WelcomE</h1>
+  <div style="text-align: center;">
+    <h1>Welcome to QuantU</h1>
   </div>
 
 
@@ -66,7 +66,7 @@
 
     @* Search bar seen on screen 
       NOTE: see how the for and name attribute match the Search parameter name *@
-      <label for="title" class="form-label">Datalist example</label>
+      <label for="title" class="form-label">Stock search</label>
         <input name="title" class="form-control" type="text" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
         <datalist class="searchbar" id="datalistOptions">
       @using MongoDB.Driver
@@ -95,16 +95,27 @@
 
   <div class="accordion" id="accordionExample">
     <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+        What is QuantU?
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+      <div class="accordion-body">
+        <strong>We make investing look easy.</strong> Getting into investing can be an intimidating task. With all the graphs and numbers on the screen, it can be confusing for someone with no trading experience to get started. QuantU makes that transition easier by giving you an area to simulate trading before diving head first into the hobby. We make it easy to create a portfolio and add stocks to them while seeing how your virtual money grows. <strong>This is not financial advice.</strong>
+      </div>
+    </div>
+  </div>
+    <div class="accordion-item">
       <h2 class="accordion-header text-center" id="headingOne">
         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Investment Information Collapsable
+          Investment Suggestions
         </button>
       </h2>
       <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="">
         <div class="accordion-body">
-          <ul>
-            Hello @ViewBag.user.username
-            @{
+            Hello @ViewBag.user.username!
+             @{
               if(ViewBag.user.numberOfChildren > 0){
                 if(ViewBag.user.eldestChildAge < 18 && ViewBag.numberOfChildren < 3 && ViewBag.user.netSalary > 90000){
                   <li>Since you have children below the age of 18, please consider setting up a college fund for you children.</li>
@@ -126,7 +137,6 @@
                 <li>Based on your age and income, we recommend that you focus on your well being and personal health. You may not be ready to invest just yet.</li>
               }
               }
-          </ul>
         </div>
       </div>
     </div>
@@ -148,37 +158,34 @@
 
 .card {
   width: calc(33.33% - 10px);
-  /* subtract 10px for margin between cards */
   box-sizing: border-box;
   margin-right: 10px;
-  /* apply margin between cards */
 }
 .card:last-child {
   margin-right: 0;
-  /* remove margin on last card */
 }
   </style>
 
   <div class="card-container">
   <div class="card">
-    <!-- card content -->
     <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Stock graph</text></svg>
       <div class="card-body">
-        <p class="card-text">Stock name/information</p>
+        <h5 class="card-title">Stock name</h5>
+        <a href="#" class="btn btn-primary" style="background-color: #C9AAFF;">Trade now</a>
       </div>
   </div>
   <div class="card">
-    <!-- card content -->
     <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Stock graph</text></svg>
       <div class="card-body">
-        <p class="card-text">Stock name/information</p>
+        <h5 class="card-title">Stock name</h5>
+        <a href="#" class="btn btn-primary" style="background-color: #C9AAFF;">Trade now</a>
       </div>
   </div>
   <div class="card">
-    <!-- card content -->
     <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Stock graph</text></svg>
       <div class="card-body">
-        <p class="card-text">Stock name/information</p>
+        <h5 class="card-title">Stock name</h5>
+        <a href="#" class="btn btn-primary" style="background-color: #C9AAFF;">Trade now</a>
       </div>
   </div>
 </div>
