@@ -117,7 +117,7 @@
             Hello @ViewBag.user.username!
              @{
               if(ViewBag.user.numberOfChildren > 0){
-                if(ViewBag.user.eldestChildAge < 18 && ViewBag.numberOfChildren < 3 && ViewBag.user.netSalary > 90000){
+                if(ViewBag.user.eldestChildAge < 18 && ViewBag.user.numberOfChildren <= 3 && ViewBag.user.netSalary > 90000){
                   <li>Since you have children below the age of 18, please consider setting up a college fund for you children.</li>
                 }
                 else if(ViewBag.user.eldestChildAge < 18 && ViewBag.numberOfChildren < 5 && ViewBag.user.netSalary > 110000){

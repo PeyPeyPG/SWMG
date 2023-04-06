@@ -57,6 +57,7 @@ public class HomeController : Controller
             user = result;
         }
         ViewBag.user = user;
+        Console.WriteLine(ViewBag.user.eldestChildAge);
         return View();
         }
         else{
