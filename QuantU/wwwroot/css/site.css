@@ -219,7 +219,7 @@ body {
 
 .sideText {
   border: none;
-  top: 21%;
+  top: 50%;
   left: 6%;
   font-style: normal;
   font-weight: 400;
@@ -249,4 +249,142 @@ body {
 }
 .body {
   background-color:#444;
+}
+
+
+
+input[type="text"]{
+  font: 15px/24px 'Muli', sans-serif; 
+  color: #333; 
+  width: 100%; 
+  box-sizing: border-box; 
+  letter-spacing: 1px;
+}
+
+:focus{outline: none;}
+
+.col-3{
+  float: left; 
+  width: 40%; 
+  margin: 40px 3%; 
+  position: relative;
+}  
+.col-4{
+  float: right; 
+  width: 40%; 
+  margin: 40px 3%; 
+  position: relative;
+
+}  
+
+.col-4::placeholder {
+  text-align: right;
+}
+
+input[type="text"]{
+  font: 15px/24px "Lato", Arial, sans-serif; 
+  color: #333; 
+  width: 100%; 
+  box-sizing: border-box; 
+  letter-spacing: 1px;
+}
+
+.effect-5{
+  border: 0; 
+  padding: 5px 0 7px;
+  border: 1px solid transparent; 
+  border-bottom-color: #ccc; 
+  transition: 0.4s;
+  }
+  
+  .effect-6{
+    border: 0; 
+    padding: 5px 0 7px;
+    border: 1px solid transparent; 
+    border-bottom-color: #ccc; 
+    transition: 0.4s;
+    float:right;
+    }
+    .effect-6:focus{
+      padding: 5px 14px 7px; 
+      transition: 0.4s;
+      float: right;
+      text-align: right;
+    }
+
+    .effect-6::placeholder{
+    text-align: right;
+    }
+
+
+.effect-5:focus{
+  padding: 5px 14px 7px; 
+  transition: 0.4s;
+}
+
+.effect-5 ~ .focus-border{
+  position: absolute; 
+  height: 36px; 
+  bottom: 0; 
+  left: 0; 
+  width: 0; 
+  transition: 0.4s;
+}
+.effect-5:focus ~ .focus-border{
+  width: 100%; 
+  transition: 0.4s; 
+  border: 2px solid #c9aaff;
+}
+.effect-6 ~ .focus-border{position: absolute; height: 36px; bottom: 0; right: 0; width: 0; transition: 0.4s;}
+.effect-6:focus ~ .focus-border{width: 100%; transition: 0.4s; border: 2px solid #c9aaff;}
+
+.contain{
+  position: relative; /* add position relative to the parent element */
+  width: 500px;
+  height: 400px;
+  box-shadow: 5px 10px 20px rgba(0,0,0,0.4);
+  backdrop-filter: blur(3px);
+  border-radius: 20px;
+  padding: 40px 25px;
+  margin-top: 6%;
+  left: 100px; 
+  margin-top: 6%;
+  left: 100px; 
+}
+
+#my-image {
+  animation: 1s my-image infinite;
+
+}
+.login {
+  width: 74%; 
+  height: 74%;
+ 
+}
+.spaces {
+  width: 91%; 
+  height: 30rem; 
+  transform: rotate(-90deg);
+}
+@keyframes my-image {
+  0% {
+    transform: translateY(0px);
+  }
+  25% {
+    transform: translateY(-5px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  75% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+.im {
+  z-index: -1;
+  left: -21%;
+  padding: 20px;
 }
