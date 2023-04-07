@@ -121,7 +121,16 @@ public class HomeController : Controller
         return View();
     }
 
+    public IActionResult PortfolioPage(string name){
+        Console.WriteLine(name);
+        ViewBag.PortfolioName = name;
+        return View();
+    }
 
+    public IActionResult AddStock(string name){
+        Console.WriteLine(name);
+        return View("Search");
+    }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
