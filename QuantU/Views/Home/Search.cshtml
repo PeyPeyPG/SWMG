@@ -2,102 +2,6 @@
     ViewData["Title"] = "Stock";
 }
 
-<py-config>
-packages = [
-"matplotlib", "numpy", "pandas",
-"asyncio", "pandas_datareader"
-]
-plugins = [
-"https://pyscript.net/latest/plugins/python/py_tutor.py"
-]
-</py-config>
-
-<div id="plot"></div>
-
-<py-script output="plot">
-from pyodide.http import pyfetch
-import json
-import asyncio
-import re
-import warnings
-from datetime import date
-from datetime import timedelta
-import pandas as pd
-import matplotlib.pyplot as plt
-
-async def main():
-    # Pull stock market price data from 12Data API
-    token = "605c88e8f8bb46a7b992a85dba7fd641"
-    base_url = "https://api.twelvedata.com/time_series?"
-    symbol = '@ViewBag.ticker'
-
-    # Pull stock market data from finnhub
-    finn_token = "cfis95hr01qjvrn525t0cfis95hr01qjvrn525tg"
-    finn_base_url = "https://finnhub.io/api/v1/stock/profile2?"
-
-    # Forms the API URL with API Token (Key) and the symbol for the stock the user wants
-    finn_url = finn_base_url + "symbol=" + symbol + "&token=" + finn_token
-
-    finn_response = await pyfetch(url=finn_url)
-    finn_data = await finn_response.json()
-    ipo_date = finn_data["ipo"]
-  
-    # Set the start date to the IPO date
-    startDate = ipo_date
-
-    # Get today's date
-    today = date.today()
-    today_str = today.strftime('%Y-%m-%d')
-
-    # Construct API URL
-    api_url = f"{base_url}start_date={startDate}&end_date={today_str}&symbol={symbol.lower()}&interval=1day&apikey={token}"
-
-    # Fetch the from 12Data API
-    response = await pyfetch(url=api_url)
-    data = await response.json()
-
-    # Create an empty DataFrame
-    df = pd.DataFrame(columns=['date', 'open', 'high', 'low', 'close', 'volume'])
-
-    # Suppress the FutureWarning
-    warnings.simplefilter(action='ignore', category=FutureWarning)
-
-    # Loop through the data and append each data point to the DataFrame
-    for values in data['values']:
-        df = df.append({'date': values['datetime'], 'open': values['open'], 'high': values['high'], 'low': values['low'], 'close': values['close'], 'volume': values['volume']}, ignore_index=True)
-
-    df = df.reset_index()
-
-    # Reverse the order of the DataFrame
-    df1 = df.iloc[::-1]
-
-    # Convert the date column to datetime
-    df1['date'] = pd.to_datetime(df1['date'])
-    # Convert the close, open, high, and low columns to numeric
-    df1['close'] = pd.to_numeric(df1['close'])
-    df1['open'] = pd.to_numeric(df1['open'])
-    df1['high'] = pd.to_numeric(df1['high'])
-    df1['low'] = pd.to_numeric(df1['low'])
-
-    # Calculate the 100 and 200 day rolling averages
-    # of the open prices
-    ma100 = df1['open'].rolling(window=100).mean()
-    ma200 = df1['open'].rolling(window=200).mean()
-
-    # Plots opening price and rolling averages
-    fig, ax = plt.subplots(figsize=(12, 6))
-    ax.plot(df1['date'], df1['open'], color='tab:blue')
-    ax.plot(df1['date'], ma100, color='tab:orange', label='100 Day Rolling Average')
-    ax.plot(df1['date'], ma200, color='tab:green', label='200 Day Rolling Average')
-   
-    ax.set(xlabel='Time', ylabel='Price($)',
-           title='Opening Price Rolling Averages of @ViewBag.ticker')
-    ax.legend()
-    ax.grid()
-    pyscript.write("plot", fig)
-asyncio.ensure_future(main()) 
-</py-script>
-
 <script>
     let token = "cfis95hr01qjvrn525t0cfis95hr01qjvrn525tg";
     let base_url = "https://finnhub.io/api/v1/stock/profile2?";
@@ -108,17 +12,252 @@ asyncio.ensure_future(main())
 
     //fetches url and gets JSON data attached to it
     fetch(url)
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-        console.log(data.name);
-        console.log(data.ipo);
-        begin = data.ipo;
-    })
-    .catch(error => console.log(error));
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            console.log(data.name);
+
+        })
+        .catch(error => console.log(error));
 </script>
+@*Note: Turned White since if I deleted it, the formating was off*@
+<p style="color: white;"><br>Press Control+Shift+I and travel to console to look at the values of the stock
+</p>
 
-<p><br>Press Control+Shift+I and travel to console to look at the values of
-    the stock</p>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
 
+    <div class="everything">
+        <div class="container">
+            <div class="row">
+                <div class="ignore">
+                    @*Stock Information Card*@
+                    <div class="container">
+                        <div class="container" style="margin-top: 1.25rem !important;">
+                            <section class="mx-auto my-5" @*Stock Infomation style*@
+                                style="max-width: 50rem; margin-left: 0rem !important; border-radius: 1.25rem !important;">
+                                <div class="card chart-card">
+                                    <div class="card-body pb-0">
+                                        <h5 class="card-title font-weight-bold"></h5>
+                                        @*Stock Name and Date*@
+                                        <p class="card-text mb-4">NASDAQ: SWMG • March 22, 11:52AM</p>
+                                        <div class="d-flex justify-content-between">
+                                            @*Stock Price and Daily Informaiton*@
+                                            <p class="display-4 align-self-end"><span></span>159.75 USD <span
+                                                    style="color:green; font-size: smaller;">+0.45
+                                                    (.28%)</span></p>
+                                        </div>
+                                        @*Company Logo*@
+                                        <div class="logo-box"></div>
+                                    </div>
+                                </div>
+                                @*Stock Graph*@
+                                <div style="height: 18.75rem; ; background-color: gray;"></div>
+                            </section>
+                            <style>
+                                .logo-box {
+                                    width: 8rem;
+                                    height: 8rem;
+                                    background-color: gray;
+                                    position: absolute;
+                                    top: 20%;
+                                    left: 75%;
+                                    border-radius: 0.625rem;
+                                }
 
+                                .card-title {
+                                    font-size: xx-large;
+                                }
+
+                                div.container {
+                                    margin-left: 0 !important;
+                                }
+                            </style>
+                            @*Animation Script*@
+                            <script>
+                                const titleElement = document.querySelector('.card-title');
+                                const titleText = 'SWMG Corporation';
+                                let index = 0;
+                                let timeout;
+                                function type() {
+                                    titleElement.textContent = titleText.slice(0, index);
+                                    index++;
+
+                                    if (index > titleText.length) {
+                                        clearTimeout(timeout);
+                                    } else {
+                                        timeout = setTimeout(type, 100);
+                                    }
+                                }
+
+                                timeout = setTimeout(type, 100);
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                @*Company Name*@
+                <div class="company-name"> SWMG Corporation
+                    <style>
+                        .company-name {
+                            color: black;
+                            font-size: 1.563rem;
+                            position: absolute;
+                            width: 34.375rem;
+                            top: 24%;
+                            left: 60%;
+                            border: 0.063rem solid #ccc;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
+                    </style>
+                </div>
+                @*Company Information*@
+                <div class="company-info">
+                    <style>
+                        .company-info {
+                            color: black;
+                            font-size: 1.563rem;
+                            position: absolute;
+                            width: 34.375rem;
+                            height: 28.5rem;
+                            top: 29.2%;
+                            left: 60%;
+                            background-color: gray;
+                        }
+                    </style>
+                </div>
+                @*Trade Button*@
+                <button class="trade-btn" id="trade-now-btn">Trade Now
+                    <style>
+                        .trade-btn {
+                            color: red;
+                            font-size: small;
+                            position: absolute;
+                            left: 25%;
+                            top: 30%;
+                            align-items: center;
+                            justify-content: center;
+                            display: inline-block;
+                            width: 11.25rem;
+                            height: 3.125rem;
+                            background: linear-gradient(to left, #c9aaff, #c9aaff);
+                            /*box-shadow: 0 10px 25px #c9aaff;*/
+                            border-radius: 3.125rem;
+                            border: none;
+                            font-size: larger;
+                            font-weight: 500;
+                            color: #fff;
+                            text-transform: uppercase;
+                            letter-spacing: 0.063rem;
+                            animation: pulsate 1.2s ease-in-out infinite both;
+                        }
+
+                        .trade-btn:hover {
+                            animation-play-state: paused;
+                            transform: scale(1.05);
+                        }
+                    </style>
+                    @*Script for Blinking Effect -> Not using since its distracting*@
+                    <script>
+                        @* var tradeBtn = document.getElementById('trade-now-btn');
+                            var scale = 1;
+                            var direction = 1;
+                            var intervalId = setInterval(function() {
+                            scale += direction * 0.005;
+                            if (scale > 1.1) {
+                            direction = -1;
+                            } else if (scale < 1) {
+                            direction = 1;
+                            }
+                            tradeBtn.style.transform = 'scale(' + scale + ')';
+                            }, 50);
+
+                            tradeBtn.addEventListener('mouseenter', function () {
+                            clearInterval(intervalId);
+                            this.style.transform = 'scale(1.05)';
+                            });
+
+                            tradeBtn.addEventListener('mouseleave', function () {
+                            intervalId = setInterval(function() {
+                            scale += direction * 0.005;
+                            if (scale > 1.1) {
+                            direction = -1;
+                            } else if (scale < 1) {
+                            direction = 1;
+                            }
+                            tradeBtn.style.transform = 'scale(' + scale + ')';
+                            }, 50);
+                            }); *@
+                    </script>
+                </button>
+                @*Search Bar Place Holder*@
+                <div>
+                    <input name="title" class="form-control" type="text" list="datalistOptions" id="exampleDataList">
+                    <datalist class="searchbar" id="datalistOptions">
+                    </datalist>
+                    <style>
+                        .form-control {
+                            border-radius: 1.25rem;
+                            border-color: black;
+                            position: absolute;
+                            top: 16%;
+                            width: 50rem;
+                            left: 1.5%;
+                        }
+                    </style>
+                    <script>
+         var wordList = ["This Search Bar Doesnt Work :("];
+                        var randomIndex = Math.floor(Math.random() * wordList.length);
+                        var randomWord = wordList[randomIndex];
+                        var inputElem = document.querySelector('input.form-control');
+                        var i = 0;
+                        var intervalId = setInterval(function () {
+                            if (i < randomWord.length) {
+                                inputElem.placeholder += randomWord.charAt(i);
+                                i++;
+                            } else {
+                                clearInterval(intervalId);
+                            }
+                        }, 100);
+                    </script>
+                </div>
+                @*Try Another Stock (IDEA) -> Clicks and goes to a random stock page*@
+                <button class="try-btn" id="trade-now-btn"> Try This Stock: APPL INC
+                    <style>
+                        .try-btn {
+                            font-size: small;
+                            position: absolute;
+                            left: 60%;
+                            top: 15%;
+                            align-items: center;
+                            justify-content: center;
+                            display: inline-block;
+                            width: 34.375rem;
+                            height: 3.125rem;
+                            background: linear-gradient(to left, #62c08b, #62c08b);
+                            /*box-shadow: 0 10px 25px #c9aaff;*/
+                            border-radius: 3.125rem;
+                            border: none;
+                            font-size: larger;
+                            font-weight: 500;
+                            color: #fff;
+                            text-transform: uppercase;
+                            letter-spacing: 0.063rem;
+                            animation: pulsate 1.2s ease-in-out infinite both;
+                        }
+
+                        .try-btn:hover {
+                            animation-play-state: paused;
+                            transform: scale(1.05);
+                        }
+                    </style>
+                </button>
+            </div>
+        </div>
+    </div>
