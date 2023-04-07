@@ -389,21 +389,21 @@ input[type="text"]{
   padding: 20px;
 }
 
-.accordion {
+.accordion2 {
   width: 100%;
   max-width: 1550px;
   height: 250px;
   overflow: hidden;
   margin: 50px auto;
 }
-.accordion ul {
+.accordion2 ul {
   width: 100%;
   display: table;
   table-layout: fixed;
   margin: 0;
   padding: 0;
 }
-.accordion ul li {
+.accordion2 ul li {
   display: table-cell;
   vertical-align: bottom;
   position: relative;
@@ -414,21 +414,21 @@ input[type="text"]{
   background-size: cover;
   transition: all 500ms ease;
 }
-.accordion ul li:nth-child(1) {
+.accordion2 ul li:nth-child(1) {
   background-image: url("https://images.unsplash.com/photo-1560221328-12fe60f83ab8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1474&q=80");
 }
-.accordion ul li:nth-child(2) {
+.accordion2 ul li:nth-child(2) {
   background-image: url("https://images.unsplash.com/photo-1640340434855-6084b1f4901c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80");
 }
-.accordion ul li:nth-child(3) {
+.accordion2 ul li:nth-child(3) {
   background-image: url("https://images.unsplash.com/photo-1535320903710-d993d3d77d29?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80");
 }
-.accordion ul li div {
+.accordion2 ul li div {
   display: block;
   overflow: hidden;
   width: 100%;
 }
-.accordion ul li div a {
+.accordion2 ul li div a {
   display: block;
   height: 250px;
   width: 100%;
@@ -441,7 +441,7 @@ input[type="text"]{
   font-family: Open Sans, sans-serif;
   transition: all 200ms ease;
 }
-.accordion ul li div a * {
+.accordion2 ul li div a * {
   opacity: 1;
   margin: 0;
   width: 100%;
@@ -455,27 +455,27 @@ input[type="text"]{
   vertical-align: top;
   color: #fff;
 }
-.accordion ul li div a h2 {
+.accordion2 ul li div a h2 {
   font-family: Montserrat, sans-serif;
   text-overflow: clip;
   font-size: 24px;
   text-transform: uppercase;
   margin-bottom: 2px;
 }
-.accordion ul li div a p {
+.accordion2 ul li div a p {
   font-size: 13.5px;
   margin-top: 10px;
 }
-.accordion ul:hover li {
+.accordion2 ul:hover li {
   width: 10%;
 }
-.accordion ul:hover li:hover {
+.accordion2 ul:hover li:hover {
   width: 80%;
 }
-.accordion ul:hover li:hover a {
+.accordion2 ul:hover li:hover a {
   background: rgba(0, 0, 0, 0.4);
 }
-.accordion ul:hover li:hover a * {
+.accordion2 ul:hover li:hover a * {
   opacity: 1;
   transform: translateX(0);
 }
@@ -484,13 +484,13 @@ input[type="text"]{
   body {
     margin: 0;
   }
-  .accordion {
+  .accordion2 {
     height: auto;
   }
-  .accordion ul li,
-  .accordion ul li:hover,
-  .accordion ul:hover li,
-  .accordion ul:hover li:hover {
+  .accordion2 ul li,
+  .accordion2 ul li:hover,
+  .accordion2 ul:hover li,
+  .accordion2 ul:hover li:hover {
     position: relative;
     display: table;
     table-layout: fixed;
