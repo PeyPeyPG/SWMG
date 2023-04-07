@@ -4,10 +4,11 @@
     ViewData["Title"] = "Log in";
 }
 <body>
-    
+@*Wizard*@
 <div id ="my-image"  style=" padding-top: 20px; left: 65%; position: absolute;" >
   <img class = "login" src="~/images/login.jpg">
 </div>
+@*Space Gif *@
 <div class = "space" style=" z-index: -1; left: 55%; position: absolute;">
     <img class = "spaces" src="~/images/space.gif">
 </div>
@@ -20,10 +21,12 @@
     <form asp-action="LogIn">
         <div class="container text-center">
         <div class="row">
+            @*Username for login*@
             <div class="col-3">
                 <input asp-for="username" type="text" class="effect-5" placeholder="User Name" required>
                 <span class="focus-border" asp-validation-for="username"></span>
             </div><br><br><br>
+            @*Password for login*@
             <div class="col-4">
                 <input type = "password" asp-for="password" class="effect-6" placeholder="Password" required>
                 <span class="focus-border" asp-validation-for="password"></span>
