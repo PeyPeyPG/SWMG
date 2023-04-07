@@ -440,3 +440,5 @@ C:\Users\baogo\OneDrive\Desktop\GitHub\SWMG\QuantU\obj\Debug\net7.0\refint\Quant
 C:\Users\baogo\OneDrive\Desktop\GitHub\SWMG\QuantU\obj\Debug\net7.0\QuantU.pdb
 C:\Users\baogo\OneDrive\Desktop\GitHub\SWMG\QuantU\obj\Debug\net7.0\QuantU.genruntimeconfig.cache
 C:\Users\baogo\OneDrive\Desktop\GitHub\SWMG\QuantU\obj\Debug\net7.0\ref\QuantU.dll
+C:\Users\alexm\Documents\GitHub\SWMG\QuantU\bin\Debug\net7.0\package-lock.json
+C:\Users\alexm\Documents\GitHub\SWMG\QuantU\bin\Debug\net7.0\package.json
