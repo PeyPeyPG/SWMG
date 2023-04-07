@@ -18685,6 +18685,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\peyto_1v1b50c\\Desktop\\SWMG\\QuantU\\Views\\Home\\PortfolioPage.cshtml",
+      "TargetPath": "Views\\Home\\PortfolioPage.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\peyto_1v1b50c\\Desktop\\SWMG\\QuantU\\Views\\User\\LogIn 2.cshtml",
       "TargetPath": "Views\\User\\LogIn 2.cshtml",
       "FileKind": "mvc"
