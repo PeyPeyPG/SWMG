@@ -5,10 +5,9 @@
 }
 <div class="container">
     <div class="text-center">
-        <h1 class="display-4">User Quiz</h1>
+        <h1 class="display-4"><strong>User Quiz</strong></h1>
     </div>
     <form asp-action="UserQuiz">
-        <h2>User Quiz</h2>
         @*Username field to keep track of same user information*@
         @* <div class="mb-3">
             <label asp-for="username" class="form-label">User Name</label>
@@ -16,8 +15,8 @@
             <span class="text-danger" asp-validation-for="username"></span>
         </div> *@
         <br>
-
         @*dropdown list for martital status*@
+        
         <select class="form-select" aria-label="Choose your marital status" asp-for="maritalStatus">
             <option selected>Choose your marital status</option>
             <option value="Single">Single</option>
@@ -26,6 +25,9 @@
             <option value="Separated">Separated</option>
             <option value="Divorced">Divorced</option>
         </select>
+        
+    
+
         <br>
         @*Age slider for age field*@
         <label for="customRange3" class="form-label">Age: <span id="rangeValue">50</span></label>
@@ -117,6 +119,6 @@
             </div>
         }
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="submit">Submit</button>
     </form>
 </div>
