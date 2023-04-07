@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "bLnAT621rk/REIVsx7QGK5AHN7ppGGvgDwpa1xFcUyQ=",
+  "Hash": "w5f14j3+Y4sgSt3XGMwikjP9Gqtk5U3voekBnQgvC4M=",
   "Source": "QuantU",
   "BasePath": "_content/QuantU",
   "Mode": "Default",
@@ -321,6 +321,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\swmg.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\peyto_1v1b50c\\Desktop\\SWMG\\QuantU\\wwwroot\\js\\graph.js",
+      "SourceId": "QuantU",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\peyto_1v1b50c\\Desktop\\SWMG\\QuantU\\wwwroot\\",
+      "BasePath": "_content/QuantU",
+      "RelativePath": "js/graph.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\graph.js"
     },
     {
       "Identity": "C:\\Users\\peyto_1v1b50c\\Desktop\\SWMG\\QuantU\\wwwroot\\js\\site.js",

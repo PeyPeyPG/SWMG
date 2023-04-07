@@ -69,6 +69,10 @@
       "PackagePath": "staticwebassets\\images\\swmg.jpg"
     },
     {
+      "Id": "C:\\Users\\peyto_1v1b50c\\Desktop\\SWMG\\QuantU\\wwwroot\\js\\graph.js",
+      "PackagePath": "staticwebassets\\js\\graph.js"
+    },
+    {
       "Id": "C:\\Users\\peyto_1v1b50c\\Desktop\\SWMG\\QuantU\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
