@@ -57,7 +57,7 @@
 <div class="container">
 
   <div style="text-align: center;">
-    <h1>Welcome to QuantU</h1>
+    <h1>Welcome to QuantU @ViewBag.user.username!</h1>
   </div>
 
 
@@ -90,57 +90,55 @@
       }
         </datalist>
       </form>
-<br>
-  <br>
 
-  <div class="accordion" id="accordionExample">
-    <div class="accordion-item">
-    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-        What is QuantU?
-      </button>
-    </h2>
-    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
-      <div class="accordion-body">
-        <strong>We make investing look easy.</strong> Getting into investing can be an intimidating task. With all the graphs and numbers on the screen, it can be confusing for someone with no trading experience to get started. QuantU makes that transition easier by giving you an area to simulate trading before diving head first into the hobby. We make it easy to create a portfolio and add stocks to them while seeing how your virtual money grows. <strong>This is not financial advice.</strong>
-      </div>
-    </div>
-  </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header text-center" id="headingOne">
-        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Investment Suggestions
-        </button>
-      </h2>
-      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="">
-        <div class="accordion-body">
-            Hello @ViewBag.user.username!
-             @{
-              if(ViewBag.user.numberOfChildren > 0){
-                if(ViewBag.user.eldestChildAge < 18 && ViewBag.user.numberOfChildren <= 3 && ViewBag.user.netSalary > 90000){
-                  <li>Since you have children below the age of 18, please consider setting up a college fund for you children.</li>
-                }
-                else if(ViewBag.user.eldestChildAge < 18 && ViewBag.numberOfChildren < 5 && ViewBag.user.netSalary > 110000){
-                  <li>Since you have children below the age of 18, please consider setting up a college fund for you children.</li>
-                }
-              }
-              if(ViewBag.user.age > 60 && ViewBag.user.eldestChildAge > 25 && ViewBag.user.netSalary > 80000){
-                <li>We recommend that you invest in a consistent index fund like the S&P 500 or the NASDAQ</li>
-              }
-              if(ViewBag.user.age <35 && ViewBag.user.age > 17 && ViewBag.user.numberOfChildren == 0){
-                  <li>Based on your age, we recommend that you invest in a ROTH IRA account</li>
-                }
-              if(ViewBag.user.age <26 && ViewBag.user.age > 20 && ViewBag.user.numberOfChildren == 0){
-                  <li>Based on your age, we recommend that you invest in a 401k account</li>
-                }            
-              if(ViewBag.user.age<30 && ViewBag.user.numberOfChildren == 0 && ViewBag.user.netSalary<60000){
-                <li>Based on your age and income, we recommend that you focus on your well being and personal health. You may not be ready to invest just yet.</li>
-              }
-              }
-        </div>
-      </div>
-    </div>
-  </div>
+  <br>
+  
+ @* Accordion for home page *@
+ <div class="accordion">
+  <ul>
+    <li>
+      <div> <a>
+        <h2>What is QuantU?</h2>
+        <p><strong>We make investing look easy.</strong> Getting into investing can be confusing for beginners to get started. 
+           QuantU makes that transition easier by giving you an area to simulate trading before diving head first into the hobby with. <strong>This is not financial advice.</strong></p>
+        </a> </div>
+    </li>
+    <li>
+      <div> <a>
+        <h2>How to begin</h2>
+        <p>Create a new portfolio by going to paper trading in the navigation bar and search for stocks to add.</p>
+        </a> </div>
+    </li>
+    <li>
+      <div> <a>
+        <h2>Investment Suggestions</h2>
+        @{
+      if(ViewBag.user.numberOfChildren > 0){
+        if(ViewBag.user.eldestChildAge < 18 && ViewBag.user.numberOfChildren <= 3 && ViewBag.user.netSalary > 90000){
+          <p>Since you have children below the age of 18, please consider setting up a college fund for your children.</p>
+        }
+        else if(ViewBag.user.eldestChildAge < 18 && ViewBag.user.numberOfChildren < 5 && ViewBag.user.netSalary > 110000){
+          <p>Since you have children below the age of 18, please consider setting up a college fund for your children.</p>
+        }
+      }
+      if(ViewBag.user.age > 60 && ViewBag.user.eldestChildAge > 25 && ViewBag.user.netSalary > 80000){
+        <p>We recommend that you invest in a consistent index fund like the S&P 500 or the NASDAQ</p>
+      }
+      if(ViewBag.user.age <35 && ViewBag.user.age > 17 && ViewBag.user.numberOfChildren == 0){
+        <p>Based on your age, we recommend that you invest in a ROTH IRA account</p>
+      }
+      if(ViewBag.user.age <26 && ViewBag.user.age > 20 && ViewBag.user.numberOfChildren == 0){
+        <p>Based on your age, we recommend that you invest in a 401k account</p>
+      }            
+      if(ViewBag.user.age<30 && ViewBag.user.numberOfChildren == 0 && ViewBag.user.netSalary<60000){
+        <p>Based on your age and income, we recommend that you focus on your well-being and personal health. You may not be ready to invest just yet.</p>
+      }
+    }
+        </a> </div>
+    </li>
+  </ul>
+</div>
+
 
   <br>
   <br>
@@ -161,8 +159,13 @@
   box-sizing: border-box;
   margin-right: 10px;
 }
+
 .card:last-child {
   margin-right: 0;
+}
+
+.card-body {
+  text-align: center;
 }
   </style>
 
@@ -171,21 +174,21 @@
     <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Stock graph</text></svg>
       <div class="card-body">
         <h5 class="card-title">Stock name</h5>
-        <a href="#" class="btn btn-primary" style="background-color: #C9AAFF;">Trade now</a>
+        <button type="submit" class="submit">Trade now</button>
       </div>
   </div>
   <div class="card">
     <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Stock graph</text></svg>
       <div class="card-body">
         <h5 class="card-title">Stock name</h5>
-        <a href="#" class="btn btn-primary" style="background-color: #C9AAFF;">Trade now</a>
+        <button type="submit" class="submit">Trade now</button>
       </div>
   </div>
   <div class="card">
     <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Stock graph</text></svg>
       <div class="card-body">
         <h5 class="card-title">Stock name</h5>
-        <a href="#" class="btn btn-primary" style="background-color: #C9AAFF;">Trade now</a>
+        <button type="submit" class="submit">Trade now</button>
       </div>
   </div>
 </div>

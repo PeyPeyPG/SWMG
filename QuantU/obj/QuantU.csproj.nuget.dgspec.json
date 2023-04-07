@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/aidanodonnell/Documents/GitHub/SWMG/QuantU/QuantU.csproj": {}
+    "C:\\Users\\Alex\\Documents\\GitHub\\SWMG\\QuantU\\QuantU.csproj": {}
   },
   "projects": {
-    "/Users/aidanodonnell/Documents/GitHub/SWMG/QuantU/QuantU.csproj": {
+    "C:\\Users\\Alex\\Documents\\GitHub\\SWMG\\QuantU\\QuantU.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/aidanodonnell/Documents/GitHub/SWMG/QuantU/QuantU.csproj",
+        "projectUniqueName": "C:\\Users\\Alex\\Documents\\GitHub\\SWMG\\QuantU\\QuantU.csproj",
         "projectName": "QuantU",
-        "projectPath": "/Users/aidanodonnell/Documents/GitHub/SWMG/QuantU/QuantU.csproj",
-        "packagesPath": "/Users/aidanodonnell/.nuget/packages/",
-        "outputPath": "/Users/aidanodonnell/Documents/GitHub/SWMG/QuantU/obj/",
+        "projectPath": "C:\\Users\\Alex\\Documents\\GitHub\\SWMG\\QuantU\\QuantU.csproj",
+        "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Alex\\Documents\\GitHub\\SWMG\\QuantU\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/aidanodonnell/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Alex\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -62,7 +62,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.201/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
