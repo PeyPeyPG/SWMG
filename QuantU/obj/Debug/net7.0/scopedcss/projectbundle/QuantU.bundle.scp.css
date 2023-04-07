@@ -1,6 +1,10 @@
 /* _content/QuantU/Views/Shared/_Layout.cshtml.rz.scp.css */
 /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
+body[b-fl0of2xla1]{
+  padding: 0;
+  margin: 0;
+}
 
 a.navbar-brand[b-fl0of2xla1] {
   white-space: normal;
@@ -41,10 +45,91 @@ button.accept-policy[b-fl0of2xla1] {
 }
 
 .footer[b-fl0of2xla1] {
-  position: absolute;
-  bottom: 0;
   width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
+  /* position: absolute;
+  bottom: 0;
+  margin-bottom: 0%; */
+}
+
+@keyframes wand-b-fl0of2xla1 {
+  10%{
+      transform: rotate(-30deg);
+  }
+  25%{
+      transform: rotate(-45deg);
+  }
+  40%{
+      transform: rotate(-60deg);
+  }
+  50%{
+      transform: rotate(-90deg);
+  }
+  60%{
+      transform: rotate(-60deg);
+  }
+  75%{
+      transform: rotate(-45deg);
+  }
+  90%{
+      transform: rotate(-30deg);
+  }
+  100%{
+      transform: rotate(0deg);
+  }
+}
+
+@keyframes star1-b-fl0of2xla1 {
+  25%{
+      transform: translateY(2px);
+  }
+  50%{
+      transform: translateX(1px);
+  }
+  75%{
+
+  }
+  100%{
+
+  }
+}
+@keyframes star2-b-fl0of2xla1 {
+  25%{
+      transform: translateY(-2px);
+  }
+  50%{
+      transform: translateX(-2px);
+  }
+  75%{
+      transform: translateX(-3px);
+  }
+
+}
+@keyframes star3-b-fl0of2xla1 {
+  25%{
+      transform: translateY(2px);
+  }
+  50%{
+      transform: translateX(2px);
+  }
+  75%{
+      transform: translateY(1px);
+  }
+}
+#wand[b-fl0of2xla1] {
+  transition: all 1s ease;
+}
+
+#wand:hover[b-fl0of2xla1]{
+  animation: 3s wand-b-fl0of2xla1 infinite;
+}
+
+#wand:hover #star1[b-fl0of2xla1]{
+  animation: 3s star1-b-fl0of2xla1 infinite;
+}
+#wand:hover #star2[b-fl0of2xla1]{
+  animation: 3s star2-b-fl0of2xla1 infinite;
+}
+#wand:hover #star3[b-fl0of2xla1]{
+  animation: 3s star3-b-fl0of2xla1 infinite;
 }
 
