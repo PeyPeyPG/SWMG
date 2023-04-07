@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en" class="border border-primary">
+<html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="~/QuantU.styles.css" asp-append-version="true" />
     @Html.Partial("_Favicons")
 </head>
-<body class="border border-primary">
+<body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow"
             style="background: #C9AAFF">
@@ -66,47 +66,52 @@
 
       <!-- Footer -->
 
-    <footer class="text-lg-start bg-dark text-white footer mt-5 border border-danger" style="margin-top: 50px;">
-      <section class="d-flex justify-content-center pt-4 ps-5 pe-4 border-bottom container">
-        
-        <h3 class="col fw-bold start-0 text-md-start">Investmennt For The People</h3>
+    <footer class="text-lg-start bg-light text-black footer mt-5" style="margin-top: 50px;">
+  <section class="d-flex justify-content-center pt-4 ps-5 pe-4 border-bottom container">
+    <h3 class="col fw-bold start-0 text-md-start">Investment For The People</h3>
+    <div class="col end-0 botton-0 text-md-end">
+      <h6>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
+            <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+        </svg>
+        : 1-800-123-4657
+      </h6>
+      <h6>&copy; 2023 - <a target="blank" href="https://www.youtube.com/shorts/gBqZ4XSG9Tw">SWMG</a> - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a></h6>
+    </div>
+  </section>
+  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+    <div class="row bottom justify-content-center" id="bottom">
+      <h6 class="col-sm-4">We 
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+        </svg>
+        Casting Spells
+        <svg id="wand" width="45" height="45" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g id="Frame 1">
+            <rect id="wandbody" x="2" y="17.0208" width="13" height="2" transform="rotate(-45 2 17.0208)" fill="#C9AAFF"/>
+            <path id="wandhead" d="M11.5858 7.41422L13 6L14.4142 7.41422L13 8.82843L11.5858 7.41422Z" fill="white"/>
+            <path id="wandtail" d="M2 17.0426L3.41421 15.6284L4.82843 17.0426L3.41421 18.4568L2 17.0426Z" fill="black"/>
+            <path id="star3" d="M15.677 8.9886C15.6046 9.0282 15.5225 8.9588 15.5371 8.8702L15.6927 7.92424L15.0322 7.25306C14.9705 7.19026 15.0026 7.07546 15.0852 7.06306L16.0036 6.92387L16.4131 6.0585C16.4501 5.9805 16.55 5.9805 16.5869 6.0585L16.9964 6.92387L17.9148 7.06306C17.9975 7.07546 18.0296 7.19026 17.9677 7.25306L17.3073 7.92424L17.4629 8.8702C17.4776 8.9588 17.3954 9.0282 17.3231 8.9886L16.4997 8.53742L15.677 8.9886Z" fill="#FFE500"/>
+            <path id="star2" d="M11.677 4.9886C11.6046 5.0282 11.5225 4.9588 11.5371 4.8702L11.6927 3.92424L11.0322 3.25306C10.9705 3.19026 11.0026 3.07546 11.0852 3.06306L12.0036 2.92387L12.4131 2.0585C12.4501 1.9805 12.55 1.9805 12.5869 2.0585L12.9964 2.92387L13.9148 3.06306C13.9975 3.07546 14.0296 3.19026 13.9677 3.25306L13.3073 3.92424L13.4629 4.8702C13.4776 4.9588 13.3954 5.0282 13.3231 4.9886L12.4997 4.53742L11.677 4.9886Z" fill="#FFE500"/>
+            <path id="star1" d="M15.6448 4.4301C15.5724 4.4697 15.4903 4.4003 15.5049 4.31171L15.6606 3.36574L15 2.69456C14.9383 2.63176 14.9704 2.51697 15.0531 2.50457L15.9714 2.36537L16.3809 1.5C16.4179 1.422 16.5178 1.422 16.5547 1.5L16.9642 2.36537L17.8826 2.50457C17.9653 2.51697 17.9974 2.63176 17.9355 2.69456L17.2751 3.36574L17.4307 4.31171C17.4454 4.4003 17.3632 4.4697 17.2909 4.4301L16.4676 3.97892L15.6448 4.4301Z" fill="#FFE500"/>
+            </g>
+        </svg>
+      </h6>
+    </div>
+  </div>
+</footer>
 
-        <div class="col end-0 botton-0 text-md-end">
-            <h6>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
-                    <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
-                </svg>
-                : 1-800-123-4657
-            </h6>
-            <h6>&copy; 2023 - <a target="blank" href="https://www.youtube.com/shorts/gBqZ4XSG9Tw">SWMG</a> - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a></h6>
-        </div>
-        
-      </section>
-      <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-        <div class="row bottom justify-content-center" id="bottom">
-          <h6 class="col-sm-4">We 
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-            </svg>
-            Casting Spells
-            <svg id="wand" width="45" height="45" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g id="Frame 1">
-                <rect id="wandbody" x="2" y="17.0208" width="13" height="2" transform="rotate(-45 2 17.0208)" fill="#C9AAFF"/>
-                <path id="wandhead" d="M11.5858 7.41422L13 6L14.4142 7.41422L13 8.82843L11.5858 7.41422Z" fill="white"/>
-                <path id="wandtail" d="M2 17.0426L3.41421 15.6284L4.82843 17.0426L3.41421 18.4568L2 17.0426Z" fill="black"/>
-                <path id="star3" d="M15.677 8.9886C15.6046 9.0282 15.5225 8.9588 15.5371 8.8702L15.6927 7.92424L15.0322 7.25306C14.9705 7.19026 15.0026 7.07546 15.0852 7.06306L16.0036 6.92387L16.4131 6.0585C16.4501 5.9805 16.55 5.9805 16.5869 6.0585L16.9964 6.92387L17.9148 7.06306C17.9975 7.07546 18.0296 7.19026 17.9677 7.25306L17.3073 7.92424L17.4629 8.8702C17.4776 8.9588 17.3954 9.0282 17.3231 8.9886L16.4997 8.53742L15.677 8.9886Z" fill="#FFE500"/>
-                <path id="star2" d="M11.677 4.9886C11.6046 5.0282 11.5225 4.9588 11.5371 4.8702L11.6927 3.92424L11.0322 3.25306C10.9705 3.19026 11.0026 3.07546 11.0852 3.06306L12.0036 2.92387L12.4131 2.0585C12.4501 1.9805 12.55 1.9805 12.5869 2.0585L12.9964 2.92387L13.9148 3.06306C13.9975 3.07546 14.0296 3.19026 13.9677 3.25306L13.3073 3.92424L13.4629 4.8702C13.4776 4.9588 13.3954 5.0282 13.3231 4.9886L12.4997 4.53742L11.677 4.9886Z" fill="#FFE500"/>
-                <path id="star1" d="M15.6448 4.4301C15.5724 4.4697 15.4903 4.4003 15.5049 4.31171L15.6606 3.36574L15 2.69456C14.9383 2.63176 14.9704 2.51697 15.0531 2.50457L15.9714 2.36537L16.3809 1.5C16.4179 1.422 16.5178 1.422 16.5547 1.5L16.9642 2.36537L17.8826 2.50457C17.9653 2.51697 17.9974 2.63176 17.9355 2.69456L17.2751 3.36574L17.4307 4.31171C17.4454 4.4003 17.3632 4.4697 17.2909 4.4301L16.4676 3.97892L15.6448 4.4301Z" fill="#FFE500"/>
-                </g>
-            </svg>
-          </h6>
-        </div>
-      </div>
-      <script src="~/lib/jquery/dist/jquery.min.js"></script>
-      <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-      <script src="~/js/site.js" asp-append-version="true"></script>
-      @await RenderSectionAsync("Scripts", required: false)
-    </footer> 
+<style>
+  html, body {
+    height: 100%;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+  .footer {
+    margin-top: auto;
+  }
+</style>
 </body>
 </html>
-
