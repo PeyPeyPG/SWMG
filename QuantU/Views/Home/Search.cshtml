@@ -2,24 +2,6 @@
     ViewData["Title"] = "Stock";
 }
 
-<script>
-    let token = "cfis95hr01qjvrn525t0cfis95hr01qjvrn525tg";
-    let base_url = "https://finnhub.io/api/v1/stock/profile2?";
-    let symbol = '@ViewBag.ticker';
-
-    //Forms the API URL with API Token (Key) and the symbol for the stock the user wants
-    let url = base_url + "symbol=" + symbol + "&token=" + token;
-
-    //fetches url and gets JSON data attached to it
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-            console.log(data.name);
-
-        })
-        .catch(error => console.log(error));
-</script>
 @*Note: Turned White since if I deleted it, the formating was off*@
 <p style="color: white;"><br>Press Control+Shift+I and travel to console to look at the values of the stock
 </p>
@@ -36,7 +18,7 @@
         <div class="container">
             <div class="row">
                 <div class="ignore">
-                    @*Stock Information Card*@
+                @*Stock Information Card*@
                     <div class="container">
                         <div class="container" style="margin-top: 1.25rem !important;">
                             <section class="mx-auto my-5" @*Stock Infomation style*@
@@ -44,19 +26,19 @@
                                 <div class="card chart-card">
                                     <div class="card-body pb-0">
                                         <h5 class="card-title font-weight-bold"></h5>
-                                        @*Stock Name and Date*@
-                                        <p class="card-text mb-4">NASDAQ: SWMG • March 22, 11:52AM</p>
+                                    @*Stock Name and Date*@
+                                        <p class="card-text mb-4" id="exchange">NASDAQ: SWMG • March 22, 11:52AM</p>
                                         <div class="d-flex justify-content-between">
-                                            @*Stock Price and Daily Informaiton*@
-                                            <p class="display-4 align-self-end"><span></span>159.75 USD <span
+                                        @*Stock Price and Daily Informaiton*@
+                                            <p class="display-4 align-self-end" ><span id="price">159.75 USD</span> <span id="change"
                                                     style="color:green; font-size: smaller;">+0.45
                                                     (.28%)</span></p>
                                         </div>
-                                        @*Company Logo*@
-                                        <div class="logo-box"></div>
+                                    @*Company Logo*@
+                                        <div class="logo-box" id="logo"></div>
                                     </div>
                                 </div>
-                                @*Stock Graph*@
+                            @*Stock Graph*@
                                 <div style="height: 18.75rem; ; background-color: gray;"></div>
                             </section>
                             <style>
@@ -78,30 +60,47 @@
                                     margin-left: 0 !important;
                                 }
                             </style>
-                            @*Animation Script*@
+                        @*Animation Script*@
                             <script>
-                                const titleElement = document.querySelector('.card-title');
-                                const titleText = 'SWMG Corporation';
-                                let index = 0;
-                                let timeout;
-                                function type() {
-                                    titleElement.textContent = titleText.slice(0, index);
-                                    index++;
+                                let token = "cfis95hr01qjvrn525t0cfis95hr01qjvrn525tg";
+                                let base_url = "https://finnhub.io/api/v1/stock/profile2?";
+                                let symbol = '@ViewBag.ticker';
 
-                                    if (index > titleText.length) {
-                                        clearTimeout(timeout);
-                                    } else {
+                                //Forms the API URL with API Token (Key) and the symbol for the stock the user wants
+                                let url = base_url + "symbol=" + symbol + "&token=" + token;
+
+                                //fetches url and gets JSON data attached to it
+                                fetch(url)
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        console.log(data);
+                                        console.log(data.name);
+                                        const titleElement = document.querySelector('.card-title');
+                                        const titleText = data.name;
+                                        let index = 0;
+                                        let timeout;
+                                        function type() {
+                                            titleElement.textContent = titleText.slice(0, index);
+                                            index++;
+
+                                            if (index > titleText.length) {
+                                                clearTimeout(timeout);
+                                            } else {
+                                                timeout = setTimeout(type, 100);
+                                            }
+                                        }
+
                                         timeout = setTimeout(type, 100);
-                                    }
-                                }
 
-                                timeout = setTimeout(type, 100);
+                                    })
+                                    .catch(error => console.log(error));
+
                             </script>
                         </div>
                     </div>
                 </div>
-                @*Company Name*@
-                <div class="company-name"> SWMG Corporation
+            @*Company Name*@
+                <div class="company-name"> <p id="full-name">SWMG Corporation</p>
                     <style>
                         .company-name {
                             color: black;
@@ -117,7 +116,7 @@
                         }
                     </style>
                 </div>
-                @*Company Information*@
+            @*Company Information*@
                 <div class="company-info">
                     <style>
                         .company-info {
@@ -132,7 +131,7 @@
                         }
                     </style>
                 </div>
-                @*Trade Button*@
+            @*Trade Button*@
                 <button class="trade-btn" id="trade-now-btn">Trade Now
                     <style>
                         .trade-btn {
@@ -163,9 +162,9 @@
                             transform: scale(1.05);
                         }
                     </style>
-                    @*Script for Blinking Effect -> Not using since its distracting*@
+                @*Script for Blinking Effect -> Not using since its distracting*@
                     <script>
-                        @* var tradeBtn = document.getElementById('trade-now-btn');
+                    @* var tradeBtn = document.getElementById('trade-now-btn');
                             var scale = 1;
                             var direction = 1;
                             var intervalId = setInterval(function() {
@@ -196,12 +195,38 @@
                             }); *@
                     </script>
                 </button>
-                @*Search Bar Place Holder*@
+            @*Search Bar Place Holder*@
                 <div>
-                    <input name="title" class="form-control" type="text" list="datalistOptions" id="exampleDataList">
-                    <datalist class="searchbar" id="datalistOptions">
-                    </datalist>
-                    <style>
+                @* Form for Search() function in HomeComtroller.cs *@
+      <form asp-action="Search">
+
+                    @* Search bar seen on screen 
+      NOTE: see how the for and name attribute match the Search parameter name *@
+      <label for="title" class="form-label">Stock search</label>
+        <input name="title" class="form-control" type="text" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+        <datalist class="searchbar" id="datalistOptions">
+                        @using MongoDB.Driver
+                        @using QuantU.Models
+                        @{
+                            MongoClient client = new MongoClient("mongodb+srv://SWMG:Shawdowwizardmoneygang@swmg.hzzuvlg.mongodb.net/?retryWrites=true&w=majority");
+                            var builder = Builders<StockData>.Filter;
+                            var empty = builder.Empty;
+                            List<StockData> results = client.GetDatabase("SWMG").GetCollection<StockData>("StockData").Find(empty).ToList();
+                            List<string> stocks = new List<String>();
+                            foreach (StockData result in results)
+                            {
+                                stocks.Add(result.name + ", " + result.ticker);
+                            }
+                            stocks.Sort();
+                        }
+
+                        @foreach (string stock in stocks)
+                        {
+                    <option value='@stock'></option>
+                        }
+            </datalist>
+        </form>
+        <style>
                         .form-control {
                             border-radius: 1.25rem;
                             border-color: black;
@@ -227,7 +252,7 @@
                         }, 100);
                     </script>
                 </div>
-                @*Try Another Stock (IDEA) -> Clicks and goes to a random stock page*@
+            @*Try Another Stock (IDEA) -> Clicks and goes to a random stock page*@
                 <button class="try-btn" id="trade-now-btn"> Try This Stock: APPL INC
                     <style>
                         .try-btn {
@@ -261,3 +286,54 @@
             </div>
         </div>
     </div>
+
+<script>
+    @* token = "cfis95hr01qjvrn525t0cfis95hr01qjvrn525tg";
+    base_url = "https://finnhub.io/api/v1/stock/profile2?";
+    let symbol = '@ViewBag.ticker';
+
+    //Forms the API URL with API Token (Key) and the symbol for the stock the user wants
+    let url = base_url + "symbol=" + symbol + "&token=" + token; *@
+
+    //fetches url and gets JSON data attached to it
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            console.log(data.name);
+            var date = new Date().toString();
+            var arr = date.split(' ');
+            var dateString = arr[1] + " " + arr[2] + " " + arr[3] + " " + arr[4];
+
+            document.getElementById('exchange').innerHTML = data.exchange + ": " + data.ticker + " • " + dateString;
+            document.getElementById('full-name').innerHTML = data.name;
+
+
+        })
+        .catch(error => console.log(error));
+
+    base_url = "https://finnhub.io/api/v1/quote?";
+    symbol = '@ViewBag.ticker';
+
+    //Forms the API URL with API Token (Key) and the symbol for the stock the user wants
+    url = base_url + "symbol=" + symbol + "&token=" + token;
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            document.getElementById('price').innerHTML = data.c + " USD";
+            document.getElementById('change').style.fontSize = "smaller";
+            let add = "";
+            if (data.d > 0){
+                document.getElementById('change').style.color = "green";
+                add = "+";
+            }
+            else {
+                document.getElementById('change').style.color = "red";
+            }
+            document.getElementById('change').innerHTML = add + data.d + " (" + add + data.dp + ")";
+
+
+        })
+        .catch(error => console.log(error));
+</script>
