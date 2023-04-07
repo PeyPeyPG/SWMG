@@ -1,7 +1,8 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-@model QuantU.Models.UserFinances;
+@*Theme Color: #c9aaff*@
+
 <script>
 
   if ('@TempData["loggedin"]' === "True"){
@@ -27,17 +28,6 @@
       </svg></span>  <text id="third" style="color:white">Example Text 3</text>&emsp;</p>
   </label>
 </marquee>
-
-<button id="logOut" type = "button">
-  Log Out
-</button>
-
-<script>
-  const btn = document.getElementById('logOut');
-  btn.addEventListener('click', function(e) {
-    localStorage.clear();
-  });
-</script>
 
 <script>
       var requestOptions = {
@@ -76,17 +66,26 @@
 
       @* Search bar seen on screen 
       NOTE: see how the for and name attribute match the Search parameter name *@
-      <label for="title" class="form-label">Datalist example</label>
-        <input name="title" class="form-control" type="text" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
-        <datalist class="searchbar" id="datalistOptions">
-        </datalist>
+      
+       <label for="title" class="form-label">Datalist example</label>
+  <input name="title" class="form-control" type="text" list="datalistOptions" id="exampleDataList">
+  <datalist class="searchbar" id="datalistOptions">
+  </datalist>
+  <style>
+    .form-control {
+      border-radius: 20px;
+      border-color: black;
+      
+    }
+    
+  </style>
       </form>
           @* JavaScript code for showing options of stocks *@
         <script>
           //options string to add to data list
           var options = '';
           //list of stocks
-          stocks = ["1-800-FLOWERS.COM, Inc., FLWS",
+         stocks = ["1-800-FLOWERS.COM, Inc., FLWS",
               "10X Capital Venture Acquisition Corp. II, VCXA",
               "10X Capital Venture Acquisition Corp. II, VCXAW",
               "10X Capital Venture Acquisition Corp. II, VCXAU",
@@ -5748,107 +5747,80 @@
               "vTv Therapeutics Inc., VTVT",
               "voxeljet AG, VJET",
               ];
+
       //Takes the list of stocks and displays them as options in the search bar
+      
       for (var i = 0; i < stocks.length; i++) {
           options += '<option value="' + stocks[i] + '"></option>';
         }
+        
         document.getElementById('datalistOptions').innerHTML = options;
-        </script>
-
-
-
-<br><br>
-        <div class="accordion">
-            <dl>
-              <dt><a class="accordionTitle" href="#">View Your Recommedations!</a></dt>
-              <dd class="accordionItem accordionItemCollapsed">
-                
-              </dd>
-            </dl>
-          </div>
-
-          <script>
-( function( window ) {
-'use strict';
-function classReg( className ) {
-  return new RegExp("(^|\\s+)" + className + "(\\s+|$)");
-}
-var hasClass, addClass, removeClass;
-
-if ( 'classList' in document.documentElement ) {
-  hasClass = function( elem, c ) {
-    return elem.classList.contains( c );
-  };
-  addClass = function( elem, c ) {
-    elem.classList.add( c );
-  };
-  removeClass = function( elem, c ) {
-    elem.classList.remove( c );
-  };
-}
-else {
-  hasClass = function( elem, c ) {
-    return classReg( c ).test( elem.className );
-  };
-  addClass = function( elem, c ) {
-    if ( !hasClass( elem, c ) ) {
-      elem.className = elem.className + ' ' + c;
-    }
-  };
-  removeClass = function( elem, c ) {
-    elem.className = elem.className.replace( classReg( c ), ' ' );
-  };
-}
-
-function toggleClass( elem, c ) {
-  var fn = hasClass( elem, c ) ? removeClass : addClass;
-  fn( elem, c );
-}
-var classie = {
-  hasClass: hasClass,
-  addClass: addClass,
-  removeClass: removeClass,
-  toggleClass: toggleClass,
-  has: hasClass,
-  add: addClass,
-  remove: removeClass,
-  toggle: toggleClass
-};
-if ( typeof define === 'function' && define.amd ) {
-  define( classie );
-} else {
-  window.classie = classie;
-}
-})( window );
-var $ = function(selector){
-  return document.querySelector(selector);
-}
-var accordion = $('.accordion');
-accordion.addEventListener("click",function(e) {
-  e.stopPropagation();
-  e.preventDefault();
-  if(e.target && e.target.nodeName == "A") {
-    var classes = e.target.className.split(" ");
-    if(classes) {
-      for(var x = 0; x < classes.length; x++) {
-        if(classes[x] == "accordionTitle") {
-          var title = e.target;
-          var content = e.target.parentNode.nextElementSibling;
-          classie.toggle(title, 'accordionTitleActive');
-          if(classie.has(content, 'accordionItemCollapsed')) {
-            if(classie.has(content, 'animateOut')){
-              classie.remove(content, 'animateOut');
-            }
-            classie.add(content, 'animateIn');
-          }else{
-             classie.remove(content, 'animateIn');
-             classie.add(content, 'animateOut');
-          }
-          classie.toggle(content, 'accordionItemCollapsed');      
-        }
+    // Animation/PlaceHolder messages ~ Brandon
+    var wordList = ["We Love Casting Spells <3 ...", "Type to Search...", "Search Stocks...", "Feeling Lucky...", "Type here..."];
+    var randomIndex = Math.floor(Math.random() * wordList.length);
+    var randomWord = wordList[randomIndex];
+    var inputElem = document.querySelector('input.form-control');
+    var i = 0;
+    var intervalId = setInterval(function () {
+      if (i < randomWord.length) {
+        inputElem.placeholder += randomWord.charAt(i);
+        i++;
+      } else {
+        clearInterval(intervalId);
       }
-    }  
+    }, 100);
+  </script>
+  
+      <style>
+        
+        
+  .carousel {
+    width: 50%; /* make the carousel 40% smaller */
+    float: right; /* align it to the right half of the screen */
+    height: 120%;
   }
-});
-          </script>
+
+  .carousel-item svg text {
+    text-align: center;
+  }
+  </style>
+
+  <br>
+  <br>
+  <br>
+
+  <div id="carouselExampleFade" class="carousel slide carousel-fade">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="400" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: First slide" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <title>Placeholder</title>
+          <rect width="100%" height="100%" fill="#D8D3D2"></rect>
+          <text x="50%" y="50%" fill="#9B00FF" dy=".3em" text-anchor="middle">First slide</text>
+        </svg>
+      </div>
+      <div class="carousel-item">
+        <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="400" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Second slide" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <title>Placeholder</title>
+          <rect width="100%" height="100%" fill="#D8D3D2"></rect>
+          <text x="50%" y="50%" fill="#9B00FF" dy=".3em" text-anchor="middle">Second slide</text>
+        </svg>
+      </div>
+      <div class="carousel-item">
+        <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="400" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Third slide" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <title>Placeholder</title>
+          <rect width="100%" height="100%" fill="#D8D3D2"></rect>
+          <text x="50%" y="50%" fill="#9B00FF" dy=".3em" text-anchor="middle">Third slide</text>
+        </svg>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
 </div>
