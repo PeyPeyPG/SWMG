@@ -442,3 +442,5 @@ C:\Users\baogo\OneDrive\Desktop\GitHub\SWMG\QuantU\obj\Debug\net7.0\QuantU.genru
 C:\Users\baogo\OneDrive\Desktop\GitHub\SWMG\QuantU\obj\Debug\net7.0\ref\QuantU.dll
 C:\Users\alexm\Documents\GitHub\SWMG\QuantU\bin\Debug\net7.0\package-lock.json
 C:\Users\alexm\Documents\GitHub\SWMG\QuantU\bin\Debug\net7.0\package.json
+C:\Users\peyto\Desktop\SWMG\QuantU\bin\Debug\net7.0\package-lock.json
+C:\Users\peyto\Desktop\SWMG\QuantU\bin\Debug\net7.0\package.json
