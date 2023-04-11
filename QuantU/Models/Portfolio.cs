@@ -12,7 +12,9 @@ namespace QuantU.Models{
         public string? name {get; set;}
         public List<string>? stocks {get; set;}
         public List<int>? investments {get; set;}
-        public List<decimal>? share{get; set;}
+        public List<int>? share{get; set;}
+
+        public List<string>? dates{get; set;}
 
 
         public Portfolio() {
