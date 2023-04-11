@@ -175,7 +175,7 @@ body {
   border-image-slice: 1;
 }
 .form__field:focus ~ .form__label {
-  position: absolute;
+  /* position: absolute; */
   top: 0;
   display: block;
   transition: 0.2s;

@@ -99,6 +99,11 @@ public class HomeController : Controller
         return View();
     }
 
+    public IActionResult test()
+    {
+        return View();
+    }
+
     /*
         Method for PaperTrading.cshtml
         Before the page is load the method checks if a logged in user has any porfolios in the database

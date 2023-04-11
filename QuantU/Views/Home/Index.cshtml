@@ -3,6 +3,16 @@
 }
 @model QuantU.Models.UserFinances;
 
+<script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-core.min.js"></script>
+<script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-stock.min.js"></script>
+<script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-data-adapter.min.js"></script>
+
+<script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-ui.min.js"></script>
+<script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-exports.min.js"></script>
+
+<link href="https://cdn.anychart.com/releases/8.10.0/css/anychart-ui.min.css" type="text/css" rel="stylesheet">
+<link href="https://cdn.anychart.com/releases/8.10.0/fonts/css/anychart-font.min.css" type="text/css" rel="stylesheet">
+
 @* News marquee for top market stories *@
 <marquee style="background: black; position: relative;">
 
@@ -190,32 +200,157 @@
 
     @**@
     <div class="col-md-6">
-      <div class="card mb-3">
         <!-- card content goes here -->
         <div class="card mb-3">
-          <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Graph goes here</text></svg>
-          <div class="card-body">
-            <h5 class="card-title">Stock Name</h5>
-            <p class="card-text">Stock info</p>
-          </div>
+          <div class=" card-img-top" id="NDAQ" style="height: 280px; width: 100%"></div>
         </div>
-      </div>
     </div>
+  <script>
+    anychart.onDocumentReady(function () {
+        anychart.data.loadCsvFile(
+            'https://raw.githubusercontent.com/PeyPeyPG/ML-CSV-Library/main/Closing_Price_Forcast/NDAQ_Forcast.csv',
+            function (data) {
+            // create data table on loaded data
+            var dataTable = anychart.data.table();
+            dataTable.addData(data);
+
+            // create stock chart
+            var chart = anychart.stock();
+
+            // create first plot on the chart
+            var plot = chart.plot(0);
+            
+            // set grid settings
+            plot.yGrid(true).xGrid(true).yMinorGrid(true).xMinorGrid(true);
+
+            // create and setup line series
+            var lineSeries = plot.line(dataTable)
+                .name('NDAQ');
+                
+            // set rising/falling and normal stroke settings
+            lineSeries.risingStroke('#2FA85A', 3, null, 'round', 'round');
+            lineSeries.fallingStroke('#EE4237', 3, null, 'round', 'round');
+
+            // create scroller series 
+            chart.scroller().line(dataTable);
+
+            let start = new Date();
+            let end = new Date();
+            end.setDate(end.getDate() + 30);
+            start.setDate(start.getDate() - 30);
+
+            let date = new Date();
+            var arr = (start.toISOString()).split('T');
+            console.log(arr[0]);
+            var arr2 = (end.toISOString()).split('T');
+            console.log(arr[0]);
+
+            // set chart selected date/time range
+            chart.selectRange(arr[0], arr2[0]);
+
+
+            // create range picker
+            var rangePicker = anychart.ui.rangePicker();
+            
+            // init range picker
+            rangePicker.render(chart);
+
+            // create range selector
+            var rangeSelector = anychart.ui.rangeSelector();
+            
+            // init range selector
+            rangeSelector.render(chart);
+            
+            // sets the title of the chart
+            chart.title('Nasdaq Prediction');
+            
+            // set container id for the chart
+            chart.container('NDAQ');
+            
+            // initiate chart drawing
+            chart.draw();
+            }
+        );
+    });
+</script>
 
     @**@
     <div class="col-md-6">
       <div class="card mb-3">
         <!-- card content goes here -->
-        <div class="card mb-3">
-          <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Graph goes here</text></svg>
-          <div class="card-body">
-            <h5 class="card-title">Stock Name</h5>
-            <p class="card-text">Stock info</p>
-          </div>
-        </div>
+          <div class=" card-img-top" id="SPY" style="height: 280px; width: 100%"></div>
       </div>
     </div>
   </div>
+
+  <script>
+    anychart.onDocumentReady(function () {
+        anychart.data.loadCsvFile(
+            'https://raw.githubusercontent.com/PeyPeyPG/ML-CSV-Library/main/Closing_Price_Forcast/SPY_Forcast.csv',
+            function (data) {
+            // create data table on loaded data
+            var dataTable = anychart.data.table();
+            dataTable.addData(data);
+
+            // create stock chart
+            var chart = anychart.stock();
+
+            // create first plot on the chart
+            var plot = chart.plot(0);
+            
+            // set grid settings
+            plot.yGrid(true).xGrid(true).yMinorGrid(true).xMinorGrid(true);
+
+            // create and setup line series
+            var lineSeries = plot.line(dataTable)
+                .name('SPY');
+                
+            // set rising/falling and normal stroke settings
+            lineSeries.risingStroke('#2FA85A', 3, null, 'round', 'round');
+            lineSeries.fallingStroke('#EE4237', 3, null, 'round', 'round');
+
+            // create scroller series 
+            chart.scroller().line(dataTable);
+
+            let start = new Date();
+            let end = new Date();
+            end.setDate(end.getDate() + 30);
+            start.setDate(start.getDate() - 30);
+
+            let date = new Date();
+            var arr = (start.toISOString()).split('T');
+            console.log(arr[0]);
+            var arr2 = (end.toISOString()).split('T');
+            console.log(arr[0]);
+
+            // set chart selected date/time range
+            chart.selectRange(arr[0], arr2[0]);
+
+
+            // create range picker
+            var rangePicker = anychart.ui.rangePicker();
+            
+            // init range picker
+            rangePicker.render(chart);
+
+            // create range selector
+            var rangeSelector = anychart.ui.rangeSelector();
+            
+            // init range selector
+            rangeSelector.render(chart);
+            
+            // sets the title of the chart
+            chart.title('S&P 500 Prediction');
+            
+            // set container id for the chart
+            chart.container('SPY');
+            
+            // initiate chart drawing
+            chart.draw();
+            }
+        );
+    });
+  </script>
 
   <div class="row">
 
@@ -223,30 +358,154 @@
     <div class="col-md-6">
       <div class="card mb-3">
         <!-- card content goes here -->
-        <div class="card mb-3">
-          <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Graph goes here</text></svg>
-          <div class="card-body">
-            <h5 class="card-title">Stock Name</h5>
-            <p class="card-text">Stock info</p>
-          </div>
-        </div>
+          <div class=" card-img-top" id="DJI" style="height: 280px; width: 100%"></div>
       </div>
     </div>
+  <script>
+    anychart.onDocumentReady(function () {
+        anychart.data.loadCsvFile(
+            'https://raw.githubusercontent.com/PeyPeyPG/ML-CSV-Library/main/Closing_Price_Forcast/^DJI_Forcast.csv',
+            function (data) {
+            // create data table on loaded data
+            var dataTable = anychart.data.table();
+            dataTable.addData(data);
+
+            // create stock chart
+            var chart = anychart.stock();
+
+            // create first plot on the chart
+            var plot = chart.plot(0);
+            
+            // set grid settings
+            plot.yGrid(true).xGrid(true).yMinorGrid(true).xMinorGrid(true);
+
+            // create and setup line series
+            var lineSeries = plot.line(dataTable)
+                .name('DJI');
+                
+            // set rising/falling and normal stroke settings
+            lineSeries.risingStroke('#2FA85A', 3, null, 'round', 'round');
+            lineSeries.fallingStroke('#EE4237', 3, null, 'round', 'round');
+
+            // create scroller series 
+            chart.scroller().line(dataTable);
+
+            let start = new Date();
+            let end = new Date();
+            end.setDate(end.getDate() + 30);
+            start.setDate(start.getDate() - 30);
+
+            let date = new Date();
+            var arr = (start.toISOString()).split('T');
+            console.log(arr[0]);
+            var arr2 = (end.toISOString()).split('T');
+            console.log(arr[0]);
+
+            // set chart selected date/time range
+            chart.selectRange(arr[0], arr2[0]);
+
+
+            // create range picker
+            var rangePicker = anychart.ui.rangePicker();
+            
+            // init range picker
+            rangePicker.render(chart);
+
+            // create range selector
+            var rangeSelector = anychart.ui.rangeSelector();
+            
+            // init range selector
+            rangeSelector.render(chart);
+            
+            // sets the title of the chart
+            chart.title('Dow Jones Prediction');
+            
+            // set container id for the chart
+            chart.container('DJI');
+            
+            // initiate chart drawing
+            chart.draw();
+            }
+        );
+    });
+</script>
 
     @**@
     <div class="col-md-6">
       <div class="card mb-3">
         <!-- card content goes here -->
-        <div class="card mb-3">
-          <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Graph goes here</text></svg>
-          <div class="card-body">
-            <h5 class="card-title">Stock Name</h5>
-            <p class="card-text">Stock info</p>
-          </div>
-        </div>
+          <div class=" card-img-top" id="NYA" style="height: 280px; width: 100%"></div>
       </div>
     </div>
   </div>
+  <script>
+    anychart.onDocumentReady(function () {
+        anychart.data.loadCsvFile(
+            'https://raw.githubusercontent.com/PeyPeyPG/ML-CSV-Library/main/Closing_Price_Forcast/^NYA_Forcast.csv',
+            function (data) {
+            // create data table on loaded data
+            var dataTable = anychart.data.table();
+            dataTable.addData(data);
+
+            // create stock chart
+            var chart = anychart.stock();
+
+            // create first plot on the chart
+            var plot = chart.plot(0);
+            
+            // set grid settings
+            plot.yGrid(true).xGrid(true).yMinorGrid(true).xMinorGrid(true);
+
+            // create and setup line series
+            var lineSeries = plot.line(dataTable)
+                .name('NYA');
+                
+            // set rising/falling and normal stroke settings
+            lineSeries.risingStroke('#2FA85A', 3, null, 'round', 'round');
+            lineSeries.fallingStroke('#EE4237', 3, null, 'round', 'round');
+
+            // create scroller series 
+            chart.scroller().line(dataTable);
+
+            let start = new Date();
+            let end = new Date();
+            end.setDate(end.getDate() + 30);
+            start.setDate(start.getDate() - 30);
+
+            let date = new Date();
+            var arr = (start.toISOString()).split('T');
+            console.log(arr[0]);
+            var arr2 = (end.toISOString()).split('T');
+            console.log(arr[0]);
+
+            // set chart selected date/time range
+            chart.selectRange(arr[0], arr2[0]);
+
+
+            // create range picker
+            var rangePicker = anychart.ui.rangePicker();
+            
+            // init range picker
+            rangePicker.render(chart);
+
+            // create range selector
+            var rangeSelector = anychart.ui.rangeSelector();
+            
+            // init range selector
+            rangeSelector.render(chart);
+            
+            // sets the title of the chart
+            chart.title('New York Stock Exchange Prediction');
+            
+            // set container id for the chart
+            chart.container('NYA');
+            
+            // initiate chart drawing
+            chart.draw();
+            }
+        );
+    });
+</script>
 
 </div>
 
