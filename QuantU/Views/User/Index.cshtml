@@ -5,16 +5,16 @@
 }
 <body class = "sign">
 
+@*box on left side of screen*@
 <div class="container text-center">
  <div class="row">
     <div class="col">
 <div class="sideText">
     <h4 class="sHeader">QuantU</h4>
-        <span class = "text"> Investing in real-estate is near unaffordable due to inflation, but other forms of investing seem daunting to manage and learn. 
-            Do not worry though, <strong class = "strong">Shadow Wizard Money Gang</strong> is here to help!</span>
+        <span class = "text"> Investing seem daunting to manage and learn. Do not worry though, <strong class = "strong">Shadow Wizard Money Gang</strong> is here to help!</span>
       
 </div>
-
+@* *@
     </div>
     <div class = "im" style="position: absolute;">
       <img class = "img" src="~/images/swmg.jpg">
@@ -37,12 +37,6 @@
         <label for="passsword" class="form__label">Password</label>
         <span class="text-danger field-validation-valid" asp-validation-for="password"></span>
     </div>
-    @*Confirm Password
-    <div class="form__group field">
-        <input asp-for="verifyPassword" type="password" class="form__field" placeholder="Confirm Password" name="confirm password" id="confirm password" required>
-        <label asp-for="verifyPassword" for="name" class="form__label">Confirm Password</label>
-        <span class="text-danger field-validation-valid" asp-validation-for="verifyPassword"></span>
-    </div>*@
     @*Email*@
     <div class="form__group field">
         <input asp-for="email" type="input" class="form__field" placeholder="Email" name="email" id="email" required>
@@ -77,20 +71,4 @@
 </body>
 </div>
 </div>
-@*Javascript to make confirm button work
-<script>
-    document.querySelector(".submit").onclick = functon() {
-        var password = document.querySelector('#password').value, 
-            confirmPassword = document.querySelector("#confirm password").value;
-            
-        if (password == "") {
-            alert("Field cannot be empty.");
-        }
-        else if(password != confirmPassword) {
-            alert("Password didn't match try again");
-            return false;
-        }
-        return true;
-    }
-</script>
-*@
+
