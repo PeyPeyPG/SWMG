@@ -44,13 +44,6 @@ button.accept-policy[b-fl0of2xla1] {
   line-height: inherit;
 }
 
-.footer[b-fl0of2xla1] {
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  margin-bottom: 0%;
-}
-
 @keyframes wand-b-fl0of2xla1 {
   10%{
     transform: rotate(-15deg);
