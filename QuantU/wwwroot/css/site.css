@@ -131,8 +131,6 @@ body {
     box-shadow: #27272c;
   }
 }
-
-/*sign up box stuff*/
 .form__group {
   position: relative;
   padding: 15px 0 0;
@@ -187,8 +185,6 @@ body {
 .form__field:required, .form__field:invalid {
   box-shadow: none;
 }
-
-/*styling for submit button*/
 .submit{
   display: inline-block;
   width: 180px;
@@ -206,8 +202,6 @@ body {
 .submit:hover {
   transform: scale(1.05);
 }
-
-
 .signUp {
   width: 500px;
   height: 600px;
@@ -238,7 +232,6 @@ body {
   letter-spacing: .25px;
 }
 
-/*header for page*/
 .sHeader {
   color: #9b66f7;
   font-size: 60px;
@@ -270,15 +263,12 @@ input[type="text"]{
 
 :focus{outline: none;}
 
-/*username for login*/
 .col-3{
   float: left; 
   width: 40%; 
   margin: 40px 3%; 
   position: relative;
 }  
-
-/*password for login*/
 .col-4{
   float: right; 
   width: 40%; 
@@ -307,7 +297,6 @@ input[type="text"]{
   transition: 0.4s;
   }
   
-  /*username for login*/
   .effect-6{
     border: 0; 
     padding: 5px 0 7px;
@@ -328,7 +317,6 @@ input[type="text"]{
     }
 
 
-  /*password for login*/
 .effect-5:focus{
   padding: 5px 14px 7px; 
   transition: 0.4s;
@@ -350,7 +338,6 @@ input[type="text"]{
 .effect-6 ~ .focus-border{position: absolute; height: 36px; bottom: 0; right: 0; width: 0; transition: 0.4s;}
 .effect-6:focus ~ .focus-border{width: 100%; transition: 0.4s; border: 2px solid #c9aaff;}
 
-/*right box on sign up page*/
 .contain{
   position: relative; /* add position relative to the parent element */
   width: 500px;
@@ -365,20 +352,20 @@ input[type="text"]{
   left: 100px; 
 }
 
-/*make wizard move forever */
 #my-image {
   animation: 1s my-image infinite;
 
 }
-
-/*side box postitioning*/
 .login {
   width: 74%; 
   height: 74%;
  
 }
-
-/*make wizard move up and down*/
+.spaces {
+  width: 91%; 
+  height: 30rem; 
+  transform: rotate(-90deg);
+}
 @keyframes my-image {
   0% {
     transform: translateY(0px);
@@ -396,8 +383,6 @@ input[type="text"]{
     transform: translateY(0px);
   }
 }
-
-
 .im {
   z-index: -1;
   left: -21%;
@@ -514,7 +499,6 @@ input[type="text"]{
   }
 }
 
-/*styling for accordion on account page*/
 .format {
   font-size: 24px;
   font-family: FreeMono;
@@ -523,7 +507,6 @@ input[type="text"]{
 
 }
 
-/*color for accordion on account page*/
 .accordion-button {
   color:  #c9aaff;
   background-color: #f0f0f0;
