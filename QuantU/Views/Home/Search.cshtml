@@ -154,7 +154,7 @@
                     }
                 </style>
                 <script>
-                    var wordList = ["This Search Bar Doesnt Work :("];
+                    var wordList = ["Type Here....", "Search Stock..." , "Feeling Lucky..." ,"We Love Casting Spells... <3"];
                     var randomIndex = Math.floor(Math.random() * wordList.length);
                     var randomWord = wordList[randomIndex];
                     var inputElem = document.querySelector('input.form-control');
@@ -170,167 +170,215 @@
                 </script>
             </div>
         </div>
-
-        <button class="try-btn" id="trade-now-btn"> Try This Stock!
-            <style>
-                .try-btn {
-                    font-size: xx-small;
-                    position: absolute;
-                    left: 82.5%;
-                    top: 45%;
-                    align-items: center;
-                    justify-content: center;
-                    display: inline-block;
-                    width: 10rem;
-                    height: 3.125rem;
-                    background: linear-gradient(to left, #62c08b, #62c08b);
-                    /*box-shadow: 0 10px 25px #c9aaff;*/
-                    border-radius: 3.125rem;
-                    border: none;
-                    font-size: larger;
-                    font-weight: 500;
-                    color: #fff;
-                    text-transform: uppercase;
-                    letter-spacing: 0.063rem;
-                    animation: pulsate 1.2s ease-in-out infinite both;
-                    width: 10rem;
-                    height: 3.5rem;
-                }
-
-                .try-btn:hover {
-                    animation-play-state: paused;
-                    transform: scale(1.05);
-                }
-            </style>
-        </button>
-    </div>
-
-    <div class="right-screen">
-        @*
-            @*Company Information
-            <div class="company-info">
-            <style>
-            .company-info {
-            color: black;
-            font-size: 1.563rem;
-            position: absolute;
-            width: 34.375rem;
-            height: 28.5rem;
-            top: 28%;
-            left: 60%;
-            background-color: gray;
-            }
-            </style>
+        <div class="try-stock">
+            <div class="logo">
             </div>
+            <button class="try-btn" id="trade-now-btn"> Try This Stock!
+                <style>
+                    .try-btn {
+                        font-size: small;
+                        position: absolute;
+                        left: 3%;
+                        top: 35%;
+                        align-items: center;
+                        justify-content: center;
+                        display: inline-block;
+                        width: 10rem;
+                        height: 3.125rem;
+                        background: linear-gradient(to left, #62c08b, #62c08b);
+                        /*box-shadow: 0 10px 25px #c9aaff;*/
+                        border-radius: 3.125rem;
+                        border: none;
+                        font-size: larger;
+                        font-weight: 500;
+                        color: #fff;
+                        text-transform: uppercase;
+                        letter-spacing: 0.063rem;
+                        animation: pulsate 1.2s ease-in-out infinite both;
+                        width: 10rem;
+                        height: 3.5rem;
+                    }
 
-            @* Company Name
-            <div class="company-name"> SWMG Corporation
-            <style>
-            .company-name {
-            color: black;
-            font-size: 1.563rem;
-            position: absolute;
-            width: 34.375rem;
-            top: 24%;
-            left: 60%;
-            border: 0.063rem solid #ccc;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            }
-            </style>
-            </div>
-        *@
-        @*Try Another Stock
-            <button class="try-btn" id="trade-now-btn"> Try This Stock: APPL INC
-            <style>
-            .try-btn {
-            font-size: small;
-            position: absolute;
-            left: 60%;
-            top: 15%;
-            align-items: center;
-            justify-content: center;
-            display: inline-block;
-            width: 34.375rem;
-            height: 3.125rem;
-            background: linear-gradient(to left, #62c08b, #62c08b);
-            /*box-shadow: 0 10px 25px #c9aaff;*/
-            border-radius: 3.125rem;
-            border: none;
-            font-size: larger;
-            font-weight: 500;
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 0.063rem;
-            animation: pulsate 1.2s ease-in-out infinite both;
-            }
-
-            .try-btn:hover {
-            animation-play-state: paused;
-            transform: scale(1.05);
-            }
-            </style>
+                    .try-btn:hover {
+                        animation-play-state: paused;
+                        transform: scale(1.05);
+                    }
+                </style>
             </button>
-        *@
+        </div>
+
+         <div class="try-stock2">
+            <div class="logo">
+            </div>
+            <button class="try-btn" id="trade-now-btn"> Try This Stock!
+                <style>
+                    .try-btn {
+                        font-size: small;
+                        position: absolute;
+                        left: 3%;
+                        top: 35%;
+                        align-items: center;
+                        justify-content: center;
+                        display: inline-block;
+                        width: 10rem;
+                        height: 3.125rem;
+                        background: linear-gradient(to left, #62c08b, #62c08b);
+                        /*box-shadow: 0 10px 25px #c9aaff;*/
+                        border-radius: 3.125rem;
+                        border: none;
+                        font-size: larger;
+                        font-weight: 500;
+                        color: #fff;
+                        text-transform: uppercase;
+                        letter-spacing: 0.063rem;
+                        animation: pulsate 1.2s ease-in-out infinite both;
+                        width: 10rem;
+                        height: 3.5rem;
+                    }
+
+                    .try-btn:hover {
+                        animation-play-state: paused;
+                        transform: scale(1.05);
+                    }
+                </style>
+            </button>
+        </div>
     </div>
-
-
-    <style>
-        .container {
-            display: flex;
-        }
-
-        .left-screen {
-            margin-right: 0%;
-            margin-top: -2%;
-        }
-
-        .logo-box {
-            width: 8rem;
-            height: 8rem;
-            background-color: gray;
-            position: absolute;
-            top: 5%;
-            left: 85%;
-            border-radius: 0.625rem;
-        }
-
-        .card-text {
-            top: 4%;
-        }
-
-        .try-stock {
-            height: 10rem;
-            width: 20rem;
-            background-color: white;
-            border: 1px solid black;
-            border-radius: 10%;
-            padding: 3rem;
-            position: absolute;
-            left: 82%;
-            top: 40%;
-            font-size: xx-small;
-        }
-
-        .logo {
-            width: 8rem;
-            height: 8rem;
-            background-color: gray;
-            position: absolute;
-            top: 10%;
-            left: 55%;
-            border-radius: 0.625rem;
-            justify-content: center;
-            align-items: center;
-            font-size: medium;
-        }
-
-
-    </style>
 </div>
 
+<div class="right-screen">
+    @*
+        @*Company Information
+        <div class="company-info">
+        <style>
+        .company-info {
+        color: black;
+        font-size: 1.563rem;
+        position: absolute;
+        width: 34.375rem;
+        height: 28.5rem;
+        top: 28%;
+        left: 60%;
+        background-color: gray;
+        }
+        </style>
+        </div>
 
+        @* Company Name
+        <div class="company-name"> SWMG Corporation
+        <style>
+        .company-name {
+        color: black;
+        font-size: 1.563rem;
+        position: absolute;
+        width: 34.375rem;
+        top: 24%;
+        left: 60%;
+        border: 0.063rem solid #ccc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        }
+        </style>
+        </div>
+    *@
+    @*Try Another Stock
+        <button class="try-btn" id="trade-now-btn"> Try This Stock: APPL INC
+        <style>
+        .try-btn {
+        font-size: small;
+        position: absolute;
+        left: 60%;
+        top: 15%;
+        align-items: center;
+        justify-content: center;
+        display: inline-block;
+        width: 34.375rem;
+        height: 3.125rem;
+        background: linear-gradient(to left, #62c08b, #62c08b);
+        /*box-shadow: 0 10px 25px #c9aaff;*/
+        border-radius: 3.125rem;
+        border: none;
+        font-size: larger;
+        font-weight: 500;
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: 0.063rem;
+        animation: pulsate 1.2s ease-in-out infinite both;
+        }
+
+        .try-btn:hover {
+        animation-play-state: paused;
+        transform: scale(1.05);
+        }
+        </style>
+        </button>
+    *@
+</div>
+
+<style>
+    .container {
+        display: flex;
+    }
+
+    .left-screen {
+        margin-right: 0%;
+        margin-top: -2%;
+    }
+
+    .logo-box {
+        width: 8rem;
+        height: 8rem;
+        background-color: gray;
+        position: absolute;
+        top: 5%;
+        left: 85%;
+        border-radius: 0.625rem;
+    }
+
+    .card-text {
+        top: 4%;
+    }
+
+    .try-stock {
+        height: 10rem;
+        width: 20rem;
+        background-color: white;
+        border: 1px solid black;
+        border-radius: 10%;
+        padding: 3rem;
+        position: absolute;
+        left: 82%;
+        top: 25%;
+        font-size: xx-small;
+    }
+       .try-stock2 {
+        height: 10rem;
+        width: 20rem;
+        background-color: white;
+        border: 1px solid black;
+        border-radius: 10%;
+        padding: 3rem;
+        position: absolute;
+        left: 82%;
+        top: 45%;
+        font-size: xx-small;
+    }
+
+    .logo {
+        width: 8rem;
+        height: 8rem;
+        background-color: gray;
+        position: absolute;
+        top: 10%;
+        left: 55%;
+        border-radius: 0.625rem;
+        justify-content: center;
+        align-items: center;
+        font-size: medium;
+    }
+</style>
+</div>
 
 @*Company Name
     <div class="company-name"> SWMG Corporation
@@ -467,20 +515,6 @@
     </style>
     </button>
 *@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 @*Search Bar Place Holder*@
 @* <div>
