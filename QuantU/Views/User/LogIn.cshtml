@@ -5,40 +5,53 @@
 }
 <body>
 @*Wizard*@
-<div id ="my-image"  style=" padding-top: 20px; left: 65%; position: absolute;" >
+<div id ="my-image"  style=" padding-top: 50px; left: 65%; position: absolute;" >
   <img class = "login" src="~/images/login.jpg">
 </div>
-@*Space Gif *@
-<div class = "space" style=" z-index: -1; left: 55%; position: absolute;">
-    <img class = "spaces" src="~/images/space.gif">
-</div>
+
 <div class= "home">
-<div class="contain">
-    <center>
-    <div class="text-center">
-        <h1>Log In</h1> 
-    </div>
-    <form asp-action="LogIn">
-        <div class="container text-center">
-        <div class="row">
-            @*Username for login*@
-            <div class="col-3">
+<div style="display: flex; width: 100%;">
+  <div style="width: 29%;">
+    <div class="contain">
+      <center>
+        <div class="text-center">
+          <h1>Log In</h1> 
+        </div>
+        <form asp-action="LogIn">
+          <div class="container text-center">
+            <div class="row">
+              @*Username for login*@
+              <div class="col-3">
                 <input asp-for="username" type="text" class="effect-5" placeholder="User Name" required>
                 <span class="focus-border" asp-validation-for="username"></span>
-            </div><br><br><br>
-            @*Password for login*@
-            <div class="col-4">
+              </div><br><br><br>
+              @*Password for login*@
+              <div class="col-4">
                 <input type = "password" asp-for="password" class="effect-6" placeholder="Password" required>
                 <span class="focus-border" asp-validation-for="password"></span>
+              </div>
+            </div><br>
+            <button type="submit" class="submit">Submit</button>
+          </div>
+        </form>
+      </center>
+    </div>
+  </div>
+
+            <div style="width: 29%;">
+                <div class="contain">
+                    <center>
+                        <h1>Don't have an account?</h1>
+                        <h1>Sign up now!</h1>
+                        <br><br><br>
+                        <form asp-action="Index">
+                            <button type="submit" class="submit">Sign Up</a></button>
+                        </form>
+                    </center>
+                </div>
             </div>
-        </div><br>
-    <button type="submit" class="submit">Submit</button>
-    </form>
-    </center>
-    </div>
-    </div>
 </div>
-    </div>
+
 </div>
 
 
