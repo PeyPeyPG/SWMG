@@ -6,6 +6,7 @@ using QuantU.Controllers;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Security.Claims;
+using System;
 
 namespace QuantU.Controllers;
 
@@ -178,7 +179,35 @@ public class HomeController : Controller
 
 
     public IActionResult AddStockToPort(string PortfolioName, string ticker, int shares) {
-        Console.WriteLine("\n\n\n\n\n" + PortfolioName + "  " + ticker + " " + shares);
+         var userId = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
+         userId = UserInfo.DecryptSingle(userId);
+        UserFinances user = client.GetDatabase("SWMG").GetCollection<UserFinances>("UserFinances").Find(u => u.username == userId).FirstOrDefault();
+        Portfolio p = user.portfolioList.Find(p => p.name == PortfolioName);
+        Console.WriteLine(shares + "\n\n\n\n\n");
+        if(p.stocks == null) {
+            Console.WriteLine("it is null");
+            p.stocks = new List<string>();
+            p.share = new List<int>();
+            p.dates = new List<string>();
+             p.stocks.Add(ticker);
+            p.share.Add(shares);
+            p.dates.Add(DateTime.Now.ToString());
+        }
+        else {
+            Console.WriteLine("it is not null");
+            p.stocks.Add(ticker);
+            p.share.Add(shares);
+             p.dates.Add(DateTime.Now.ToString());
+        }
+
+        FilterDefinition<UserFinances> filter = Builders<UserFinances>.Filter.Eq(u => u.username, userId);
+        UpdateDefinition<UserFinances> update = Builders<UserFinances>.Update.Set(u => u.portfolioList, user.portfolioList);
+        client.GetDatabase("SWMG").GetCollection<UserFinances>("UserFinances").UpdateOne(filter, update);
+
+
+         
+
+        
         ViewBag.PortfolioName = PortfolioName;
             return View("PortfolioPage");
     }

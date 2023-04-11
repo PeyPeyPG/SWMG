@@ -237,9 +237,9 @@
                                             <form asp-action="AddStockToPort">
                                             <div class="modal-body">
                                                 <div class="mb-3">
-                                                    <label for="amount" class="form-label">Shares</label>
-                                                    <input name="amount" type="text" class="a" >
-                                                    <span class="text-danger" for="amount"></span>
+                                                    <label for="shares" class="form-label">Shares</label>
+                                                    <input for="shares" name="shares" type="number" class="a" >
+                                                    <span class="text-danger" for="shares"></span>
                                                 </div>
                                                  <input for="ticker" type="hidden" name="ticker" value="@ViewBag.ticker" class="form-control" >
                                                 <div class="input-group mb-3">
