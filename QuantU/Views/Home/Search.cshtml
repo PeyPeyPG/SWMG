@@ -157,7 +157,7 @@
                     </style>
                 </div>
             @*Trade Button*@
-                <button class="trade-btn" id="trade-now-btn">Trade Now
+                <button class="trade-btn" id="trade-now-btn" data-bs-toggle="modal" data-bs-target="#AddStockToPort">Trade Now
                     <style>
                         .trade-btn {
                             color: red;
@@ -219,7 +219,57 @@
                             }, 50);
                             }); *@
                     </script>
+
+
                 </button>
+
+
+
+
+                @*testing*@
+                <div class="modal fade" id="AddStockToPort" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Add to a Portfolio</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <form asp-action="AddStockToPort">
+                                            <div class="modal-body">
+                                                <div class="mb-3">
+                                                    <label for="shares" class="form-label">Shares</label>
+                                                    <input for="shares" name="shares" type="number" class="a" >
+                                                    <span class="text-danger" for="shares"></span>
+                                                </div>
+                                                 <input for="ticker" type="hidden" name="ticker" value="@ViewBag.ticker" class="form-control" >
+                                                <div class="input-group mb-3">
+                                                    <label class="input-group-text" for="inputGroupSelect01">Options</label>
+                                                    <select class="form-select" name="PortfolioName" id="inputGroupSelect01" for="PortfolioName">
+                                                        <option selected>Choose Portfolio</option>
+                                                        @foreach(Portfolio portfolio in ViewBag.portfolioList)
+                                                        { 
+                                                            <option value="@portfolio.name">@portfolio.name</option>
+                                                        }
+                                                    </select>
+                                                    </div>
+                                                </div>
+                                            <div class="modal-footer">
+                                                @* submits the form *@
+                                                <button type="submit" class="btn btn-primary">Add to Portfolio</button>
+                                            </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
+
+
+
+
             @*Search Bar Place Holder*@
                 <div>
                 @* Form for Search() function in HomeComtroller.cs *@
@@ -229,6 +279,7 @@
       NOTE: see how the for and name attribute match the Search parameter name *@
         <input name="title" class="form-control" type="text" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
         <datalist class="searchbar" id="datalistOptions">
+            
                         @using MongoDB.Driver
                         @using QuantU.Models
                         @{
@@ -249,6 +300,7 @@
                     <option value='@stock'></option>
                         }
             </datalist>
+            <input for="name" name="name" type="hidden" value="@ViewBag.PortfolioName" class="form-control" >
         </form>
         <style>
                         .form-control {
@@ -308,7 +360,11 @@
                     </style>
                 </button>
             </div>
+
+
         </div>
+
+
     </div>
 
 <script>
