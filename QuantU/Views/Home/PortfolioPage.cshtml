@@ -46,15 +46,16 @@
           </tr>
         </thead>
         <tbody>
-          @for (int i = 0; i < ViewBag.portfolio.stocks.Count; i++)
+          @if (@ViewBag.portfolio.stocks != null)
           {
-            
-            <tr class="clickable"
+            for(int i = 0; i < ViewBag.portfolio.stocks.Count; i++){
+                <tr class="clickable"
 		          onclick="display('@ViewBag.portfolio.stocks[i]')">
-              <th >@i</th>
+              <th >@(i+1)</th>
               <td>@ViewBag.portfolio.stocks[i]</td>
               <td>@ViewBag.portfolio.share[i]</td>
             </tr>
+            }
           }
         </tbody>
       </table>
@@ -81,7 +82,7 @@
 
   <form asp-action="AddStock">
     <input asp-for="name" type="hidden" value="@ViewBag.PortfolioName" class="form-control">
-    <button type="submit">
+    <button type="submit" class="submit">
       Add Stocks
     </button>
   </form>
@@ -107,3 +108,7 @@
         );
   }
 </script>
+
+<br>
+<br>
+<br>
