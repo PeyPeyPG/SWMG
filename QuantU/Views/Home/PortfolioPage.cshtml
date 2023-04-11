@@ -44,13 +44,16 @@
           </tr>
         </thead>
         <tbody>
-          @for (int i = 0; i < ViewBag.portfolio.stocks.Count; i++)
+          @if (@ViewBag.portfolio.stocks != null)
           {
-            <tr>
-              <th scope="row">@i</th>
-              <td>@ViewBag.portfolio.stocks[i]</td>
-              <td>@ViewBag.portfolio.share[i]</td>
-            </tr>
+            for (int i = 0; i < ViewBag.portfolio.stocks.Count; i++)
+            {
+              <tr>
+                <th scope="row">@i</th>
+                <td>@ViewBag.portfolio.stocks[i]</td>
+                <td>@ViewBag.portfolio.share[i]</td>
+              </tr>
+            }
           }
         </tbody>
       </table>
@@ -81,3 +84,7 @@
     </button>
   </form>
 </div>
+
+<br>
+<br>
+<br>
