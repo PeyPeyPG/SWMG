@@ -73,6 +73,10 @@
       "PackagePath": "staticwebassets\\js\\graph.js"
     },
     {
+      "Id": "C:\\Users\\peyto\\Desktop\\SWMG\\QuantU\\wwwroot\\js\\news.js",
+      "PackagePath": "staticwebassets\\js\\news.js"
+    },
+    {
       "Id": "C:\\Users\\peyto\\Desktop\\SWMG\\QuantU\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
