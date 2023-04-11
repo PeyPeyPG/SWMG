@@ -1,22 +1,22 @@
+<br>
 <div class="container">
     @using MongoDB.Driver
     @using QuantU.Models
     <div class="accordion">
         <div class="accordion-item">
             <h2 class="accordion-header text-center" id="headingOne">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                    aria-expanded="true" aria-controls="collapseOne">
-                    User Info
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <strong>User Info</strong>
                 </button>
             </h2>
             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
                 data-bs-parent="#accordionExample" style="">
                 <div class="accordion-body">
                     <ul>
-                        <li>
+                        <li class = "format">
                             Username: @ViewBag.user.username
                         </li>
-                        <li>
+                        <li class = "format">
                             Email: @ViewBag.user.email
                             <span>
                                 <button type="button" class="btn btn-primary newstock col" data-bs-toggle="modal"
@@ -117,7 +117,7 @@
             </div>
         </div>
     </div>
-    <div class="accordion">
+    
         <div class="accordion-item">
             <h2 class="accordion-header text-center" id="headingOne">
                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"

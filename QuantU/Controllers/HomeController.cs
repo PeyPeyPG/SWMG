@@ -42,6 +42,10 @@ public class HomeController : Controller
             }
     }
 
+    public IActionResult Search (string title, string name){
+        
+    }
+
     public IActionResult Index()
     {
         ClaimsPrincipal claimUser = HttpContext.User;

@@ -41,7 +41,7 @@
                             <li><a class="dropdown-item" asp-controller="User"
                                 asp-action="Account">Account info</a></li>
                             <li><a class="dropdown-item" asp-controller="User"
-                                asp-action="LogIn">Sign out</a></li>
+                                asp-action="LogOut">Sign out</a></li>
                         </ul>
                     </div>
                 </div>
@@ -71,7 +71,7 @@
   <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
     <div class="row bottom justify-content-center" id="bottom">
       <h6 class="col-sm-4">We 
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-heart-fill" viewBox="0 0 16 16">
           <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
         </svg>
         Casting Spells
@@ -103,8 +103,8 @@
   }
 </style>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

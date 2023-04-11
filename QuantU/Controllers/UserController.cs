@@ -167,7 +167,24 @@ namespace QuantU.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            return View();
+    
+    public async Task<IActionResult> LogOut(){
+        
+        await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+        return RedirectToAction("LogIn", "User");
+    }
+
+    public IActionResult Account(){
+        //Gets username from cookies and saves it as userId
+        var userId = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
+        //userId is encrypted
+        userId = UserInfo.DecryptSingle(userId);
+        //creates a filter to look for the matching username in the database
+        FilterDefinition<UserInfo> filter = Builders<UserInfo>.Filter.Eq("username", userId);
+        List<UserInfo> results = client.GetDatabase("SWMG").GetCollection<UserInfo>("UserInfo").Find(filter).ToList();
+        UserInfo user = new UserInfo();
+        foreach(UserInfo result in results){
+            user = result;
         }
 
         public IActionResult Account()
