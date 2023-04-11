@@ -1,3 +1,4 @@
+<br>
 <div class="container">
     @using MongoDB.Driver
     @using QuantU.Models
@@ -5,13 +6,13 @@
         <div class="accordion-item">
             <h2 class="accordion-header text-center" id="headingOne">
                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                User Info
+                <strong>User Info</strong>
                 </button>
             </h2>
             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="">
                 <div class="accordion-body">
                     <ul>
-                        <li>
+                        <li class = "format">
                             Username: @ViewBag.user.username
                             <span>
                                 <button type="button" class="btn btn-primary newstock col" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: #C9AAFF;">
@@ -21,7 +22,7 @@
                                 </button>
                             </span>
                         </li>
-                        <li>
+                        <li class = "format">
                             Email: @ViewBag.user.email
                             <span>
                                 <button type="button" class="btn btn-primary newstock col" data-bs-toggle="modal" data-bs-target="#changeEmail" style="background-color: #C9AAFF;">
@@ -63,8 +64,8 @@
                                     </div>
                                 </div>
                         </li>
-                        <li>Password: @ViewBag.user.password</li>
-                        <li>Recovery Question: @ViewBag.user.recoveryQ</li>
+                        <li class = "format">Password: @ViewBag.user.password</li>
+                        <li class = "format">Recovery Question: @ViewBag.user.recoveryQ</li>
                     </ul>
                 </div>
             </div>
@@ -74,16 +75,16 @@
         <div class="accordion-item">
             <h2 class="accordion-header text-center" id="headingOne">
                 <button class="accordion-button collasped" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    User Finances
+                    <strong>User Finances</strong>
                 </button>
             </h2>
             <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample" style="">
                 <div class="accordion-body">
                     <ul>
-                        <li>Salary: @ViewBag.uf.netSalary</li>
-                        <li>Marital Status: @ViewBag.uf.maritalStatus</li>
-                        <li>Interests: @ViewBag.uf.interests</li>
-                        <li>Children: @ViewBag.uf.numberOfChildren (Eldest age: @ViewBag.uf.age y/o)</li>
+                        <li class = "format">Salary: @ViewBag.uf.netSalary</li>
+                        <li class = "format">Marital Status: @ViewBag.uf.maritalStatus</li>
+                        <li class = "format">Interests: @ViewBag.uf.interests</li>
+                        <li class = "format">Children: @ViewBag.uf.numberOfChildren (Eldest age: @ViewBag.uf.age y/o)</li>
                         Take the user quiz again to change any information
                     </ul>
                 </div>
