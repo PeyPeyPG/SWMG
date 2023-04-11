@@ -227,7 +227,7 @@
 
 
                 @*testing*@
-                <div class="modal fade" id="AddStockToPortfolio" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="AddStock" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -242,8 +242,20 @@
                                                     <span class="text-danger" for="amount"></span>
                                                 </div>
                                                  <input for="ticker" type="hidden" value="@ViewBag.ticker" class="form-control" >
-                                                 <input for="name" type="hidden" value="@ViewBag.portfolioName" class="form-control" >
-                                            </div>
+                                                <div class="input-group mb-3">
+                                                    <label class="input-group-text" for="inputGroupSelect01">Options</label>
+                                                    <select class="form-select" id="inputGroupSelect01">
+                                                        <option selected>Choose Portfolio</option>
+                                                        @foreach(Portfolio portfolio in ViewBag.portfolioList)
+                                                        { 
+                                                            <option value="@portfolio.name">@portfolio.name</option>
+                                                        }
+                                                        @* <option value="1">One</option>
+                                                        <option value="2">Two</option>
+                                                        <option value="3">Three</option> *@
+                                                    </select>
+                                                    </div>
+                                                </div>
                                             <div class="modal-footer">
                                                 @* submits the form *@
                                                 <button type="submit" class="btn btn-primary">Add to Portfolio</button>
