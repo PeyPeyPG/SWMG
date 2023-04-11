@@ -153,6 +153,13 @@ public class HomeController : Controller
     public IActionResult PortfolioPage(string name){
         Console.WriteLine(name);
         ViewBag.PortfolioName = name;
+        var userId = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
+        //userId is encrypted
+        userId = UserInfo.DecryptSingle(userId);
+        //creates a filter to look for the matching username in the database
+        UserFinances user = client.GetDatabase("SWMG").GetCollection<UserFinances>("UserFinances").Find(u => u.username == userId).FirstOrDefault();
+        Portfolio p = user.portfolioList.Find(p => p.name == name);
+        ViewBag.portfolio = p;
         return View();
     }
 
@@ -204,6 +211,13 @@ public class HomeController : Controller
         UpdateDefinition<UserFinances> update = Builders<UserFinances>.Update.Set(u => u.portfolioList, user.portfolioList);
         client.GetDatabase("SWMG").GetCollection<UserFinances>("UserFinances").UpdateOne(filter, update);
 
+        userId = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
+        //userId is encrypted
+        userId = UserInfo.DecryptSingle(userId);
+        //creates a filter to look for the matching username in the database
+        user = client.GetDatabase("SWMG").GetCollection<UserFinances>("UserFinances").Find(u => u.username == userId).FirstOrDefault();
+        p = user.portfolioList.Find(p => p.name == PortfolioName);
+        ViewBag.portfolio = p;
 
          
 
