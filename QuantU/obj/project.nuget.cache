@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FJXjD74kJ6tar6paZVKp9Jgq3ZN9+Emea27ZENghGe0o409gz2UkQc1AN5qefBr4Svz6wTCpOGMkVwPJB0HIyA==",
+  "dgSpecHash": "0aaJRKiuAErXORtnNv/nrK0CeBEDH3e8ee4iVLPrGoHuKJHMoHynSgunVO0/ofyxLWHxPKGILN/+AazG20ePzg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ender\\OneDrive\\Documents\\GitHub\\SWMG\\QuantU\\QuantU.csproj",
+  "projectFilePath": "C:\\Users\\ender\\OneDrive\\Documents\\GitHub\\SWMG\\Quantu\\QuantU.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ender\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\ender\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",

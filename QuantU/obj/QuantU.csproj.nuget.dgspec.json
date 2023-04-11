@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ender\\OneDrive\\Documents\\GitHub\\SWMG\\QuantU\\QuantU.csproj": {}
+    "C:\\Users\\ender\\OneDrive\\Documents\\GitHub\\SWMG\\Quantu\\QuantU.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ender\\OneDrive\\Documents\\GitHub\\SWMG\\QuantU\\QuantU.csproj": {
+    "C:\\Users\\ender\\OneDrive\\Documents\\GitHub\\SWMG\\Quantu\\QuantU.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ender\\OneDrive\\Documents\\GitHub\\SWMG\\QuantU\\QuantU.csproj",
+        "projectUniqueName": "C:\\Users\\ender\\OneDrive\\Documents\\GitHub\\SWMG\\Quantu\\QuantU.csproj",
         "projectName": "QuantU",
-        "projectPath": "C:\\Users\\ender\\OneDrive\\Documents\\GitHub\\SWMG\\QuantU\\QuantU.csproj",
+        "projectPath": "C:\\Users\\ender\\OneDrive\\Documents\\GitHub\\SWMG\\Quantu\\QuantU.csproj",
         "packagesPath": "C:\\Users\\ender\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ender\\OneDrive\\Documents\\GitHub\\SWMG\\QuantU\\obj\\",
+        "outputPath": "C:\\Users\\ender\\OneDrive\\Documents\\GitHub\\SWMG\\Quantu\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ender\\AppData\\Roaming\\NuGet\\NuGet.Config"
