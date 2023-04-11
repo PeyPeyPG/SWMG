@@ -167,24 +167,15 @@ namespace QuantU.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-    
-    public async Task<IActionResult> LogOut(){
-        
-        await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-        return RedirectToAction("LogIn", "User");
-    }
+            return View();
+        }
 
-    public IActionResult Account(){
-        //Gets username from cookies and saves it as userId
-        var userId = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
-        //userId is encrypted
-        userId = UserInfo.DecryptSingle(userId);
-        //creates a filter to look for the matching username in the database
-        FilterDefinition<UserInfo> filter = Builders<UserInfo>.Filter.Eq("username", userId);
-        List<UserInfo> results = client.GetDatabase("SWMG").GetCollection<UserInfo>("UserInfo").Find(filter).ToList();
-        UserInfo user = new UserInfo();
-        foreach(UserInfo result in results){
-            user = result;
+
+        public async Task<IActionResult> LogOut()
+        {
+
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("LogIn", "User");
         }
 
         public IActionResult Account()
@@ -279,7 +270,7 @@ namespace QuantU.Controllers
         }
 
 
-         public IActionResult changePass(string newPass, string recoveryA)
+        public IActionResult changePass(string newPass, string recoveryA)
         {
 
 
@@ -300,7 +291,7 @@ namespace QuantU.Controllers
             user = UserInfo.EncryptAlgo(user);
             ViewBag.user = user;
 
-            string changedPass =  UserInfo.HashedSingle(newPass);
+            string changedPass = UserInfo.HashedSingle(newPass);
 
             FilterDefinition<UserFinances> filter2 = Builders<UserFinances>.Filter.Eq("username", userId);
             List<UserFinances> results2 = client.GetDatabase("SWMG").GetCollection<UserFinances>("UserFinances").Find(filter2).ToList();
