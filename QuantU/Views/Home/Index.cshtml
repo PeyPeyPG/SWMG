@@ -3,8 +3,10 @@
 }
 @model QuantU.Models.UserFinances;
 
-@*  *@
+@* News marquee for top market stories *@
 <marquee style="background: black; position: relative;">
+
+  @* Different svg to mark the begining of a new news story *@
   <label>
       <p class="mt-2"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="lime" class="bi bi-caret-up-fill" viewBox="0 0 16 16">
         <path d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/>
@@ -22,8 +24,10 @@
   </label>
 </marquee>
 
+@* Script for fetching news data from the API and filling the marquee tool *@
 <script src=~/js/news.js></script>
 
+@* Main content *@
 <div class="container">
 
   <div class="text-center">
@@ -36,140 +40,213 @@
 
     @* Search bar seen on screen 
       NOTE: see how the for and name attribute match the Search parameter name *@
-        <input name="title" class="form-control" type="text" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
-        <datalist class="searchbar" id="datalistOptions">
-      @using MongoDB.Driver
-      @using QuantU.Models
-      @{
-        MongoClient client = new MongoClient("mongodb+srv://SWMG:Shawdowwizardmoneygang@swmg.hzzuvlg.mongodb.net/?retryWrites=true&w=majority");
-        var builder = Builders<StockData>.Filter;
-        var empty = builder.Empty;
-        List<StockData> results = client.GetDatabase("SWMG").GetCollection<StockData>("StockData").Find(empty).ToList();
-        List<string> stocks = new List<String>();
-        foreach (StockData result in results)
-        {
-          stocks.Add(result.name + ", " + result.ticker);
-        }
-        stocks.Sort();
-      }
 
-      @foreach (string stock in stocks)
-      {
-              <option value='@stock'></option>
-      }
+        @* Input for stock ticker *@
+        <input name="title" class="form-control" type="text" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+        @* The list of all stocks in the data base for the user to choose from *@
+        <datalist class="searchbar" id="datalistOptions">
+
+          @* Fetched stocks from the stock database to display in dropdown options *@
+          @using MongoDB.Driver
+          @using QuantU.Models
+          @{
+
+            @* Retrieves Client *@
+            MongoClient client = new MongoClient("mongodb+srv://SWMG:Shawdowwizardmoneygang@swmg.hzzuvlg.mongodb.net/?retryWrites=true&w=majority");
+
+            @* Creates empty filter to match to all items in stock collection*@
+            var builder = Builders<StockData>.Filter;
+            var empty = builder.Empty;
+
+            @* Goes through collection with filter and creates a list of all the items in the collection *@
+            List<StockData> results = client.GetDatabase("SWMG").GetCollection<StockData>("StockData").Find(empty).ToList();
+            List<string> stocks = new List<String>();
+
+            @* Formats the information for display list *@
+            foreach (StockData result in results)
+            {
+              stocks.Add(result.name + ", " + result.ticker);
+            }
+            stocks.Sort();
+          }
+
+          @* Iteration through newly made list and adds every item as an option to choose from *@
+          @foreach (string stock in stocks)
+          {
+                  <option value='@stock'></option>
+          }
+
         </datalist>
       </form>
 
   <br>
   
- @* Accordion for home page *@
- <div class="accordion2">
-  <ul>
-    <li>
-      <div> <a>
-        <h2>What is QuantU?</h2>
-        <p><strong>We make investing look easy.</strong> Getting into investing can be confusing for beginners to get started. 
-           QuantU makes that transition easier by giving you an area to simulate trading before diving head first into the hobby with. <strong>This is not financial advice.</strong></p>
-        </a> </div>
-    </li>
-    <li>
-      <div> <a>
-        <h2>How to begin</h2>
-        <p>Create a new portfolio by going to paper trading in the navigation bar and search for stocks to add.</p>
-        </a> </div>
-    </li>
-    <li>
-      <div> <a>
-        <h2>Investment Suggestions</h2>
-        @{
-      if(ViewBag.user.numberOfChildren > 0){
-        if(ViewBag.user.eldestChildAge < 18 && ViewBag.user.numberOfChildren <= 3 && ViewBag.user.netSalary > 90000){
-          <p>Since you have children below the age of 18, please consider setting up a college fund for your children.</p>
-        }
-        else if(ViewBag.user.eldestChildAge < 18 && ViewBag.user.numberOfChildren < 5 && ViewBag.user.netSalary > 110000){
-          <p>Since you have children below the age of 18, please consider setting up a college fund for your children.</p>
-        }
-      }
-      if(ViewBag.user.age > 60 && ViewBag.user.eldestChildAge > 25 && ViewBag.user.netSalary > 80000){
-        <p>We recommend that you invest in a consistent index fund like the S&P 500 or the NASDAQ</p>
-      }
-      if(ViewBag.user.age <35 && ViewBag.user.age > 17 && ViewBag.user.numberOfChildren == 0){
-        <p>Based on your age, we recommend that you invest in a ROTH IRA account</p>
-      }
-      if(ViewBag.user.age <26 && ViewBag.user.age > 20 && ViewBag.user.numberOfChildren == 0){
-        <p>Based on your age, we recommend that you invest in a 401k account</p>
-      }            
-      if(ViewBag.user.age<30 && ViewBag.user.numberOfChildren == 0 && ViewBag.user.netSalary<60000){
-        <p>Based on your age and income, we recommend that you focus on your well-being and personal health. You may not be ready to invest just yet.</p>
-      }
-    }
-        </a> </div>
-    </li>
-  </ul>
-</div>
+  @* Accordion for home page *@
+  <div class="accordion2">
+
+    @* List for all sliding accordian items *@
+    <ul>
+
+      @* QuantU title and description *@
+      <li>
+        <div> 
+          <a>
+            <h2>What is QuantU?</h2>
+            <p><strong>We make investing look easy.</strong> Getting into investing can be confusing for beginners to get started. 
+              QuantU makes that transition easier by giving you an area to simulate trading before diving head first into the hobby with. <strong>This is not financial advice.</strong></p>
+          </a> 
+          </div>
+      </li>
+
+      @* Beginner's guide *@
+      <li>
+        <div> 
+          <a>
+            <h2>How to begin</h2>
+            <p>Create a new portfolio by going to paper trading in the navigation bar and search for stocks to add.</p>
+          </a> 
+        </div>
+      </li>
+
+      @* Finacial advisment tool *@
+      <li>
+        <div> 
+          <a>
+            <h2>Investment Suggestions</h2>
+
+            @* Options matching financial advise to user quiz items *@
+            @{
+            if(ViewBag.user.numberOfChildren > 0){
+              if(ViewBag.user.eldestChildAge < 18 && ViewBag.user.numberOfChildren <= 3 && ViewBag.user.netSalary > 90000){
+                <p>Since you have children below the age of 18, please consider setting up a college fund for your children.</p>
+              }
+              else if(ViewBag.user.eldestChildAge < 18 && ViewBag.user.numberOfChildren < 5 && ViewBag.user.netSalary > 110000){
+                <p>Since you have children below the age of 18, please consider setting up a college fund for your children.</p>
+              }
+            }
+            if(ViewBag.user.age > 60 && ViewBag.user.eldestChildAge > 25 && ViewBag.user.netSalary > 80000){
+              <p>We recommend that you invest in a consistent index fund like the S&P 500 or the NASDAQ</p>
+            }
+            if(ViewBag.user.age <35 && ViewBag.user.age > 17 && ViewBag.user.numberOfChildren == 0){
+              <p>Based on your age, we recommend that you invest in a ROTH IRA account</p>
+            }
+            if(ViewBag.user.age <26 && ViewBag.user.age > 20 && ViewBag.user.numberOfChildren == 0){
+              <p>Based on your age, we recommend that you invest in a 401k account</p>
+            }            
+            if(ViewBag.user.age<30 && ViewBag.user.numberOfChildren == 0 && ViewBag.user.netSalary<60000){
+              <p>Based on your age and income, we recommend that you focus on your well-being and personal health. You may not be ready to invest just yet.</p>
+              }
+            }
+          </a> 
+        </div>
+      </li>
+
+    </ul>
+  </div>
 
 
   <br>
   <br>
 
   <div class="text-center">
-    <h1 class="display-4">Graph Predictions</h1>
+    <h1 class="display-4">Market Index Predictions</h1>
   </div>
 
 <br>
 
+@* <div class="card mb-3">
+  <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Stock graph</text></svg>
+  <div class="card-body">
+    <h5 class="card-title">Stock Name</h5>
+    <p class="card-text">Stock info</p>
+  </div>
+</div>
+<div class="card mb-3">
+  <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Stock graph</text></svg>
+  <div class="card-body">
+    <h5 class="card-title">Stock Name</h5>
+    <p class="card-text">Stock info</p>
+  </div>
+</div>
+<div class="card mb-3">
+  <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Stock graph</text></svg>
+  <div class="card-body">
+    <h5 class="card-title">Stock Name</h5>
+    <p class="card-text">Stock info</p>
+  </div>
+</div>
+<div class="card mb-3">
+  <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Stock graph</text></svg>
+  <div class="card-body">
+    <h5 class="card-title">Stock Name</h5>
+    <p class="card-text">Stock info</p>
+  </div>
+</div> *@
+
+@* Graphs for all of the market index predictions *@
 <div class="container">
+
   <div class="row">
+
+    @**@
     <div class="col-md-6">
       <div class="card mb-3">
         <!-- card content goes here -->
         <div class="card mb-3">
-        <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Graph goes here</text></svg>
-        <div class="card-body">
-          <h5 class="card-title">Stock Name</h5>
-          <p class="card-text">Stock info</p>
-        </div>
+          <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Graph goes here</text></svg>
+          <div class="card-body">
+            <h5 class="card-title">Stock Name</h5>
+            <p class="card-text">Stock info</p>
+          </div>
         </div>
       </div>
     </div>
+
+    @**@
     <div class="col-md-6">
       <div class="card mb-3">
         <!-- card content goes here -->
         <div class="card mb-3">
-        <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Graph goes here</text></svg>
-        <div class="card-body">
-          <h5 class="card-title">Stock Name</h5>
-          <p class="card-text">Stock info</p>
-        </div>
+          <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Graph goes here</text></svg>
+          <div class="card-body">
+            <h5 class="card-title">Stock Name</h5>
+            <p class="card-text">Stock info</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
+
   <div class="row">
+
+    @**@
     <div class="col-md-6">
       <div class="card mb-3">
         <!-- card content goes here -->
         <div class="card mb-3">
-        <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Graph goes here</text></svg>
-        <div class="card-body">
-          <h5 class="card-title">Stock Name</h5>
-          <p class="card-text">Stock info</p>
-        </div>
+          <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Graph goes here</text></svg>
+          <div class="card-body">
+            <h5 class="card-title">Stock Name</h5>
+            <p class="card-text">Stock info</p>
+          </div>
         </div>
       </div>
     </div>
+
+    @**@
     <div class="col-md-6">
       <div class="card mb-3">
         <!-- card content goes here -->
         <div class="card mb-3">
-        <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Graph goes here</text></svg>
-        <div class="card-body">
-          <h5 class="card-title">Stock Name</h5>
-          <p class="card-text">Stock info</p>
-        </div>
+          <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Graph goes here</text></svg>
+          <div class="card-body">
+            <h5 class="card-title">Stock Name</h5>
+            <p class="card-text">Stock info</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
+
 </div>
 
