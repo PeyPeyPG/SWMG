@@ -164,9 +164,11 @@ namespace QuantU.Controllers
         return View();
     }
 
+    
     public async Task<IActionResult> LogOut(){
         
-        return RedirectToAction("LogIn");
+        await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+        return RedirectToAction("LogIn", "User");
     }
 
     public IActionResult Account(){
