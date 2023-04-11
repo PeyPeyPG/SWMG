@@ -157,7 +157,7 @@
                     </style>
                 </div>
             @*Trade Button*@
-                <button class="trade-btn" id="trade-now-btn" data-bs-toggle="modal" data-bs-target="#AddStock">Trade Now
+                <button class="trade-btn" id="trade-now-btn" data-bs-toggle="modal" data-bs-target="#AddStockToPort">Trade Now
                     <style>
                         .trade-btn {
                             color: red;
@@ -227,32 +227,29 @@
 
 
                 @*testing*@
-                <div class="modal fade" id="AddStock" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="AddStockToPort" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="exampleModalLabel">Add to a Portfolio</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
-                                            <form asp-action="AddStock">
+                                            <form asp-action="AddStockToPort">
                                             <div class="modal-body">
                                                 <div class="mb-3">
                                                     <label for="amount" class="form-label">Shares</label>
                                                     <input name="amount" type="text" class="a" >
                                                     <span class="text-danger" for="amount"></span>
                                                 </div>
-                                                 <input for="ticker" type="hidden" value="@ViewBag.ticker" class="form-control" >
+                                                 <input for="ticker" type="hidden" name="ticker" value="@ViewBag.ticker" class="form-control" >
                                                 <div class="input-group mb-3">
                                                     <label class="input-group-text" for="inputGroupSelect01">Options</label>
-                                                    <select class="form-select" id="inputGroupSelect01">
+                                                    <select class="form-select" name="PortfolioName" id="inputGroupSelect01" for="PortfolioName">
                                                         <option selected>Choose Portfolio</option>
                                                         @foreach(Portfolio portfolio in ViewBag.portfolioList)
                                                         { 
                                                             <option value="@portfolio.name">@portfolio.name</option>
                                                         }
-                                                        @* <option value="1">One</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option> *@
                                                     </select>
                                                     </div>
                                                 </div>

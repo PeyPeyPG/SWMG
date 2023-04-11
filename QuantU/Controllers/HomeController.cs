@@ -177,8 +177,10 @@ public class HomeController : Controller
     }
 
 
-    public IActionResult AddStockToPort() {
-            return View();
+    public IActionResult AddStockToPort(string PortfolioName, string ticker, int shares) {
+        Console.WriteLine("\n\n\n\n\n" + PortfolioName + "  " + ticker + " " + shares);
+        ViewBag.PortfolioName = PortfolioName;
+            return View("PortfolioPage");
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
