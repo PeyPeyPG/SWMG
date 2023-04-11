@@ -4,49 +4,54 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] QuantU</title>
+
+    @* CSS sheets from bootstrap library *@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/QuantU.styles.css" asp-append-version="true" />
     @Html.Partial("_Favicons")
 </head>
+
 <body>
+
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow"
-            style="background: #C9AAFF">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-                    <img src="~/images/QuantULogo.png" alt="" height="75px">
-                </a>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1 justify-content-end me-4">
-                        <li class="nav-item">
-                            <a class="nav-link text-light fs-5" asp-area="" asp-controller="Home"
-                                asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light fs-5" asp-area="" asp-controller="Home"
-                                asp-action="PaperTrading">Paper Trading</a>
-                        </li>
-                        <li>
-                            <a class="nav-link text-light fs-5" asp-area="" asp-controller="User"
-                                asp-action="UserQuiz">User Quiz</a>
-                        </li>
-                    </ul>
-                    <div class="btn-group ms-auto">
-                        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                            aria-expanded="false" style="background-color: #C9AAFF;">
-                            Account
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" asp-controller="User"
-                                asp-action="Account">Account info</a></li>
-                            <li><a class="dropdown-item" asp-controller="User"
-                                asp-action="LogOut">Sign out</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </nav>
+      
+      <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow"
+          style="background: #C9AAFF">
+          <div class="container-fluid">
+              <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                  <img src="~/images/QuantULogo.png" alt="" height="75px">
+              </a>
+              <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                  <ul class="navbar-nav flex-grow-1 justify-content-end me-4">
+                      <li class="nav-item">
+                          <a class="nav-link text-light fs-5" asp-area="" asp-controller="Home"
+                              asp-action="Index">Home</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link text-light fs-5" asp-area="" asp-controller="Home"
+                              asp-action="PaperTrading">Paper Trading</a>
+                      </li>
+                      <li>
+                          <a class="nav-link text-light fs-5" asp-area="" asp-controller="User"
+                              asp-action="UserQuiz">User Quiz</a>
+                      </li>
+                  </ul>
+                  <div class="btn-group ms-auto">
+                      <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                          aria-expanded="false" style="background-color: #C9AAFF;">
+                          Account
+                      </button>
+                      <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" asp-controller="User"
+                              asp-action="Account">Account info</a></li>
+                          <li><a class="dropdown-item" asp-controller="User"
+                              asp-action="LogOut">Sign out</a></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </nav>
     </header>
 
     <main role="main" class="mb-3">
