@@ -47,7 +47,7 @@
           @for (int i = 0; i < ViewBag.portfolio.stocks.Count; i++)
           {
             <tr>
-              <th scope="row">@i</th>
+              <th scope="row">@(i+1)</th>
               <td>@ViewBag.portfolio.stocks[i]</td>
               <td>@ViewBag.portfolio.share[i]</td>
             </tr>
