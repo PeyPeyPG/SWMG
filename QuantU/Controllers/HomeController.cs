@@ -158,6 +158,21 @@ public class HomeController : Controller
     public IActionResult AddStock(string name){
         Console.WriteLine(name);
         ViewBag.PortfolioName = name;
+
+        //gets username from cookies and saves it to userId
+        var userId = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
+        //encrypts the username
+        userId = UserInfo.DecryptSingle(userId);
+        //creates a filter to look for the matching username in the database
+        FilterDefinition<UserFinances> filter = Builders<UserFinances>.Filter.Eq("username", userId);
+        //Finds the UserFinance document of the user via username filter and saves it to list
+        List<UserFinances> results = client.GetDatabase("SWMG").GetCollection<UserFinances>("UserFinances").Find(filter).ToList();
+        
+        //saves the portfolioList of the user to ViewBag.portfoliolist to be used in the View
+        foreach(UserFinances result in results){
+            ViewBag.portfolioList = result.portfolioList;
+        }
+        
         return View("Search");
     }
 
