@@ -42,6 +42,25 @@ public class HomeController : Controller
             }
     }
 
+
+    public IActionResult Search2(String title, String name){
+            try
+            {
+                //takes the full stock title and parses it for just the ticker
+                var ticker = title.Split(", ");
+                //ViewBag created to transer ticker to Search page
+                ViewBag.ticker = ticker[ticker.Length - 1];
+                ViewBag.PortfolioName = name;
+                Console.WriteLine(name);
+                Console.WriteLine(TempData["loggedin"]);
+                return View("Search");        
+            }
+            catch (Exception ex)
+            {
+                return View("Index");
+            }
+    }
+
     public IActionResult Index()
     {
         ClaimsPrincipal claimUser = HttpContext.User;
@@ -127,10 +146,15 @@ public class HomeController : Controller
         return View();
     }
 
-    [HttpPost]
-    public IActionResult AddStock(string name, int amount){
+    public IActionResult AddStock(string name){
         Console.WriteLine(name);
+        ViewBag.PortfolioName = name;
         return View("Search");
+    }
+
+
+    public IActionResult AddStockToPort() {
+            return View();
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
