@@ -165,7 +165,7 @@ namespace QuantU.Models{
         }
         return DecryptedUser.ToString();
     }
-
+    
 
     }
 }
