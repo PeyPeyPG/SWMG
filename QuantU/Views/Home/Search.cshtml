@@ -157,7 +157,7 @@
                     </style>
                 </div>
             @*Trade Button*@
-                <button class="trade-btn" id="trade-now-btn">Trade Now
+                <button class="trade-btn" id="trade-now-btn" data-bs-toggle="modal" data-bs-target="#AddStock">Trade Now
                     <style>
                         .trade-btn {
                             color: red;
@@ -220,6 +220,47 @@
                             }); *@
                     </script>
                 </button>
+
+
+
+                @*testing*@
+                <div class="modal fade" id="AddStock" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Add Stock to a Portfolio</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                           
+                                           
+                                            <form asp-action="AddStock">
+                                            <div class="modal-body"></div>
+                                                <div class="mb-3">
+                                                    <label for="name" class="form-label">Stock Name</label>
+                                                    <input name="name" type="text" class="form-control" >
+                                                    <span class="text-danger" for="name"></span>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="amount" class="form-label">Number of Shares</label>
+                                                    <input name="amount" type="text" class="form-control" >
+                                                    <span class="text-danger" for="amount"></span>
+                                                </div> 
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                @* submits the form *@
+                                                <button type="submit" class="btn btn-primary">Push</button>
+                                            </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
+
             @*Search Bar Place Holder*@
                 <div>
                 @* Form for Search() function in HomeComtroller.cs *@
@@ -308,6 +349,11 @@
                     </style>
                 </button>
             </div>
+
+
+
+
+
         </div>
     </div>
 

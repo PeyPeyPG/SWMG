@@ -127,7 +127,8 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult AddStock(string name){
+    [HttpPost]
+    public IActionResult AddStock(string name, int amount){
         Console.WriteLine(name);
         return View("Search");
     }
