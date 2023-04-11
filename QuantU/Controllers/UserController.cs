@@ -164,6 +164,11 @@ namespace QuantU.Controllers
         return View();
     }
 
+    public async Task<IActionResult> LogOut(){
+        
+        return RedirectToAction("LogIn");
+    }
+
     public IActionResult Account(){
         //Gets username from cookies and saves it as userId
         var userId = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
