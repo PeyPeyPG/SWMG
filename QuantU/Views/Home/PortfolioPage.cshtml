@@ -8,7 +8,7 @@
   integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
 <div class="container text-center mt-5">
   <div class="text-center">
-    <h1 class="display-4">@ViewBag.PortfolioName</h1>
+    <h1 class="display-4">@ViewBag.portfolio.name</h1>
   </div>
 
   <style>
@@ -34,7 +34,7 @@
   </style>
 
   <div class="row">
-    @* <div class="scroll col me-5"> *@
+    <div class="scroll col me-5">
       <table class="table table-hover">
         <thead>
           <tr>
@@ -54,7 +54,7 @@
           }
         </tbody>
       </table>
-    @* </div> *@
+    </div>
 
     <div class="card w-50">
       <div class="card-body">
