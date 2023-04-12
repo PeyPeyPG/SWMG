@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\QuantU.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\peyto_1v1b50c\\Desktop\\SWMG\\QuantU\\wwwroot\\.DS_Store",
+      "PackagePath": "staticwebassets\\.DS_Store"
+    },
+    {
       "Id": "C:\\Users\\peyto_1v1b50c\\Desktop\\SWMG\\QuantU\\wwwroot\\css\\body.css",
       "PackagePath": "staticwebassets\\css\\body.css"
     },
@@ -311,6 +315,46 @@
     {
       "Id": "C:\\Users\\peyto_1v1b50c\\Desktop\\SWMG\\QuantU\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "C:\\Users\\peyto_1v1b50c\\Desktop\\SWMG\\QuantU\\wwwroot\\ml\\.DS_Store",
+      "PackagePath": "staticwebassets\\ml\\.DS_Store"
+    },
+    {
+      "Id": "C:\\Users\\peyto_1v1b50c\\Desktop\\SWMG\\QuantU\\wwwroot\\ml\\NDAQ_Forcast.csv",
+      "PackagePath": "staticwebassets\\ml\\NDAQ_Forcast.csv"
+    },
+    {
+      "Id": "C:\\Users\\peyto_1v1b50c\\Desktop\\SWMG\\QuantU\\wwwroot\\ml\\NDAQ_StockPrices.csv",
+      "PackagePath": "staticwebassets\\ml\\NDAQ_StockPrices.csv"
+    },
+    {
+      "Id": "C:\\Users\\peyto_1v1b50c\\Desktop\\SWMG\\QuantU\\wwwroot\\ml\\SPY_Forcast.csv",
+      "PackagePath": "staticwebassets\\ml\\SPY_Forcast.csv"
+    },
+    {
+      "Id": "C:\\Users\\peyto_1v1b50c\\Desktop\\SWMG\\QuantU\\wwwroot\\ml\\SPY_StockPrices.csv",
+      "PackagePath": "staticwebassets\\ml\\SPY_StockPrices.csv"
+    },
+    {
+      "Id": "C:\\Users\\peyto_1v1b50c\\Desktop\\SWMG\\QuantU\\wwwroot\\ml\\^DJI_Forcast.csv",
+      "PackagePath": "staticwebassets\\ml\\^DJI_Forcast.csv"
+    },
+    {
+      "Id": "C:\\Users\\peyto_1v1b50c\\Desktop\\SWMG\\QuantU\\wwwroot\\ml\\^DJI_StockPrices.csv",
+      "PackagePath": "staticwebassets\\ml\\^DJI_StockPrices.csv"
+    },
+    {
+      "Id": "C:\\Users\\peyto_1v1b50c\\Desktop\\SWMG\\QuantU\\wwwroot\\ml\\^NYA_Forcast.csv",
+      "PackagePath": "staticwebassets\\ml\\^NYA_Forcast.csv"
+    },
+    {
+      "Id": "C:\\Users\\peyto_1v1b50c\\Desktop\\SWMG\\QuantU\\wwwroot\\ml\\^NYA_StockPrices.csv",
+      "PackagePath": "staticwebassets\\ml\\^NYA_StockPrices.csv"
+    },
+    {
+      "Id": "C:\\Users\\peyto_1v1b50c\\Desktop\\SWMG\\QuantU\\wwwroot\\ml\\models\\main.py",
+      "PackagePath": "staticwebassets\\ml\\models\\main.py"
     },
     {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.QuantU.Microsoft.AspNetCore.StaticWebAssets.props",

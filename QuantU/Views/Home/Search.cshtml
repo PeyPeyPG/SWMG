@@ -14,86 +14,86 @@
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 
-    <div class="everything">
-        <div class="container">
-            <div class="row">
-                <div class="ignore">
-                @*Stock Information Card*@
-                    <div class="container">
-                        <div class="container" style="margin-top: 1.25rem !important;">
-                            <section class="mx-auto my-5" @*Stock Infomation style*@
-                                style="max-width: 50rem; margin-left: 0rem !important; border-radius: 1.25rem !important;">
-                                <div class="card chart-card">
-                                    <div class="card-body pb-0">
-                                        <h5 class="card-title font-weight-bold"></h5>
-                                    @*Stock Name and Date*@
-                                        <p class="card-text mb-4" id="exchange">NASDAQ: SWMG • March 22, 11:52AM</p>
-                                        <div class="d-flex justify-content-between">
-                                        @*Stock Price and Daily Informaiton*@
-                                            <p class="display-4 align-self-end" ><span id="price">159.75 USD</span> <span id="change"
-                                                    style="color:green; font-size: smaller;">+0.45
-                                                    (.28%)</span></p>
-                                        </div>
-                                    @*Company Logo*@
-                                        <div class="logo-box" id="logo">
-                                        </div>
-                                    </div>
-                                </div>
-                            @*Stock Graph*@
-                            <!-- TradingView Widget BEGIN -->
-                            <div class="tradingview-widget-container" style="height: 18.75rem">
-                                <div id="tradingview_12d56" style="height: 18.75rem"></div>
-                                <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/NASDAQ-AAPL/" rel="noopener" target="_blank"><span class="blue-text">@ViewBag.ticker stock chart</span></a> by TradingView</div>
-                                <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-                                <script type="text/javascript">
-                                new TradingView.widget(
+@*Note: Turned White since if I deleted it, the formating was off*@
+
+    <!--Contain for all elements-->
+    <div class="container mt-2">
+
+        <div class="mb-5">
+                    <div class="searchbar">
+                        <form asp-action="Search">
+                            @* Search bar seen on screen
+                                NOTE: see how the for and name attribute match the Search parameter name *@
+                            <label for="title" class="form-label"></label>
+                            <input name="title" class="form-control" type="text" list="datalistOptions"
+                                id="exampleDataList" placeholder="">
+                            <datalist class="searchbar" id="datalistOptions">
+                                @using MongoDB.Driver
+                                @using QuantU.Models
+                                @{
+                                    MongoClient client = new
+                                    MongoClient("mongodb+srv://SWMG:Shawdowwizardmoneygang@swmg.hzzuvlg.mongodb.net/?retryWrites=true&w=majority");
+                                    var builder = Builders<StockData>.Filter;
+                                    var empty = builder.Empty;
+                                    List<StockData> results =
+                                    client.GetDatabase("SWMG").GetCollection<StockData>("StockData").Find(empty).ToList();
+                                    List<string> stocks = new List<String>();
+                                    foreach (StockData result in results)
+                                    {
+                                        stocks.Add(result.name + ", " + result.ticker);
+                                    }
+                                    stocks.Sort();
+                                }
+                                @foreach (string stock in stocks)
                                 {
-                                "autosize": true,
-                                "symbol": '@ViewBag.ticker',
-                                "interval": "D",
-                                "timezone": "America/Chicago",
-                                "theme": "dark",
-                                "style": "3",
-                                "locale": "en",
-                                "toolbar_bg": "#f1f3f6",
-                                "enable_publishing": false,
-                                "allow_symbol_change": true,
-                                "container_id": "tradingview_12d56"
-                            }
-                                );
-                                </script>
-                            </div>
-                            <!-- TradingView Widget END --> 
-
-                            </section>
-                            <style>
-                                .logo-box {
-                                    width: 8rem;
-                                    height: 8rem;
-                                    background-color: gray;
-                                    position: absolute;
-                                    top: 20%;
-                                    left: 75%;
-                                    border-radius: 0.625rem;
+                                    <option value='@stock'></option>
                                 }
-
-                                .card-title {
-                                    font-size: xx-large;
+                            </datalist>
+                        </form>
+                        <script>
+                            var wordList = ["Type Here....", "Search Stock...", "Feeling Lucky...", "We Love Casting Spells... <3"];
+                            var randomIndex = Math.floor(Math.random() * wordList.length);
+                            var randomWord = wordList[randomIndex];
+                            var inputElem = document.querySelector('input.form-control');
+                            var i = 0;
+                            var intervalId = setInterval(function () {
+                                if (i < randomWord.length) {
+                                    inputElem.placeholder += randomWord.charAt(i);
+                                    i++;
+                                } else {
+                                    clearInterval(intervalId);
                                 }
+                            }, 100);
+                        </script>
+                    </div>
+                </div>
 
-                                div.container {
-                                    margin-left: 0 !important;
-                                }
-                            </style>
-                        @*Animation Script*@
-                            <script>
+        <!--First row for two main sections i.e the stock card and random elements-->
+
+            <!--
+                Stock Card Column
+                col is col-8 which will take up more of the screen
+                bootstraps has 12 column grid col-8 takes up 8 of those so 
+                this card will always be larger
+            -->
+
+                <!--Stock card-->
+                <div class="card">
+
+                    <!--Row for items inside stock card-->
+                    <div class="card-body row">
+                        <!--column containing stock name, exchange rate, price, and price change-->
+                        <div class="row">
+                            <div class="col">
+                                <!--Stock name (the one you animated)-->
+                <h5 class="card-title fw-bold" style="font-size: 25px;"></h5>
+                @* Animation Script *@
+                <script>
                                 let token = "cfis95hr01qjvrn525t0cfis95hr01qjvrn525tg";
                                 let base_url = "https://finnhub.io/api/v1/stock/profile2?";
                                 let symbol = '@ViewBag.ticker';
-
                                 //Forms the API URL with API Token (Key) and the symbol for the stock the user wants
                                 let url = base_url + "symbol=" + symbol + "&token=" + token;
-
                                 //fetches url and gets JSON data attached to it
                                 fetch(url)
                                     .then(response => response.json())
@@ -107,126 +107,65 @@
                                         function type() {
                                             titleElement.textContent = titleText.slice(0, index);
                                             index++;
-
                                             if (index > titleText.length) {
                                                 clearTimeout(timeout);
                                             } else {
                                                 timeout = setTimeout(type, 100);
                                             }
                                         }
-
                                         timeout = setTimeout(type, 100);
-
                                     })
                                     .catch(error => console.log(error));
-
                             </script>
-                        </div>
-                    </div>
-                </div>
-            @*Company Name*@
-                <div class="company-name"> <p id="full-name">SWMG Corporation</p>
-                    <style>
-                        .company-name {
-                            color: black;
-                            font-size: 1.563rem;
-                            position: absolute;
-                            width: 34.375rem;
-                            top: 24%;
-                            left: 60%;
-                            border: 0.063rem solid #ccc;
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                        }
-                    </style>
-                </div>
-            @*Company Information*@
-                <div class="company-info">
-                    <style>
-                        .company-info {
-                            color: black;
-                            font-size: 1.563rem;
-                            position: absolute;
-                            width: 34.375rem;
-                            height: 28.5rem;
-                            top: 29.2%;
-                            left: 60%;
-                            background-color: gray;
-                        }
-                    </style>
-                </div>
-            @*Trade Button*@
-                <button class="trade-btn" id="trade-now-btn" data-bs-toggle="modal" data-bs-target="#AddStockToPort">Trade Now
-                    <style>
-                        .trade-btn {
-                            color: red;
-                            font-size: small;
-                            position: absolute;
-                            left: 25%;
-                            top: 30%;
-                            align-items: center;
-                            justify-content: center;
-                            display: inline-block;
-                            width: 11.25rem;
-                            height: 3.125rem;
-                            background: linear-gradient(to left, #c9aaff, #c9aaff);
-                            /*box-shadow: 0 10px 25px #c9aaff;*/
-                            border-radius: 3.125rem;
-                            border: none;
-                            font-size: larger;
-                            font-weight: 500;
-                            color: #fff;
-                            text-transform: uppercase;
-                            letter-spacing: 0.063rem;
-                            animation: pulsate 1.2s ease-in-out infinite both;
-                        }
+                                <!--Exchange rate, ticker, and date-->
+                                <p id="exchange" class="card-text mb-4 fw-medium" style="font-size: 25px;" >NASDAQ: SWMG • March 22, 11:52AM</p>
+                                
+                                <!--price, Percent change-->
+    
+                            </div>
+                            <!--column container button and icon-->
+                        <div class="col text-center me-3">
+                            <!--Buttton-->
+                            <button class="trade-btn" id="trade-now-btn" data-bs-toggle="modal" data-bs-target="#AddStockToPort">Trade Now
+                                <!--Your CS minus positioning-->
+                                <style>
+                                    .trade-btn {
+                                        position: relative;
+                                        color: red;
+                                        font-size: small;
+                                        align-items: center;
+                                        justify-content: center;
+                                        display: inline-block;
+                                        width: 11.25rem;
+                                        height: 3.125rem;
+                                        background: linear-gradient(to left, #c9aaff, #c9aaff);
+                                        /*box-shadow: 0 10px 25px #c9aaff;*/
+                                        border-radius: 3.125rem;
+                                        border: none;
+                                        font-size: larger;
+                                        font-weight: 500;
+                                        color: #fff;
+                                        text-transform: uppercase;
+                                        letter-spacing: 0.063rem;
+                                        animation: pulsate 1.2s ease-in-out infinite both;
+                                    }
+                                    .trade-btn:hover {
+                                        animation-play-state: paused;
+                                        transform: scale(1.05);
+                                    }
+                                    .logo-box {
+                                        width: 10rem;
+                                        height: 10rem;
+                                        background-color: gray;
+                                        border-radius: 0.625rem;
+                                        position: relative;
+                                        left: 25%;
+                                        top: 20%;
+                                    }
+                                </style>
+                            </button>
 
-                        .trade-btn:hover {
-                            animation-play-state: paused;
-                            transform: scale(1.05);
-                        }
-                    </style>
-                @*Script for Blinking Effect -> Not using since its distracting*@
-                    <script>
-                    @* var tradeBtn = document.getElementById('trade-now-btn');
-                            var scale = 1;
-                            var direction = 1;
-                            var intervalId = setInterval(function() {
-                            scale += direction * 0.005;
-                            if (scale > 1.1) {
-                            direction = -1;
-                            } else if (scale < 1) {
-                            direction = 1;
-                            }
-                            tradeBtn.style.transform = 'scale(' + scale + ')';
-                            }, 50);
-
-                            tradeBtn.addEventListener('mouseenter', function () {
-                            clearInterval(intervalId);
-                            this.style.transform = 'scale(1.05)';
-                            });
-
-                            tradeBtn.addEventListener('mouseleave', function () {
-                            intervalId = setInterval(function() {
-                            scale += direction * 0.005;
-                            if (scale > 1.1) {
-                            direction = -1;
-                            } else if (scale < 1) {
-                            direction = 1;
-                            }
-                            tradeBtn.style.transform = 'scale(' + scale + ')';
-                            }, 50);
-                            }); *@
-                    </script>
-
-
-                </button>
-
-
-
-
-                @*testing*@
+                            @*testing*@
                 <div class="modal fade" id="AddStockToPort" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -262,118 +201,54 @@
                                     </div>
                                 </div>
 
-
-
-
-
-
-
-
-
-            @*Search Bar Place Holder*@
-                <div>
-                @* Form for Search() function in HomeComtroller.cs *@
-      <form asp-action="Search">
-
-                    @* Search bar seen on screen 
-      NOTE: see how the for and name attribute match the Search parameter name *@
-        <input name="title" class="form-control" type="text" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
-        <datalist class="searchbar" id="datalistOptions">
-            
-                        @using MongoDB.Driver
-                        @using QuantU.Models
-                        @{
-                            MongoClient client = new MongoClient("mongodb+srv://SWMG:Shawdowwizardmoneygang@swmg.hzzuvlg.mongodb.net/?retryWrites=true&w=majority");
-                            var builder = Builders<StockData>.Filter;
-                            var empty = builder.Empty;
-                            List<StockData> results = client.GetDatabase("SWMG").GetCollection<StockData>("StockData").Find(empty).ToList();
-                            List<string> stocks = new List<String>();
-                            foreach (StockData result in results)
-                            {
-                                stocks.Add(result.name + ", " + result.ticker);
-                            }
-                            stocks.Sort();
-                        }
-
-                        @foreach (string stock in stocks)
-                        {
-                    <option value='@stock'></option>
-                        }
-            </datalist>
-            <input for="name" name="name" type="hidden" value="@ViewBag.PortfolioName" class="form-control" >
-        </form>
-        <style>
-                        .form-control {
-                            border-radius: 1.25rem;
-                            border-color: black;
-                            position: absolute;
-                            top: 16%;
-                            width: 50rem;
-                            left: 1.5%;
-                        }
-                    </style>
-                    <script>
-         var wordList = ["This Search Bar Doesnt Work :("];
-                        var randomIndex = Math.floor(Math.random() * wordList.length);
-                        var randomWord = wordList[randomIndex];
-                        var inputElem = document.querySelector('input.form-control');
-                        var i = 0;
-                        var intervalId = setInterval(function () {
-                            if (i < randomWord.length) {
-                                inputElem.placeholder += randomWord.charAt(i);
-                                i++;
-                            } else {
-                                clearInterval(intervalId);
-                            }
-                        }, 100);
-                    </script>
+                        </div>
+                            <div class="col">
+                                <div id="logo" class="logo-box ">
+                            </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="row">
+                    <div class="d-flex justify-content-between">
+                                    <p class="display-4 align-self-end"><span id="price">159.75 USD</span> <span id="change"
+                                            style="color:green; font-size: smaller;">+0.45 (.28%)</span></p>
+                                </div>
                 </div>
-            @*Try Another Stock (IDEA) -> Clicks and goes to a random stock page*@
-                <button class="try-btn" id="trade-now-btn"> Try This Stock: APPL INC
-                    <style>
-                        .try-btn {
-                            font-size: small;
-                            position: absolute;
-                            left: 60%;
-                            top: 15%;
-                            align-items: center;
-                            justify-content: center;
-                            display: inline-block;
-                            width: 34.375rem;
-                            height: 3.125rem;
-                            background: linear-gradient(to left, #62c08b, #62c08b);
-                            /*box-shadow: 0 10px 25px #c9aaff;*/
-                            border-radius: 3.125rem;
-                            border: none;
-                            font-size: larger;
-                            font-weight: 500;
-                            color: #fff;
-                            text-transform: uppercase;
-                            letter-spacing: 0.063rem;
-                            animation: pulsate 1.2s ease-in-out infinite both;
-                        }
+                </div>
+                <div class="tradingview-widget-container" style="height: 18.75rem">
+                                <div id="tradingview_12d56" style="height: 18.75rem"></div>
+                                <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/NASDAQ-AAPL/" rel="noopener" target="_blank"><span class="blue-text">@ViewBag.ticker stock chart</span></a> by TradingView</div>
+                                <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                                <script type="text/javascript">
+                                new TradingView.widget(
+                                {
+                                "autosize": true,
+                                "symbol": '@ViewBag.ticker',
+                                "interval": "D",
+                                "timezone": "America/Chicago",
+                                "theme": "dark",
+                                "style": "3",
+                                "locale": "en",
+                                "toolbar_bg": "#f1f3f6",
+                                "enable_publishing": false,
+                                "allow_symbol_change": true,
+                                "container_id": "tradingview_12d56"
+                            }
+                                );
+                                </script>
+                            </div>
+            <!--End of stock card-->
 
-                        .try-btn:hover {
-                            animation-play-state: paused;
-                            transform: scale(1.05);
-                        }
-                    </style>
-                </button>
-            </div>
-
-
-        </div>
-
+            <!--Column for search bar and random stocks-->
+            <div class="col-md-4">
+                <!--Search bar sizes with column-->
+            
+    </div>
 
     </div>
 
 <script>
-    @* token = "cfis95hr01qjvrn525t0cfis95hr01qjvrn525tg";
-    base_url = "https://finnhub.io/api/v1/stock/profile2?";
-    let symbol = '@ViewBag.ticker';
-
-    //Forms the API URL with API Token (Key) and the symbol for the stock the user wants
-    let url = base_url + "symbol=" + symbol + "&token=" + token; *@
 
     //fetches url and gets JSON data attached to it
     fetch(url)
@@ -386,7 +261,6 @@
             var dateString = arr[1] + " " + arr[2] + " " + arr[3] + " " + arr[4];
 
             document.getElementById('exchange').innerHTML = data.exchange + ": " + data.ticker + " • " + dateString;
-            document.getElementById('full-name').innerHTML = data.name;
 
             document.getElementById('logo').style.backgroundImage = "url('" + data.logo + "')";
             document.getElementById('logo').style.backgroundPosition = "center";
