@@ -35,7 +35,7 @@
 </marquee>
 
 @* Script for fetching news data from the API and filling the marquee tool *@
-<script src=~/js/news.js></script>
+@* <script src=~/js/news.js></script> *@
 
 @* Main content *@
 <div class="container">
@@ -123,30 +123,25 @@
         <div> 
           <a>
             <h2>Investment Suggestions</h2>
-
             @* Options matching financial advise to user quiz items *@
-            @{
-            if(ViewBag.user.numberOfChildren > 0){
-              if(ViewBag.user.eldestChildAge < 18 && ViewBag.user.numberOfChildren <= 3 && ViewBag.user.netSalary > 90000){
-                <p>Since you have children below the age of 18, please consider setting up a college fund for your children.</p>
-              }
-              else if(ViewBag.user.eldestChildAge < 18 && ViewBag.user.numberOfChildren < 5 && ViewBag.user.netSalary > 110000){
-                <p>Since you have children below the age of 18, please consider setting up a college fund for your children.</p>
-              }
-            }
-            if(ViewBag.user.age > 60 && ViewBag.user.eldestChildAge > 25 && ViewBag.user.netSalary > 80000){
-              <p>We recommend that you invest in a consistent index fund like the S&P 500 or the NASDAQ</p>
-            }
-            if(ViewBag.user.age <35 && ViewBag.user.age > 17 && ViewBag.user.numberOfChildren == 0){
-              <p>Based on your age, we recommend that you invest in a ROTH IRA account</p>
-            }
-            if(ViewBag.user.age <26 && ViewBag.user.age > 20 && ViewBag.user.numberOfChildren == 0){
-              <p>Based on your age, we recommend that you invest in a 401k account</p>
-            }            
-            if(ViewBag.user.age<30 && ViewBag.user.numberOfChildren == 0 && ViewBag.user.netSalary<60000){
+              @if(ViewBag.user.age<30 && ViewBag.user.numberOfChildren == 0 && ViewBag.user.netSalary<60000){
               <p>Based on your age and income, we recommend that you focus on your well-being and personal health. You may not be ready to invest just yet.</p>
               }
+              @if(ViewBag.user.eldestChildAge < 18 && ViewBag.user.numberOfChildren <= 3 && ViewBag.user.netSalary > 90000 && ViewBag.user.numberOfChildren > 0){
+                <p>Since you have children below the age of 18, please consider setting up a college fund for your children.</p>
+              }
+              @if(ViewBag.user.eldestChildAge < 18 && ViewBag.user.numberOfChildren < 5 && ViewBag.user.netSalary > 110000 && ViewBag.user.numberOfChildren > 0){
+                <p>Since you have children below the age of 18, please consider setting up a college fund for your children.</p>
+              }
+            @if(ViewBag.user.age > 60 && ViewBag.user.eldestChildAge > 25 && ViewBag.user.netSalary > 80000){
+              <p>We recommend that you invest in a consistent index fund like the S&P 500 or the NASDAQ</p>
             }
+            @if(ViewBag.user.age <35 && ViewBag.user.age > 17 && ViewBag.user.numberOfChildren == 0){
+              <p>Based on your age, we recommend that you invest in a ROTH IRA account</p>
+            }
+            @if(ViewBag.user.age <26 && ViewBag.user.age > 20 && ViewBag.user.numberOfChildren == 0){
+              <p>Based on your age, we recommend that you invest in a 401k account</p>
+            }            
           </a> 
         </div>
       </li>

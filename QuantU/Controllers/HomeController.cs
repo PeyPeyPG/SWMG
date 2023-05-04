@@ -76,8 +76,9 @@ public class HomeController : Controller
         ClaimsPrincipal claimUser = HttpContext.User;
         //Returns username
         var userId = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
+        userId = UserInfo.DecryptSingle(userId);
         //If the user is saved the login in redirects you automatically
-        if (claimUser.Identity.IsAuthenticated){
+        //if (claimUser.Identity.IsAuthenticated){
         //userId is encrypted
         FilterDefinition<UserFinances> filter = Builders<UserFinances>.Filter.Eq("username", userId);
         List<UserFinances> results = client.GetDatabase("SWMG").GetCollection<UserFinances>("UserFinances").Find(filter).ToList();
@@ -86,12 +87,13 @@ public class HomeController : Controller
             user = result;
         }
         ViewBag.user = user;
-        Console.WriteLine(ViewBag.user.eldestChildAge);
+        ViewBag.user.username = UserInfo.DecryptSingle(userId);
+        //Console.WriteLine(ViewBag.user.age);
         return View();
-        }
-        else{
-            return RedirectToAction("LogIn", "User");
-        } 
+        // }
+        // else{
+        //     return RedirectToAction("LogIn", "User");
+        // } 
     }
 
     public IActionResult Privacy()
